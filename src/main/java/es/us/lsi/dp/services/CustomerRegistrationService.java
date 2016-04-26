@@ -9,7 +9,7 @@ import org.springframework.validation.Validator;
 
 import repositories.CustomerRepository;
 
-import domain.Customer;
+import domain.User;
 
 import es.us.lsi.dp.domain.DomainObject;
 import es.us.lsi.dp.domain.UserAccount;
@@ -21,8 +21,8 @@ import es.us.lsi.dp.validation.validators.PasswordValidator;
 
 @Service
 @Transactional
-public class CustomerRegistrationService extends AbstractFormService<Customer, BaseRegistrationForm, CustomerRepository> implements
-		CreateFormService<BaseRegistrationForm, Customer> {
+public class CustomerRegistrationService extends AbstractFormService<User, BaseRegistrationForm, CustomerRepository> implements
+		CreateFormService<BaseRegistrationForm, User> {
 
 	@Autowired
 	private UserAccountService userAccountService;
@@ -58,9 +58,9 @@ public class CustomerRegistrationService extends AbstractFormService<Customer, B
 
 	// Convert metods -----------------------------------
 	@Override
-	public Customer convertToEntity(BaseRegistrationForm form) {
-		Customer result;
-		result = new Customer();
+	public User convertToEntity(BaseRegistrationForm form) {
+		User result;
+		result = new User();
 		UserAccount userAccount;
 		userAccount = userAccountService.create(result);
 

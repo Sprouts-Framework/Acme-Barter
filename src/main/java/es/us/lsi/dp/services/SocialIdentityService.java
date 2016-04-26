@@ -10,7 +10,7 @@ import org.springframework.validation.Validator;
 
 import repositories.SocialIdentityRepository;
 
-import domain.Customer;
+import domain.User;
 import domain.SocialIdentity;
 
 import es.us.lsi.dp.domain.DomainEntity;
@@ -53,11 +53,12 @@ public class SocialIdentityService extends AbstractService<SocialIdentity, Socia
 		result = super.findById(id);
 		Assert.notNull(result);
 
-		Customer customer;
+		User customer;
 		customer = customerService.findByPrincipal();
 		Assert.notNull(customer);
 
-		customer.setSocialIdentity(result);
+		//FIXME Arreglar para usar con más de una socialIdentity.
+		//customer.setSocialIdentity(result);
 		customerService.update(customer);
 	}
 
@@ -89,10 +90,11 @@ public class SocialIdentityService extends AbstractService<SocialIdentity, Socia
 	@Override
 	public void beforeCommitingDelete(SocialIdentity validable) {
 		Assert.notNull(validable);
-		Customer customer;
+		User customer;
 		customer = customerService.findByPrincipal();
 		Assert.notNull(customer);
-		customer.setSocialIdentity(null);
+		//FIXME Arreglar para usar con más de una socialIdentity.
+		//customer.setSocialIdentity(null);
 		customerService.save(customer);
 	}
 

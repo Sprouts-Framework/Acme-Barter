@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import org.springframework.validation.Validator;
 
-import domain.Customer;
+import domain.User;
 import domain.SocialIdentity;
 
 import es.us.lsi.dp.domain.BaseActor;
@@ -79,7 +79,7 @@ public class SocialAccountService extends AbstractService<SocialAccount, SocialA
 		return result;
 	}
 
-	public Customer createCustomerAndSocialAccount(Connection<?> connection, UserProfile profile) {
+	public User createCustomerAndSocialAccount(Connection<?> connection, UserProfile profile) {
 		SocialAccount socialAccount;
 		socialAccount = new SocialAccount();
 		socialAccount.setProviderId(connection.getKey().getProviderId());
@@ -112,8 +112,9 @@ public class SocialAccountService extends AbstractService<SocialAccount, SocialA
 
 		int customerId = customerRegistrationService.save(customerForm);
 		customerRegistrationService.afterCommitingCreate(customerId);
-		Customer customer = customerService.findById(customerId);
-		customer.setSocialIdentity(socialIdentity);
+		User customer = customerService.findById(customerId);
+		//FIXME Arreglar para usar con más de una socialIdentity.
+		//customer.setSocialIdentity(socialIdentity);
 		customerId = customerService.save(customer);
 		customer = customerService.findById(customerId);
 
@@ -129,7 +130,7 @@ public class SocialAccountService extends AbstractService<SocialAccount, SocialA
 		return customer;
 	}
 
-	public void addSocialAccount(Customer customer, UserProfile profile, Connection<?> connection) {
+	public void addSocialAccount(User customer, UserProfile profile, Connection<?> connection) {
 		SocialAccount socialAccount;
 		socialAccount = new SocialAccount();
 		socialAccount.setProviderId(connection.getKey().getProviderId());
@@ -141,19 +142,20 @@ public class SocialAccountService extends AbstractService<SocialAccount, SocialA
 		userAccountService.save(userAccount);
 	}
 
-	public void updateCustomer(Customer customer, UserProfile profile, Connection<?> connection) {
+	public void updateCustomer(User customer, UserProfile profile, Connection<?> connection) {
 		customer.setName(profile.getFirstName());
 		if (profile.getLastName() != null)
 			customer.setSurname(profile.getLastName());
 
-		SocialIdentity socialIdentity = customer.getSocialIdentity() == null ? new SocialIdentity() : customer.getSocialIdentity();
-		socialIdentity.setNick(profile.getUsername());
-		socialIdentity.setPicture(connection.getImageUrl());
-		socialIdentity.setHomePage(connection.getProfileUrl());
-		socialIdentity.setSocialNetwork(connection.getKey().getProviderId());
-		int socialIdentityId = socialIdentityService.save(socialIdentity);
-		socialIdentity = socialIdentityService.findById(socialIdentityId);
-		customer.setSocialIdentity(socialIdentity);
+		//FIXME Arreglar para usar con más de una socialIdentity.
+//		SocialIdentity socialIdentity = customer.getSocialIdentity() == null ? new SocialIdentity() : customer.getSocialIdentity();
+//		socialIdentity.setNick(profile.getUsername());
+//		socialIdentity.setPicture(connection.getImageUrl());
+//		socialIdentity.setHomePage(connection.getProfileUrl());
+//		socialIdentity.setSocialNetwork(connection.getKey().getProviderId());
+//		int socialIdentityId = socialIdentityService.save(socialIdentity);
+//		socialIdentity = socialIdentityService.findById(socialIdentityId);
+//		customer.setSocialIdentity(socialIdentity);
 
 		UserAccount userAccount = customer.getUserAccount();
 		if (connection.getKey().getProviderId().equals("google"))

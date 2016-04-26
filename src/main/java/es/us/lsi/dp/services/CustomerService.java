@@ -14,7 +14,7 @@ import org.springframework.validation.Validator;
 
 import repositories.CustomerRepository;
 
-import domain.Customer;
+import domain.User;
 
 import es.us.lsi.dp.domain.UserAccount;
 import es.us.lsi.dp.services.contracts.ShowService;
@@ -23,13 +23,13 @@ import es.us.lsi.dp.validation.contracts.BusinessRule;
 
 @Service
 @Transactional
-public class CustomerService extends AbstractService<Customer, CustomerRepository> implements ShowService<Customer>, UpdateService<Customer> {
+public class CustomerService extends AbstractService<User, CustomerRepository> implements ShowService<User>, UpdateService<User> {
 
 	@Autowired
 	private KieContainer kieContainer;
 
-	public Customer findByPrincipal() {
-		Customer result;
+	public User findByPrincipal() {
+		User result;
 		UserAccount userAccount;
 		userAccount = SignInService.getPrincipal();
 		Assert.notNull(userAccount);
@@ -37,11 +37,11 @@ public class CustomerService extends AbstractService<Customer, CustomerRepositor
 		Assert.notNull(result);
 
 		KieSession kieSession = kieContainer.newKieSession("KSession");
-		Collection<Customer> customers = (Collection<Customer>) repository.findAll();
+		Collection<User> customers = (Collection<User>) repository.findAll();
 		Date date = new Date(System.currentTimeMillis() - 15778500000L * 2);
 		kieSession.insert(date);
 
-		for (Customer e : customers) {
+		for (User e : customers) {
 			kieSession.insert(e);
 		}
 
@@ -53,16 +53,16 @@ public class CustomerService extends AbstractService<Customer, CustomerRepositor
 	// Update methods ------------------------------
 
 	@Override
-	public void beforeUpdating(Customer validable, List<String> context) {
+	public void beforeUpdating(User validable, List<String> context) {
 	}
 
 	@Override
-	public void beforeCommitingUpdate(Customer validable) {
+	public void beforeCommitingUpdate(User validable) {
 
 	}
 
 	@Override
-	public void updateBusinessRules(List<BusinessRule<Customer>> rules, List<Validator> validators) {
+	public void updateBusinessRules(List<BusinessRule<User>> rules, List<Validator> validators) {
 	}
 
 	@Override
@@ -70,11 +70,11 @@ public class CustomerService extends AbstractService<Customer, CustomerRepositor
 
 	}
 
-	public Customer findBySocialAccount(String providerId, String userId) {
+	public User findBySocialAccount(String providerId, String userId) {
 		Assert.notNull(providerId);
 		Assert.notNull(userId);
 
-		Customer result;
+		User result;
 
 		result = repository.findBySocialAccount(providerId, userId);
 

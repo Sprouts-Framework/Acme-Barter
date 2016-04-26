@@ -54,7 +54,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.view.RedirectView;
 
-import domain.Customer;
+import domain.User;
 import es.us.lsi.dp.domain.SocialAccount;
 import es.us.lsi.dp.domain.UserAccount;
 import es.us.lsi.dp.services.BaseActorService;
@@ -389,9 +389,9 @@ public class ProviderSignInController implements InitializingBean {
 		SocialAccount socialAccount = socialAccountService.findSocialAccount(connection.getKey().getProviderId(), connection.getKey().getProviderUserId());
 		UserProfile profile = connection.fetchUserProfile();
 		UserAccount userAccountAux = SignInService.getPrincipalOrNull();
-		Customer principal = null;
+		User principal = null;
 		if (userAccountAux != null) {
-			principal = (Customer) actorService.findActorByUserAccount(userAccountAux.getUsername());
+			principal = (User) actorService.findActorByUserAccount(userAccountAux.getUsername());
 		}
 
 		if (principal != null) {
@@ -404,7 +404,7 @@ public class ProviderSignInController implements InitializingBean {
 			RedirectView redirectView = redirect(postSignInUrl);
 			return redirectView;
 		} else if (socialAccount == null) {
-			Customer customer = socialAccountService.createCustomerAndSocialAccount(connection, profile);
+			User customer = socialAccountService.createCustomerAndSocialAccount(connection, profile);
 
 			UserDetails userDetails = signInService.loadUserByUsername(customer.getUserAccount().getUsername());
 			request.getNativeRequest(HttpServletRequest.class).getSession();
@@ -417,7 +417,7 @@ public class ProviderSignInController implements InitializingBean {
 			RedirectView redirectView = redirect(postSignInUrl);
 			return redirectView;
 		} else {
-			Customer customer = customerService.findBySocialAccount(connection.getKey().getProviderId(), connection.getKey().getProviderUserId());
+			User customer = customerService.findBySocialAccount(connection.getKey().getProviderId(), connection.getKey().getProviderUserId());
 			socialAccountService.updateCustomer(customer, profile, connection);
 			customer = customerService.findById(customer.getId());
 
