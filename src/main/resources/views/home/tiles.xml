@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- * tiles.xml * * Copyright (C) 2013 Universidad de Sevilla * * The use 
+	of this project is hereby constrained to the conditions of the * TDG Licence, 
+	a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="home/panic" extends="template/master">
+		<put-attribute name="title" type="string" value="panic.title" />
+		<put-attribute name="body" type="template" value="../home/panic.jsp" />
+	</definition>
+
+	<definition name="home/welcome" extends="template/master">
+		<put-attribute name="title" type="string" value="home.welcome" />
+		<put-attribute name="body" type="template" value="../home/welcome.jsp" />
+	</definition>
+
+	<definition name="home/sign-in" extends="template/master">
+		<put-attribute name="title" type="string" value="sign-in.title" />
+		<put-attribute name="body" type="template" value="../home/sign-in.jsp" />
+	</definition>
+
+	<definition name="base-sign-up" template="../home/base-sign-up.jsp">
+		<put-attribute name="extendedForm" type="string" value="" />
+	</definition>
+
+	<definition name="extended-sign-up" template="../home/base-sign-up.jsp">
+		<put-attribute name="extendedForm" type="template"
+			value="../home/extended-sign-up.jsp" />
+	</definition>
+
+	<definition name="home/sign-up-worker" extends="template/master">
+		<put-attribute name="title" type="string" value="sign-up.worker.title" />
+		<put-attribute name="body" value="base-sign-up" />
+	</definition>
+
+	<definition name="home/sign-up-employer" extends="template/master">
+		<put-attribute name="title" type="string"
+			value="sign-up.employer.title" />
+		<put-attribute name="body" value="extended-sign-up" />
+	</definition>
+
+
+	<definition name="home/sign-up-customer" extends="template/master">
+		<put-attribute name="title" type="string" value="sign-up.customer.title" />
+		<put-attribute name="body" value="base-sign-up" />
+	</definition>
+
+
+	<definition name="home/contact-us" extends="template/master">
+		<put-attribute name="title" type="string" value="home.contact-us" />
+		<put-attribute name="body" type="template" value="../home/contact-us.jsp" />
+	</definition>
+
+	<definition name="home/license" extends="template/master">
+		<put-attribute name="title" type="string" value="home.license" />
+		<put-attribute name="body" type="template" value="../home/license.jsp" />
+	</definition>
+
+	<definition name="home/privacy" extends="template/master">
+		<put-attribute name="title" type="string" value="home.privacy" />
+		<put-attribute name="body" type="template" value="../home/privacy.jsp" />
+	</definition>
+
+
+
+
+
+	<definition name="home/sign-up-worker" extends="template/master">
+		<put-attribute name="title" type="string" value="sign-up.worker.title" />
+		<put-attribute name="body" value="base-sign-up" />
+	</definition>
+
+	<definition name="home/sign-up-employer" extends="template/master">
+		<put-attribute name="title" type="string"
+			value="sign-up.employer.title" />
+		<put-attribute name="body" value="extended-sign-up" />
+	</definition>
+
+
+</tiles-definitions>

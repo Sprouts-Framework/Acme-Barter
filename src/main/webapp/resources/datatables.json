@@ -1,0 +1,22 @@
+{
+	"sProcessing":     "Processing...",
+	"sSearch":         "Search:",
+	"sLengthMenu":     "Show _MENU_ items",
+	"sInfo":           "Showing items _START_ - _END_ (_TOTAL_ items in total)",
+	"sInfoEmpty":      "No items found",
+	"sInfoFiltered":   "(filtered from _MAX_ total items)",
+	"sInfoPostFix":    "",
+	"sLoadingRecords": "Loading...",
+	"sZeroRecords":    "Nothing to show",
+	"sEmptyTable":     "The datatable is empty",
+	"oPaginate": {
+	    "sFirst":      "First",
+	    "sPrevious":   "Previous",
+	    "sNext":       "Next",
+	    "sLast":       "Last"
+	},
+	"oAria": {
+	    "sSortAscending":  ": sort ascending",
+	    "sSortDescending": ": sort descending"
+	}
+}

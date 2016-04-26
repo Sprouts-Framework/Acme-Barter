@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * PopulateDatabase.xml
+ *
+ * Copyright (C) 2013 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+		
+	<!-- This is where you must write the objects to insert in the DB -->
+	
+
+	<!-- User accounts -->
+	
+	<bean id="userAccount3" class="es.us.lsi.dp.domain.UserAccount">
+		<property name="username" value="customer1" />
+		<property name="password" value="ffbc4675f864e0e9aab8bdf7a0437010" />
+		  <property name="actors">
+		   <list>
+		    <ref bean="customer1" />
+		   </list>
+		  </property> 
+		   <property name="socialAccounts">
+		   <list>
+		   </list>
+		  </property>  
+	</bean>
+
+	<bean id="userAccount4" class="es.us.lsi.dp.domain.UserAccount">
+		<property name="username" value="customer2" />
+		<property name="password" value="5ce4d191fd14ac85a1469fb8c29b7a7b" />
+		<property name="actors">
+		   <list>
+		    <ref bean="customer2" />
+		   </list>
+		</property> 
+		 <property name="socialAccounts">
+		   <list>
+		   </list>
+		  </property>  
+	</bean>
+
+	
+	<!-- Other domain beans come here -->	
+    
+	<!-- SocialIdentity -->
+	<bean id="socialIdentity2" class="domain.SocialIdentity">
+   		 <property name="nick" value="beatriznjime"/>
+   		 <property name="socialNetwork" value="Facebook"/>
+   		 <property name="homePage" value="https://facebook.com/"/>
+   		 <property name="picture" value="http://d33v4339jhl8k0.cloudfront.net/docs/assets/528e78fee4b0865bc066be5a/images/52af1e8ce4b074ab9e98f0e0/file-mxuiNezRS5.jpg"/>
+    </bean>
+	
+	<!-- Customer -->
+	<bean id="customer1" class="domain.Customer">
+	    	<property name="name" value="Carlosss"/>
+	    	<property name="surname" value="Fernández Pérez" />
+	    	<property name="userAccount" ref="userAccount3" />
+	</bean>
+	
+	<bean id="customer2" class="domain.Customer">
+	    	<property name="name" value="Beatriz"/>
+	    	<property name="surname" value="Núñez Jiménez" />
+	    	<property name="userAccount" ref="userAccount4" />
+	    	<property name="socialIdentity" ref="socialIdentity2"/>
+	</bean>
+	
+</beans>

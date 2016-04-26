@@ -1,0 +1,84 @@
+/* acme.java
+ *
+ * Copyright (C) 2013 Universidad de Sevilla
+ *  
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ * 
+ */
+
+/* Local definitions */
+.exception-block {
+	margin-top: 0px;
+	margin-bottom: 10px;
+	word-wrap: break-word;
+}
+
+.inner-exception-block {
+	margin-left: 30px;
+	margin-bottom: 0px;
+	white-space: pre-line;
+}
+
+/* Patches to bootstrap */
+body {
+	position: relative;
+	padding-top: 30px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+h1 {
+	font-size: x-large;
+}
+
+h2 {
+	font-size: large;
+}
+
+.panel-body {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+/* Patches to datatables */
+.table tbody>tr>td {
+	vertical-align: middle;
+}
+
+table.dataTable tr.even.row_selected td {
+	background-color: #99b3ff;
+}
+
+table.dataTable tr.odd.row_selected td {
+	background-color: #99b3ff;
+}
+
+/* Patches to datetimepicker */
+.icon-arrow-right {
+	background-image: url(../images/glyphicons.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 14px;
+	width: 14px;
+	background-position: -1156px -102px;
+}
+
+.icon-arrow-left {
+	background-image: url(../images/glyphicons.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 14px;
+	width: 14px;
+	background-position: -1122px -102px;
+}
+
+/* Forms */
+.fieldset-btm-margin {
+	margin-bottom: 15px;
+}
