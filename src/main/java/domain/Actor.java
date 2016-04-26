@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
+
 import es.us.lsi.dp.domain.BaseActor;
 
 @Entity
@@ -16,7 +20,21 @@ public abstract class Actor extends BaseActor {
 	// Serialisation identifier -----------------------------------------------
 
 	private static final long serialVersionUID = 868764066568947758L;
+	
+	//Attributes
+	
+	private String phone;
 
+	@SafeHtml(whitelistType=WhiteListType.NONE)
+	@NotBlank
+	public String getPhone() {
+		return phone;
+	}
+	
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	
 	// Relationships ----------------------------------------------------------
 
 }
