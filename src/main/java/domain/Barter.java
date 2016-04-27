@@ -7,6 +7,8 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -20,8 +22,6 @@ import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
-
-import com.lowagie.text.pdf.AcroFields.Item;
 
 import es.us.lsi.dp.domain.DomainEntity;
 
@@ -81,7 +81,7 @@ public class Barter extends DomainEntity {
 	private Collection<Barter> requesteds;
 	private Collection<Barter> offereds;
 	private Item offered;
-	private Item requested;
+	private Item requestedItem;
 	
 	@ManyToOne(optional=false)
 	@Valid
@@ -95,7 +95,10 @@ public class Barter extends DomainEntity {
 		this.user = user;
 	}
 	
-	@ManyToMany(mappedBy = "offereds")
+	@ManyToMany()
+	@JoinTable(name="relatedBarters", joinColumns= {
+	@JoinColumn(name="requested_barter_id", referencedColumnName="id", nullable=false)}, inverseJoinColumns={
+	@JoinColumn(name="offered_barter_id", referencedColumnName="id", nullable=false)})
 	@ElementCollection
 	@NotNull
 	public Collection<Barter> getRequesteds() {
@@ -132,13 +135,13 @@ public class Barter extends DomainEntity {
 
 	@OneToOne(optional=false)
 	@Valid
-	public Item getRequested() {
-		return requested;
+	public Item getRequestedItem() {
+		return requestedItem;
 	}
 
 	
-	public void setRequested(Item requested) {
-		this.requested = requested;
+	public void setRequestedItem(Item requested) {
+		this.requestedItem = requested;
 	}
 
 	

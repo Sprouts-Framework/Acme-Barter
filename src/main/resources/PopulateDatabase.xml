@@ -21,12 +21,40 @@
 
 	<!-- User accounts -->
 	
-	<bean id="userAccount3" class="es.us.lsi.dp.domain.UserAccount">
-		<property name="username" value="customer1" />
-		<property name="password" value="ffbc4675f864e0e9aab8bdf7a0437010" />
+	<bean id="userAccount1" class="es.us.lsi.dp.domain.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3"/>
 		  <property name="actors">
 		   <list>
-		    <ref bean="customer1" />
+		    <ref bean="administrator1"/>
+		   </list>
+		  </property> 
+		   <property name="socialAccounts">
+		   <list>
+		   </list>
+		  </property>  
+	</bean>
+	
+	<bean id="userAccount2" class="es.us.lsi.dp.domain.UserAccount">
+		<property name="username" value="auditor1" />
+		<property name="password" value="175d2e7a63f386554a4dd66e865c3e14"/>
+		  <property name="actors">
+		   <list>
+		    <ref bean="auditor1"/>
+		   </list>
+		  </property> 
+		   <property name="socialAccounts">
+		   <list>
+		   </list>
+		  </property>  
+	</bean>
+	
+	<bean id="userAccount3" class="es.us.lsi.dp.domain.UserAccount">
+		<property name="username" value="auditor2" />
+		<property name="password" value="04dd94ba3212ac52ad3a1f4cbfb52d4f"/>
+		  <property name="actors">
+		   <list>
+		    <ref bean="auditor2"/>
 		   </list>
 		  </property> 
 		   <property name="socialAccounts">
@@ -36,11 +64,81 @@
 	</bean>
 
 	<bean id="userAccount4" class="es.us.lsi.dp.domain.UserAccount">
-		<property name="username" value="customer2" />
-		<property name="password" value="5ce4d191fd14ac85a1469fb8c29b7a7b" />
+		<property name="username" value="auditor3" />
+		<property name="password" value="fc2073dbe4f65dfd71e46602f8e6a5f3"/>
 		<property name="actors">
 		   <list>
-		    <ref bean="customer2" />
+		    <ref bean="auditor3" />
+		   </list>
+		</property> 
+		 <property name="socialAccounts">
+		   <list>
+		   </list>
+		  </property>  
+	</bean>
+	
+	<bean id="userAccount5" class="es.us.lsi.dp.domain.UserAccount">
+		<property name="username" value="user1" />
+		<property name="password" value="24c9e15e52afc47c225b757e7bee1f9d"/>
+		<property name="actors">
+		   <list>
+		    <ref bean="user1" />
+		   </list>
+		</property> 
+		 <property name="socialAccounts">
+		   <list>
+		   </list>
+		  </property>  
+	</bean>
+	
+	<bean id="userAccount6" class="es.us.lsi.dp.domain.UserAccount">
+		<property name="username" value="user2" />
+		<property name="password" value="7e58d63b60197ceb55a1c487989a3720"/>
+		<property name="actors">
+		   <list>
+		    <ref bean="user2" />
+		   </list>
+		</property> 
+		 <property name="socialAccounts">
+		   <list>
+		   </list>
+		  </property>  
+	</bean>
+	
+	<bean id="userAccount7" class="es.us.lsi.dp.domain.UserAccount">
+		<property name="username" value="user3" />
+		<property name="password" value="92877af70a45fd6a2ed7fe81e1236b78"/>
+		<property name="actors">
+		   <list>
+		    <ref bean="user3" />
+		   </list>
+		</property> 
+		 <property name="socialAccounts">
+		   <list>
+		   </list>
+		  </property>  
+	</bean>
+	
+	<bean id="userAccount8" class="es.us.lsi.dp.domain.UserAccount">
+		<property name="username" value="user4" />
+		<property name="password" value="3f02ebe3d7929b091e3d8ccfde2f3bc6"/>
+		<property name="actors">
+		   <list>
+		    <ref bean="user4" />
+		   </list>
+		</property> 
+		 <property name="socialAccounts">
+		   <list>
+		   </list>
+		  </property>  
+	</bean>
+	
+	<bean id="userAccount9" class="es.us.lsi.dp.domain.UserAccount">
+		<property name="username" value="user5" />
+		<property name="password" value="0a791842f52a0acfbb3a783378c066b8"/>
+		<property name="actors">
+		   <list>
+		    <ref bean="user5" />
 		   </list>
 		</property> 
 		 <property name="socialAccounts">
@@ -52,26 +150,822 @@
 	
 	<!-- Other domain beans come here -->	
     
+    <!-- Administrator -->
+    <bean id="administrator1" class="domain.Administrator">
+	    	<property name="name" value="Chuck"/>
+	    	<property name="surname" value="Norris" />
+	    	<property name="phone" value="666666666"/>
+	    	<property name="userAccount" ref="userAccount1" />
+	</bean>
+    
+    <!-- Auditor -->
+    <bean id="auditor1" class="domain.Auditor">
+	    	<property name="name" value="Benito"/>
+	    	<property name="surname" value="Rodríguez Franco" />
+	    	<property name="phone" value="69876548832"/>
+	    	<property name="userAccount" ref="userAccount2" />
+	</bean>
+	
+	<bean id="auditor2" class="domain.Auditor">
+	    	<property name="name" value="Carmen"/>
+	    	<property name="surname" value="Pérez Galdós" />
+	    	<property name="phone" value="89854165413"/>
+	    	<property name="userAccount" ref="userAccount3" />
+	</bean>
+	
+	<bean id="auditor3" class="domain.Auditor">
+	    	<property name="name" value="Jaime"/>
+	    	<property name="surname" value="del Valle Carrillo" />
+	    	<property name="phone" value="21654561288"/>
+	    	<property name="userAccount" ref="userAccount4" />
+	</bean>
+	
 	<!-- SocialIdentity -->
-	<bean id="socialIdentity2" class="domain.SocialIdentity">
+	
+	<bean id="socialIdentity1" class="domain.SocialIdentity">
+   		 <property name="nick" value="@BillGates"/>
+   		 <property name="socialNetwork" value="Twitter"/>
+   		 <property name="homePage" value="https://twitter.com/BillGates"/>
+   		 <property name="picture" value="https://pbs.twimg.com/profile_images/558109954561679360/j1f9DiJi.jpeg"/>
+    </bean>
+	
+	<bean id="socialIdentity2_1" class="domain.SocialIdentity">
    		 <property name="nick" value="beatriznjime"/>
    		 <property name="socialNetwork" value="Facebook"/>
    		 <property name="homePage" value="https://facebook.com/"/>
    		 <property name="picture" value="http://d33v4339jhl8k0.cloudfront.net/docs/assets/528e78fee4b0865bc066be5a/images/52af1e8ce4b074ab9e98f0e0/file-mxuiNezRS5.jpg"/>
     </bean>
+    
+    <bean id="socialIdentity2_2" class="domain.SocialIdentity">
+   		 <property name="nick" value="@BeatrizJimenidez"/>
+   		 <property name="socialNetwork" value="Twitter"/>
+   		 <property name="homePage" value="https://twitter.com/beatrizjimenidez"/>
+   		 <property name="picture" value="https://abs.twimg.com/sticky/default_profile_images/default_profile_0_200x200.png"/>
+    </bean>
+    
+    <bean id="socialIdentity4" class="domain.SocialIdentity">
+   		 <property name="nick" value="ferleonduracell"/>
+   		 <property name="socialNetwork" value="Facebook"/>
+   		 <property name="homePage" value="https://facebook.com/ferleonduracell"/>
+   		 <property name="picture" value="http://img04.deviantart.net/b28a/i/2012/235/0/2/facebook_profile_image_by_edgarsvensson-d5c7rhk.jpg"/>
+    </bean>
+    
 	
-	<!-- Customer -->
-	<bean id="customer1" class="domain.Customer">
-	    	<property name="name" value="Carlosss"/>
-	    	<property name="surname" value="Fernández Pérez" />
-	    	<property name="userAccount" ref="userAccount3" />
+	<!-- User -->
+	<bean id="user1" class="domain.User">
+	    	<property name="name" value="Bill"/>
+	    	<property name="surname" value="Puertas Abiertas" />
+	    	<property name="userAccount" ref="userAccount5" />
+	    	<property name="followers">
+	    		<list>
+	    			<ref bean="user2"/>
+	    			<ref bean="user3"/>
+	    			<ref bean="user4"/>
+	    		</list>
+	    	</property>
+	    	<property name="followees">
+	    		<list>
+	    		</list>
+	    	</property>
+	    	<property name="identities">
+	    		<list>
+	    			<ref bean="socialIdentity1"/>
+	    		</list>
+	    	</property>
 	</bean>
 	
-	<bean id="customer2" class="domain.Customer">
+	<bean id="user2" class="domain.User">
 	    	<property name="name" value="Beatriz"/>
-	    	<property name="surname" value="Núñez Jiménez" />
-	    	<property name="userAccount" ref="userAccount4" />
-	    	<property name="socialIdentity" ref="socialIdentity2"/>
+	    	<property name="surname" value="Jimenez Hidalgo" />
+	    	<property name="userAccount" ref="userAccount6" />
+	    	<property name="followers">
+	    		<list>
+	    			<ref bean="user3"/>
+	    		</list>
+	    	</property>
+	    	<property name="followees">
+	    		<list>
+	    			<ref bean="user1"/>
+	    			<ref bean="user3"/>
+	    		</list>
+	    	</property>
+	    	<property name="identities">
+	    		<list>
+	    			<ref bean="socialIdentity2_1"/>
+	    			<ref bean="socialIdentity2_2"/>
+	    		</list>
+	    	</property>
 	</bean>
+	
+	<bean id="user3" class="domain.User">
+	    	<property name="name" value="Paula"/>
+	    	<property name="surname" value="Olmo Encinas" />
+	    	<property name="userAccount" ref="userAccount7" />
+	    	<property name="followers">
+	    		<list>
+	    			<ref bean="user2"/>
+	    		</list>
+	    	</property>
+	    	<property name="followees">
+	    		<list>
+	    			<ref bean="user1"/>
+	    			<ref bean="user2"/>
+	    		</list>
+	    	</property>
+	    	<property name="identities">
+	    		<list>
+	    		</list>
+	    	</property>
+	</bean>
+	
+	<bean id="user4" class="domain.User">
+	    	<property name="name" value="Fernando"/>
+	    	<property name="surname" value="Durán León" />
+	    	<property name="userAccount" ref="userAccount8" />
+	    	<property name="followers">
+	    		<list>
+	    		</list>
+	    	</property>
+	    	<property name="followees">
+	    		<list>
+	    			<ref bean="user1"/>
+	    		</list>
+	    	</property>
+	    	<property name="identities">
+	    		<list>
+	    			<ref bean="socialIdentity4"/>
+	    		</list>
+	    	</property>
+	</bean>
+	
+	<bean id="user5" class="domain.User">
+	    	<property name="name" value="Leandro"/>
+	    	<property name="surname" value="Gado Coca" />
+	    	<property name="userAccount" ref="userAccount9" />
+	    	<property name="followers">
+	    		<list>
+	    		</list>
+	    	</property>
+	    	<property name="followees">
+	    		<list>
+	    		</list>
+	    	</property>
+	    	<property name="identities">
+	    		<list>
+	    		</list>
+	    	</property>
+	</bean>
+
+    <!-- Folders -->
+    
+    <!-- Folderes administrator1 -->
+    <bean id="folderA1_1" class="domain.Folder">
+        <property name="name" value="in box" />
+        <property name="system" value="true" />
+        <!-- Referencias a otras entidades -->
+        <property name="actor" ref="administrator1"/>
+    </bean>
+    
+    <bean id="folderA1_2" class="domain.Folder">
+        <property name="name" value="out box" />
+        <property name="system" value="true" />
+        <!-- Referencias a otras entidades -->
+        <property name="actor" ref="administrator1"/>
+    </bean>
+    
+    <bean id="folderA1_3" class="domain.Folder">
+        <property name="name" value="trash box" />
+        <property name="system" value="true" />
+        <!-- Referencias a otras entidades -->
+        <property name="actor" ref="administrator1"/>
+    </bean>
+
+    <bean id="folderA1_4" class="domain.Folder">
+        <property name="name" value="spam box" />
+        <property name="system" value="true" />
+        <!-- Referencias a otras entidades -->
+        <property name="actor" ref="administrator1"/>
+    </bean>
+    
+        
+    <!-- Folderes user1 -->
+    <bean id="folderC1_1" class="domain.Folder">
+        <property name="name" value="in box" />
+        <property name="system" value="true" />
+        <!-- Referencias a otras entidades -->
+        <property name="actor" ref="user1"/>
+    </bean>
+    
+    <bean id="folderC1_2" class="domain.Folder">
+        <property name="name" value="out box" />
+        <property name="system" value="true" />
+        <!-- Referencias a otras entidades -->
+        <property name="actor" ref="user1"/>
+    </bean>
+    
+    <bean id="folderC1_3" class="domain.Folder">
+        <property name="name" value="trash box" />
+        <property name="system" value="true" />
+        <!-- Referencias a otras entidades -->
+        <property name="actor" ref="user1"/>
+    </bean>
+    
+    <bean id="folderC1_4" class="domain.Folder">
+        <property name="name" value="spam box" />
+        <property name="system" value="true" />
+        <!-- Referencias a otras entidades -->
+        <property name="actor" ref="user1"/>
+    </bean>
+    
+    <bean id="folderC1_5" class="domain.Folder">
+        <property name="name" value="Importante" />
+        <property name="system" value="false" />
+        <!-- Referencias a otras entidades -->
+        <property name="actor" ref="user1"/>
+    </bean>
+    
+    <!-- Folderes user2 -->
+    
+		<bean id="folderC2_1" class="domain.Folder">
+           <property name="name" value="in box"/>
+           <property name="system" value="true"/>
+           <property name="actor" ref="user2"/>        
+    	</bean>
+       
+       <bean id="folderC2_2" class="domain.Folder">
+           <property name="name" value="out box"/>
+           <property name="system" value="true"/>
+           <property name="actor" ref="user2"/>        
+       </bean>
+       
+       <bean id="folderC2_3" class="domain.Folder">
+           <property name="name" value="trash box"/>
+           <property name="system" value="true"/>
+           <property name="actor" ref="user2"/>        
+       </bean>
+       
+       <bean id="folderC2_4" class="domain.Folder">
+           <property name="name" value="spam box"/>
+           <property name="system" value="true"/>
+           <property name="actor" ref="user2"/>        
+       </bean>
+
+    <!-- Folderes user3 -->
+     	<bean id="folderC3_1" class="domain.Folder">
+            <property name="name" value="in box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="user3"/>        
+        </bean>
+        
+        <bean id="folderC3_2" class="domain.Folder">
+            <property name="name" value="out box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="user3"/>        
+        </bean>
+        
+        <bean id="folderC3_3" class="domain.Folder">
+            <property name="name" value="trash box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="user3"/>        
+        </bean>
+        
+        <bean id="folderC3_4" class="domain.Folder">
+            <property name="name" value="spam box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="user3"/>        
+        </bean>
+        
+        <!-- Folderes user4 -->
+     	<bean id="folderC4_1" class="domain.Folder">
+            <property name="name" value="in box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="user4"/>        
+        </bean>
+        
+        <bean id="folderC4_2" class="domain.Folder">
+            <property name="name" value="out box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="user4"/>        
+        </bean>
+        
+        <bean id="folderC4_3" class="domain.Folder">
+            <property name="name" value="trash box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="user4"/>        
+        </bean>
+        
+        <bean id="folderC4_4" class="domain.Folder">
+            <property name="name" value="spam box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="user4"/>        
+        </bean>
+        
+        <!-- Folderes user5 -->
+     	<bean id="folderC5_1" class="domain.Folder">
+            <property name="name" value="in box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="user5"/>        
+        </bean>
+        
+        <bean id="folderC5_2" class="domain.Folder">
+            <property name="name" value="out box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="user5"/>        
+        </bean>
+        
+        <bean id="folderC5_3" class="domain.Folder">
+            <property name="name" value="trash box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="user5"/>        
+        </bean>
+        
+        <bean id="folderC5_4" class="domain.Folder">
+            <property name="name" value="spam box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="user5"/>        
+        </bean>
+        
+         <!-- Folderes auditor1 -->
+     	<bean id="folderAU1_1" class="domain.Folder">
+            <property name="name" value="in box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="auditor1"/>        
+        </bean>
+        
+        <bean id="folderAU1_2" class="domain.Folder">
+            <property name="name" value="out box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="auditor1"/>        
+        </bean>
+        
+        <bean id="folderAU1_3" class="domain.Folder">
+            <property name="name" value="trash box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="auditor1"/>        
+        </bean>
+        
+        <bean id="folderAU1_4" class="domain.Folder">
+            <property name="name" value="spam box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="auditor1"/>        
+        </bean>
+        
+        <!-- Folderes auditor2 -->
+     	<bean id="folderAU2_1" class="domain.Folder">
+            <property name="name" value="in box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="auditor2"/>        
+        </bean>
+        
+        <bean id="folderAU2_2" class="domain.Folder">
+            <property name="name" value="out box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="auditor2"/>        
+        </bean>
+        
+        <bean id="folderAU2_3" class="domain.Folder">
+            <property name="name" value="trash box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="auditor2"/>        
+        </bean>
+        
+        <bean id="folderAU2_4" class="domain.Folder">
+            <property name="name" value="spam box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="auditor2"/>        
+        </bean>
+        
+       <!-- Folderes auditor1 -->
+     	<bean id="folderAU3_1" class="domain.Folder">
+            <property name="name" value="in box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="auditor3"/>        
+        </bean>
+        
+        <bean id="folderAU3_2" class="domain.Folder">
+            <property name="name" value="out box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="auditor3"/>        
+        </bean>
+        
+        <bean id="folderAU3_3" class="domain.Folder">
+            <property name="name" value="trash box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="auditor3"/>        
+        </bean>
+        
+        <bean id="folderAU3_4" class="domain.Folder">
+            <property name="name" value="spam box"/>
+            <property name="system" value="true"/>
+            <property name="actor" ref="auditor3"/>        
+        </bean>
+        
+        
+        <!-- Messages -->
+    
+    <!-- user2 a user1 -->
+    
+    <bean id="message1_1" class="domain.Message">
+        <property name="subject" value="Estoy interesado en un intercambio contigo" />
+        <property name="body" value="¿Ese Samsung que ofreces, no tendrá la batería cascada, no?" />
+        <property name="folder" ref="folderC2_2"/>
+        <property name="sender" ref="user2"/>
+        <property name="recipient" ref="user1"/>
+        <property name="moment" value="04/25/2016 18:00"/>
+        <property name="priority" value="1"/>
+    </bean>
+    
+    <bean id="message1_2" class="domain.Message">
+        <property name="subject" value="Estoy interesado en un intercambio contigo" />
+        <property name="body" value="¿Ese Samsung que ofreces, no tendrá la batería cascada, no?" />
+        <property name="folder" ref="folderC1_1"/>
+        <property name="sender" ref="user2"/>
+        <property name="recipient" ref="user1"/>
+        <property name="moment" value="04/25/2016 18:00"/>
+        <property name="priority" value="1"/>
+    </bean>
+    
+    <!-- user1 a administrator1 -->
+    
+    <bean id="message2_1" class="domain.Message">
+        <property name="subject" value="Tipos de intercambio" />
+        <property name="body" value="¿Aquí se pueden hacer cualquier tipo de intercambio?" />
+        <property name="folder" ref="folderC1_2"/>
+        <property name="sender" ref="user1"/>
+        <property name="recipient" ref="administrator1"/>
+        <property name="moment" value="01/31/2016 18:00"/>
+        <property name="priority" value="-1"/>
+    </bean>
+    
+    <bean id="message2_2" class="domain.Message">
+        <property name="subject" value="Tipos de intercambio" />
+        <property name="body" value="¿Aquí se pueden hacer cualquier tipo de intercambio?" />
+        <property name="folder" ref="folderA1_1"/>
+        <property name="sender" ref="user1"/>
+        <property name="recipient" ref="administrator1"/>
+        <property name="moment" value="01/31/2016 18:00"/>
+        <property name="priority" value="-1"/>
+    </bean>
+    
+    <!-- user1 a user2 -->
+    
+    <bean id="message3_1" class="domain.Message">
+        <property name="subject" value="Eres un desvergonzado" />
+        <property name="body" value="La última vez que hago un intercambio contigo. El producto que me mandaste estaba roto" />
+        <property name="folder" ref="folderC1_2"/>
+        <property name="sender" ref="user1"/>
+        <property name="recipient" ref="user2"/>
+        <property name="moment" value="04/26/2016 12:00"/>
+        <property name="priority" value="0"/>
+    </bean>
+    
+    <bean id="message3_2" class="domain.Message">
+        <property name="subject" value="Eres un desvergonzado" />
+        <property name="body" value="La última vez que hago un intercambio contigo. El producto que me mandaste estaba roto" />
+        <property name="folder" ref="folderC2_1"/>
+        <property name="sender" ref="user1"/>
+        <property name="recipient" ref="user2"/>
+        <property name="moment" value="04/26/2016 12:00"/>
+        <property name="priority" value="0"/>
+    </bean>
+         
+        
+        <!-- Items -->
+    
+    <bean id="item1_1" class="domain.Item">
+    <property name="name" value="Samsung Galaxy S7" />
+    <property name="description" value="Smartphone en perfecto estado." />
+    <property name="pictures">
+        <list>
+            <value>http://cdn5.andro4all.com/wp-content/blogs.dir/28/files/2016/02/Samsung-Galaxy-S7-edge-plata-pantalla-700x500.jpg
+            </value>
+        </list>
+    </property>
+	</bean>
+
+    <bean id="item1_2" class="domain.Item">
+        <property name="name" value="iPhone 6s" />
+        <property name="description" value="Smartphone original de Apple, seminuevo" />
+        <property name="pictures">
+            <list>
+                <value>https://cdn3.vox-cdn.com/thumbor/AweTg_p3p5q1554DtG6vze08BAA=/cdn0.vox-cdn.com/uploads/chorus_asset/file/4083484/verge-15IMG_6597.0.jpg
+                </value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="item2_1" class="domain.Item">
+        <property name="name" value="iPhone 5" />
+        <property name="description" value="iPhone 5 64GB, 4G. Casi nuevo" />
+        <property name="pictures">
+            <list>
+                <value>http://www.smartphonefixes.com/wp-content/uploads/2015/07/iphone-5-white-screen-of-death-1170x658.jpg
+                </value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="item2_2" class="domain.Item">
+        <property name="name" value="Smartphone" />
+        <property name="description"
+            value="Smartphone de gama alta que tenga Android 5 o superior" />
+        <property name="pictures">
+            <list>
+                <value></value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="item3_1" class="domain.Item">
+        <property name="name" value="Colección de sellos" />
+        <property name="description"
+            value="Valiosa colección de sellos conseguida a base de un trabajo férreo." />
+        <property name="pictures">
+            <list>
+                <value>http://cloud2.todocoleccion.net/sellos-colecciones/tc/2011/02/24/24960491.jpg
+                </value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="item3_2" class="domain.Item">
+        <property name="name" value="Televisor FullHD" />
+        <property name="description"
+            value="LED FullHD superior a las 24 pulgadas, y con 2 HDMI mínimo. No marcas chinas." />
+        <property name="pictures">
+            <list>
+                <value></value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="item4_1" class="domain.Item">
+        <property name="name" value="Entradas Isla Mágica" />
+        <property name="description"
+            value="Entradas para Isla Mágica para este verano, grupo numeroso" />
+        <property name="pictures">
+            <list>
+                <value></value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="item4_2" class="domain.Item">
+        <property name="name" value="Bonos descuento para restaurante" />
+        <property name="description"
+            value="Bonos descuento para restaurante por el valor de las entradas" />
+        <property name="pictures">
+            <list>
+                <value></value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="item5_1" class="domain.Item">
+        <property name="name" value="Televisor antiguo" />
+        <property name="description" value="Televisor pequeño antiguo más TDT." />
+        <property name="pictures">
+            <list>
+                <value>http://www.minicoste.es/1368-4665-thickbox/televisor-pequeno-sin-mando-marca-technimagen-14.jpg
+                </value>
+                <value>http://fotos.pccomponentes.com/tdt/brigmton_btdt_914_usb_sintonizador_tdt_mini___usb.jpg
+                </value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="item5_2" class="domain.Item">
+        <property name="name" value="Objetos de ocasión" />
+        <property name="description"
+            value="Me vale cualquier objeto que esté en buen estado" />
+        <property name="pictures">
+            <list>
+                <value></value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="item6_1" class="domain.Item">
+        <property name="name" value="Chupa de cuero" />
+        <property name="description" value="Talla M" />
+        <property name="pictures">
+            <list>
+                <value>http://lamonomagazine.com/wp-content/uploads/2013/12/image002.jpg
+                </value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="item6_2" class="domain.Item">
+        <property name="name" value="Camisa vaquera" />
+        <property name="description" value="Talla M" />
+        <property name="pictures">
+            <list>
+                <value>http://www.que.es/archivos/201003/denim-640x640x80-640x640x80.jpg
+                </value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="item7_1" class="domain.Item">
+        <property name="name" value="Salchichas de pollo" />
+        <property name="description" value="Marca montealbor" />
+        <property name="pictures">
+            <list>
+                <value>http://montealbor.com/wp-content/uploads/2011/09/salchichas-de-pollo-vacio-270g.jpg
+                </value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="item7_2" class="domain.Item">
+        <property name="name" value="Salchichas de tofu" />
+        <property name="description" value="Marca reconocida" />
+        <property name="pictures">
+            <list>
+                <value>http://static.openfoodfacts.org/images/products/842/815/911/4690/front.5.400.jpg
+                </value>
+            </list>
+        </property>
+    </bean>
+        
+        
+		<!-- Barters -->
+
+        <bean id="barter1" class="domain.Barter">
+        <property name="moment" value="04/26/2016 15:00"/>
+        <property name="title" value="Cambio Samsumg Galaxy por iPhone 4G" />
+        <property name="cancelled" value="false" />
+        <!-- Referencias a otras entidades -->
+        <property name="user" ref="user1"/>
+        <property name="offered" ref="item1_1"/>
+        <property name="requestedItem" ref="item1_2"/>
+        <property name="requesteds">
+            <list>
+                <ref bean="barter2"/>
+            </list>
+        </property>
+        <property name="offereds">
+            <list>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="barter2" class="domain.Barter">
+        <property name="moment" value="04/26/2016 15:00"/>
+        <property name="title" value="Mi iPhone 4G por tu celular" />
+        <property name="cancelled" value="false" />
+        <!-- Referencias a otras entidades -->
+        <property name="user" ref="user2"/>
+        <property name="offered" ref="item2_1"/>
+        <property name="requestedItem" ref="item2_2"/>
+        <property name="requesteds">
+            <list>
+            </list>
+        </property>
+        <property name="offereds">
+            <list>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="barter3" class="domain.Barter">
+        <property name="moment" value="04/20/2016 15:00"/>
+        <property name="title" value="Ofrezco mi colección de sellos a cambio  de televisor" />
+        <property name="cancelled" value="false" />
+        <property name="user" ref="user1"/>
+        <!-- Referencias a otras entidades -->
+        <property name="offered" ref="item3_1"/>
+        <property name="requestedItem" ref="item3_2"/>
+        <property name="requesteds">
+            <list>
+            </list>
+        </property>
+        <property name="offereds">
+            <list>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="barter4" class="domain.Barter">
+        <property name="moment" value="04/26/2016 15:00"/>
+        <property name="title" value="Busco entradas para Isla Mágica" />
+        <property name="cancelled" value="false" />
+        <!-- Referencias a otras entidades -->
+        <property name="user" ref="user1"/>
+        <property name="offered" ref="item4_1"/>
+        <property name="requestedItem" ref="item4_2"/>
+        <property name="requesteds">
+            <list>
+            </list>
+        </property>
+        <property name="offereds">
+            <list>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="barter5" class="domain.Barter">
+        <property name="moment" value="04/26/2016 15:00"/>
+        <property name="title" value="Televisor antiguo busco objetos de ocasión" />
+        <property name="cancelled" value="false" />
+        <!-- Referencias a otras entidades -->
+        <property name="user" ref="user2"/>
+        <property name="offered" ref="item5_1"/>
+        <property name="requestedItem" ref="item5_2"/>
+        <property name="requesteds">
+            <list>
+            </list>
+        </property>
+        <property name="offereds">
+            <list>
+                <ref bean="barter3"/>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="barter6" class="domain.Barter">
+        <property name="moment" value="04/26/2016 15:00"/>
+        <property name="title" value="Cambio chupa de cuero por camisa vaquera" />
+        <property name="cancelled" value="false" />
+        <!-- Referencias a otras entidades -->
+        <property name="user" ref="user1"/>
+        <property name="offered" ref="item6_1"/>
+        <property name="requestedItem" ref="item6_2"/>
+        <property name="requesteds">
+            <list>
+            </list>
+        </property>
+        <property name="offereds">
+            <list>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="barter7" class="domain.Barter">
+        <property name="moment" value="04/10/2016 15:00"/>
+        <property name="title" value="Cambio salchichas de pollo" />
+        <property name="cancelled" value="true" />
+        <!-- Referencias a otras entidades -->
+        <property name="user" ref="user2"/>
+        <property name="offered" ref="item7_1"/>
+        <property name="requestedItem" ref="item7_2"/>
+        <property name="requesteds">
+            <list>
+            </list>
+        </property>
+        <property name="offereds">
+            <list>
+            </list>
+        </property>
+    </bean>
+    
+    
+    <!-- LegalText -->
+    
+    <bean id="legalText1" class="domain.LegalText">
+        <property name="text" value="Intercambio estándar: Los interesados en realizar el intercambio se pondrán en contacto para realizar el intercambio como deseen. Si un producto está dañado o no coincide con la descripción, el usuario que lo reciba podrá poner una queja, y se podrá deshacer el intercambio. En caso de no poder realizarse, el usuario que envió el ítem en mal estado, indemnizará al otro usuario, de lo contrario Acme-Barter tomaría medidas legales. También se tomarán medidas legales contra el usuario que no envíe el ítem acordado al otro usuario."/>
+    </bean>
+    
+    <bean id="legalText2" class="domain.LegalText">
+        <property name="text" value="Intercambio seguro: Los propietarios de los objetos enviarán los objetos a Acme-Barter, y este los reenviará a sus destinatarios una vez comprobado que son los que coinciden con la descripción y que están en buen estado. En caso de llegar dañados los productos o que no se reciban en quince días, se devolverán los productos a sus dueños y el intercambio quedará anulado. El intercambio seguro tiene un coste extra que se debe abonar a la cuenta bancaria que recibirá mediante un SMS en su móvil."/>
+    </bean>
+    
+    
+    
+    <!-- Matches -->
+    
+   <!--  <bean id="match1" class="domain.Match">
+        <property name="moment" value="04/26/2016 18:00"/>
+        <property name="cancelled" value="false" />
+        <property name="report" value="Puede ser un buen intercambio. Les aconsejo que se pongan en contacto para que puedan ponerse en contacto y conoceros mejor." />
+        Referencias a otras entidades
+        <property name="auditor" ref="auditor1"/>
+        <property name="legalText" ref="legalText1"/>
+        <property name="offered" ref="barter1"/>
+        <property name="requested" ref="barter2"/>
+    </bean>    
+
+    <bean id="match2" class="domain.Match">
+        <property name="moment" value="04/26/2016 18:00"/>
+        <property name="requestSignedDate" value="04/27/2016 15:00" />
+        <property name="offerSignedDate" value="04/27/2016 17:00" />
+        <property name="cancelled" value="false" />
+        Referencias a otras entidades
+        <property name="legalText" ref="legalText2"/>
+        <property name="offered" ref="barter3"/>
+        <property name="requested" ref="barter5"/>
+    </bean>    
+    
+    <bean id="match3" class="domain.Match">
+        <property name="moment" value="04/26/2016 18:00"/>
+        <property name="requestSignedDate" value="04/27/2016 15:00" />
+        <property name="cancelled" value="true" />
+        Referencias a otras entidades
+        <property name="auditor" ref="auditor2"/>
+        <property name="legalText" ref="legalText2"/>
+        <property name="offered" ref="barter7"/>
+        <property name="requested" ref="barter4"/>
+    </bean>     -->
 	
 </beans>

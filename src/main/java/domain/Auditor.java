@@ -4,11 +4,9 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 
-import es.us.lsi.dp.domain.DomainEntity;
-
 @Entity
 @Access(AccessType.PROPERTY)
-public class Auditor extends DomainEntity {
+public class Auditor extends Actor {
 
 	/**
 	 * 
