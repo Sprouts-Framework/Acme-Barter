@@ -843,6 +843,7 @@
         <property name="requested" ref="item3_2"/>
         <property name="requesteds">
             <list>
+            	<ref bean="barter5"/>
             </list>
         </property>
         <property name="offereds">

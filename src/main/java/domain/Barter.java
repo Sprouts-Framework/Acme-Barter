@@ -6,8 +6,6 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -23,7 +21,6 @@ import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
 import cz.jirutka.validator.collection.constraints.EachNotNull;
-
 import es.us.lsi.dp.domain.DomainEntity;
 
 @Entity
@@ -97,8 +94,6 @@ public class Barter extends DomainEntity {
 	}
 	
 	@ManyToMany
-	@JoinTable(joinColumns={@JoinColumn(name="requested_id", referencedColumnName="id")},
-	inverseJoinColumns={@JoinColumn(name="offered_id", referencedColumnName="id")})
 	@NotNull
 	@EachNotNull
 	public Collection<Barter> getRequesteds() {
