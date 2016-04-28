@@ -7,18 +7,20 @@
 
 <ul class="nav navbar-nav">
 	<security:authorize access="permitAll()">
+		<li><a href="home/barter/list.do"><spring:message code="master.barter.list" /></a></li>
 	</security:authorize>
 </ul>
 
-<!-- Links that are shown to Customers -->
+<!-- Links that are shown to Users -->
 
 <ul class="nav navbar-nav">
-	<security:authorize access="hasRole('Customer')">
+	<security:authorize access="hasRole('User')">
 		<li class="dropdown"><a href="#" class="dropdown-toggle"
-			data-toggle="dropdown"> <spring:message code="master.customer" />
+			data-toggle="dropdown"> <spring:message code="master.User" />
 				<span class="caret"></span>
 		</a>
 			<ul class="dropdown-menu">
+				
 			</ul></li>
 	</security:authorize>
 </ul>
@@ -37,8 +39,8 @@
 				<span class="caret"></span>
 		</a>
 			<ul class="dropdown-menu">
-				<li><a href="home/customer/create.do"><spring:message
-							code="master.sign-up.as-customer" /></a></li>
+				<li><a href="home/User/create.do"><spring:message
+							code="master.sign-up.as-User" /></a></li>
 			</ul></li>
 	</ul>
 </security:authorize>
@@ -49,7 +51,7 @@
 	<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown">
 			<a href="#" class="dropdown-toggle"	data-toggle="dropdown"> <spring:message	code="master.profile" /> <span class="caret"></span></a>
-				<security:authorize access="hasRole('Customer')">
+				<security:authorize access="hasRole('User')">
 				<ul class="dropdown-menu">
 				</ul>
 				</security:authorize>
@@ -59,7 +61,7 @@
 					property="principal.username" />)
 					
 		</a></li>
-		<security:authorize access="hasRole('Customer')">
+		<security:authorize access="hasRole('User')">
 			<li>
 				<security:authentication property="principal.actors" var="actors"/>
 				<jstl:forEach items="${actors}" var="actor">

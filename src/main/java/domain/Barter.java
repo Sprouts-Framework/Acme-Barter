@@ -42,57 +42,56 @@ public class Barter extends DomainEntity {
 	private Date moment;
 	private String title;
 	private boolean cancelled;
-	
+
 	@Past
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMoment() {
 		return moment;
 	}
-	
+
 	public void setMoment(Date moment) {
 		this.moment = moment;
 	}
-	
+
 	@NotBlank
-	@SafeHtml(whitelistType=WhiteListType.NONE)
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getTitle() {
 		return title;
 	}
-	
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 	@Type(type = "org.hibernate.type.NumericBooleanType")
 	public boolean isCancelled() {
 		return cancelled;
 	}
-	
+
 	public void setCancelled(boolean cancelled) {
 		this.cancelled = cancelled;
 	}
-	
+
 	// Relationships ----------------------------------------------------------
-	
+
 	private User user;
 	private Collection<Barter> requesteds;
 	private Collection<Barter> offereds;
 	private Item offered;
 	private Item requested;
-	
-	@ManyToOne(optional=false)
+
+	@ManyToOne(optional = false)
 	@Valid
 	@NotNull
 	public User getUser() {
 		return user;
 	}
 
-	
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
 	@ManyToMany
 	@NotNull
 	@EachNotNull
@@ -100,45 +99,39 @@ public class Barter extends DomainEntity {
 		return requesteds;
 	}
 
-	
 	public void setRequesteds(Collection<Barter> requesteds) {
 		this.requesteds = requesteds;
 	}
 
-	@ManyToMany(mappedBy="requesteds")
+	@ManyToMany(mappedBy = "requesteds")
 	@NotNull
 	@EachNotNull
 	public Collection<Barter> getOffereds() {
 		return offereds;
 	}
 
-	
 	public void setOffereds(Collection<Barter> offereds) {
 		this.offereds = offereds;
 	}
 
-	@OneToOne(optional=false)
+	@OneToOne(optional = false)
 	@Valid
 	public Item getOffered() {
 		return offered;
 	}
 
-	
 	public void setOffered(Item offered) {
 		this.offered = offered;
 	}
 
-	@OneToOne(optional=false)
+	@OneToOne(optional = false)
 	@Valid
 	public Item getRequested() {
 		return requested;
 	}
 
-	
 	public void setRequested(Item requested) {
 		this.requested = requested;
 	}
 
-	
-	
 }
