@@ -33,7 +33,7 @@ public class SocialAccountService extends AbstractService<SocialAccount, SocialA
 	private UserAccountService userAccountService;
 
 	@Autowired
-	private CustomerRegistrationService customerRegistrationService;
+	private UserRegistrationService userRegistrationService;
 
 	@Autowired
 	private CustomerService customerService;
@@ -94,7 +94,7 @@ public class SocialAccountService extends AbstractService<SocialAccount, SocialA
 		int socialIdentityId = socialIdentityService.save(socialIdentity);
 		socialIdentity = socialIdentityService.findById(socialIdentityId);
 
-		BaseRegistrationForm customerForm = customerRegistrationService.create();
+		BaseRegistrationForm customerForm = userRegistrationService.create();
 		customerForm.setCheckBox(true);
 		// customerForm.setContactPhone("None");
 		customerForm.setName(profile.getFirstName());
@@ -110,8 +110,8 @@ public class SocialAccountService extends AbstractService<SocialAccount, SocialA
 		else
 			customerForm.setUsername(profile.getUsername());
 
-		int customerId = customerRegistrationService.save(customerForm);
-		customerRegistrationService.afterCommitingCreate(customerId);
+		int customerId = userRegistrationService.save(customerForm);
+		userRegistrationService.afterCommitingCreate(customerId);
 		User customer = customerService.findById(customerId);
 		//FIXME Arreglar para usar con más de una socialIdentity.
 		//customer.setSocialIdentity(socialIdentity);

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- * data.xml * * Copyright (C) 2013 Universidad de Sevilla * * The use 
+	of this project is hereby constrained to the conditions of the * TDG Licence, 
+	a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd		
+	">
+
+	<jpa:repositories base-package="es.us.lsi.dp.repositories" />
+	<jpa:repositories base-package="repositories" />
+	<jpa:repositories base-package="security" />
+	
+
+	<bean id="domainPackages" class="java.lang.String">
+		<constructor-arg value="domain, security, es.us.lsi.dp.domain" />
+	</bean>
+
+</beans>

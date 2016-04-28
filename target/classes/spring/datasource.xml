@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- * datasource.xml * * Copyright (C) 2013 Universidad de Sevilla * * The 
+	use of this project is hereby constrained to the conditions of the * TDG 
+	Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+	    http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+	    http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
+	    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd	    
+	">
+
+	<import resource="config/data.xml" />
+
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" mode="proxy" />
+	
+	<!-- Cache -->
+	
+	<cache:annotation-driven /> 
+	
+	<!-- <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+    	<property name="caches">
+        	<set>
+        		<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" name="ratings"/>
+        		<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" name="one"/>
+            	<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" name="all"/>
+        	</set>
+    	</property>
+	</bean> --> 
+	
+	<bean id="applicationContextProvider" class="es.us.lsi.dp.ApplicationContextProvider"></bean>
+	
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+		<property name="cacheManager" ref="ehcache"/>
+	</bean>
+	<bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:spring/config/ehcache.xml"/>
+		<property name="shared" value="true"/>
+	</bean>
+
+	<context:property-placeholder />
+
+	<bean id="generalJpaProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean"
+		abstract="true">
+		<property name="properties">
+			<props>
+				<!-- <prop key="hibernate.connection.driver_class">${JPA_DRIVER}</prop> -->
+				<!-- <prop key="hibernate.connection.url">${JPA_URL}</prop> -->
+				<!-- <prop key="hibernate.connection.username"></prop> -->
+				<!-- <prop key="hibernate.connection.password"></prop> -->
+				<prop key="hibernate.dialect">${JPA_DIALECT}</prop>
+
+
+				<!-- This line has been commented for QueryDatabase.java problems -->
+				<!-- <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop> -->
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.use_sql_comments">true</prop>
+				<prop key="hibernate.order_updates">true</prop>
+				<prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="abstractDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		abstract="true" destroy-method="close">
+		<property name="driverClass" value="${JPA_DRIVER}" />
+		<property name="jdbcUrl" value="${JPA_URL}" />
+	</bean>
+
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<!-- <property name="databasePlatform" value="${JPA_DIALECT}" /> -->
+		<!-- <property name="database" value="${JPA_PLATFORM}" /> -->
+	</bean>
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="packagesToScan" ref="domainPackages" />
+		<property name="jpaProperties" ref="jpaProperties" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+		<property name="globalRollbackOnParticipationFailure" value="true" />
+	</bean>
+
+<!-- 	<bean id="sessionFactory" -->
+<!-- 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> -->
+<!-- 		<property name="dataSource" ref="dataSource" /> -->
+<!-- 		<property name="hibernateProperties" ref="jpaProperties" /> -->
+<!-- 	</bean> -->
+
+	<bean class="org.springframework.orm.hibernate4.HibernateExceptionTranslator" />
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+	<beans profile="default">
+		<bean id="dataSource" parent="abstractDataSource">
+			<property name="user" value="${JPA_USER_USERNAME}" />
+			<property name="password" value="${JPA_USER_PASSWORD}" />
+		</bean>
+
+		<bean id="jpaProperties" parent="generalJpaProperties">
+			<property name="properties">
+				<props merge="true">
+					<prop key="hibernate.hbm2ddl.auto">validate</prop>
+				</props>
+			</property>
+		</bean>
+
+		<bean name="validator"
+			class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+			<property name="validationMessageSource" ref="messageSource" />
+		</bean>
+	</beans>
+
+	<beans profile="population">
+		<bean id="dataSource" parent="abstractDataSource">
+			<property name="user" value="${JPA_MANAGER_USERNAME}" />
+			<property name="password" value="${JPA_MANAGER_PASSWORD}" />
+		</bean>
+
+		<bean id="jpaProperties" parent="generalJpaProperties">
+			<property name="properties">
+				<props merge="true">
+					<prop key="hibernate.hbm2ddl.auto">none</prop>
+				</props>
+			</property>
+		</bean>
+
+		<bean name="validator"
+			class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		</bean>
+	</beans>
+
+</beans>

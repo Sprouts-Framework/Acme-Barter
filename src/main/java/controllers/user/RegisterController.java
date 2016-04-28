@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import es.us.lsi.dp.controllers.entities.crud.AbstractCreateController;
 import es.us.lsi.dp.domain.UserAccount;
 import es.us.lsi.dp.forms.BaseRegistrationForm;
-import es.us.lsi.dp.services.CustomerRegistrationService;
+import es.us.lsi.dp.services.UserRegistrationService;
 
 @Controller
-@RequestMapping("home/customer")
-public class RegisterController extends AbstractCreateController<BaseRegistrationForm, CustomerRegistrationService> {
+@RequestMapping("home/user")
+public class RegisterController extends AbstractCreateController<BaseRegistrationForm, UserRegistrationService> {
 
 	@Override
 	public boolean authorize(BaseRegistrationForm domainObject, UserAccount principal) {
@@ -19,7 +19,7 @@ public class RegisterController extends AbstractCreateController<BaseRegistratio
 
 	@Override
 	protected String view() {
-		return "home/sign-up-customer";
+		return "home/sign-up-user";
 	}
 
 	@Override

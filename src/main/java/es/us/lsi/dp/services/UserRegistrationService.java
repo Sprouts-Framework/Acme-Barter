@@ -1,5 +1,6 @@
 package es.us.lsi.dp.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import repositories.UserRepository;
-
+import domain.SocialIdentity;
 import domain.User;
-
 import es.us.lsi.dp.domain.DomainObject;
+import es.us.lsi.dp.domain.SocialAccount;
 import es.us.lsi.dp.domain.UserAccount;
 import es.us.lsi.dp.forms.BaseRegistrationForm;
 import es.us.lsi.dp.services.contracts.forms.CreateFormService;
@@ -21,7 +22,7 @@ import es.us.lsi.dp.validation.validators.PasswordValidator;
 
 @Service
 @Transactional
-public class CustomerRegistrationService extends AbstractFormService<User, BaseRegistrationForm, UserRepository> implements
+public class UserRegistrationService extends AbstractFormService<User, BaseRegistrationForm, UserRepository> implements
 		CreateFormService<BaseRegistrationForm, User> {
 
 	@Autowired
@@ -66,13 +67,19 @@ public class CustomerRegistrationService extends AbstractFormService<User, BaseR
 
 		result.setName(form.getName());
 		result.setSurname(form.getSurname());
-
+		result.setPhone(form.getPhone());
+		
 		userAccount.setUsername(form.getUsername());
 		userAccount.setPassword(form.getPassword());
+		userAccount.setSocialAccounts(new ArrayList<SocialAccount>());
 
 		userAccount = userAccountService.save(userAccount);
 
 		result.setUserAccount(userAccount);
+		
+		result.setIdentities(new ArrayList<SocialIdentity>());
+		result.setFollowees(new ArrayList<User>());
+		result.setFollowers(new ArrayList<User>());
 
 		return result;
 	}

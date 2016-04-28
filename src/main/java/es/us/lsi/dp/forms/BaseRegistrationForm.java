@@ -14,7 +14,7 @@ public class BaseRegistrationForm implements DomainForm, RegistersUsers {
 
 	private String name;
 	private String surname;
-	private String contactPhone;
+	private String phone;
 	private String username;
 	private String password;
 	private String password2;
@@ -70,12 +70,12 @@ public class BaseRegistrationForm implements DomainForm, RegistersUsers {
 	}
 
 	@NotBlank
-	public String getContactPhone() {
-		return contactPhone;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setContactPhone(final String contactPhone) {
-		this.contactPhone = contactPhone;
+	public void setPhone(final String phone) {
+		this.phone = phone;
 	}
 	
 

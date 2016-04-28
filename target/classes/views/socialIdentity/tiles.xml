@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- * tiles.xml * * Copyright (C) 2013 Universidad de Sevilla * * The use 
+	of this project is hereby constrained to the conditions of the * TDG Licence, 
+	a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="socialIdentity/create" extends="template/master">
+		<put-attribute name="title" type="string"
+			value="socialIdentity.create.title" />
+		<put-attribute name="body" value="socialIdentity/create/body" />
+	</definition>
+
+	<definition name="socialIdentity/create/body" template="../socialIdentity/show.jsp">
+		<put-attribute name="readOnly" type="string" value="false" />
+		<put-attribute name="action" type="string" value="create.button" />
+	</definition>
+
+	<definition name="socialIdentity/update" extends="template/master">
+		<put-attribute name="title" type="string"
+			value="socialIdentity.update.title" />
+		<put-attribute name="body" value="socialIdentity/update/body" />
+	</definition>
+
+	<definition name="socialIdentity/update/body" template="../socialIdentity/show.jsp">
+		<put-attribute name="readOnly" type="string" value="false" />
+		<put-attribute name="action" type="string" value="update.button" />
+	</definition>
+	
+	<definition name="socialIdentity/delete" extends="template/master">
+		<put-attribute name="title" type="string" value="socialIdentity.delete.title" />
+		<put-attribute name="body" value="socialIdentity/delete/body" />
+	</definition>
+
+	<definition name="socialIdentity/delete/body" template="../socialIdentity/show.jsp">
+		<put-attribute name="readOnly" type="string" value="true" />
+		<put-attribute name="action" type="string" value="delete.button" />
+	</definition>
+
+</tiles-definitions>

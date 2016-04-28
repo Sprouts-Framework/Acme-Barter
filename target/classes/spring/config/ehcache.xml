@@ -1,0 +1,16 @@
+<ehcache xsi:noNamespaceSchemaLocation="ehcache.xsd"
+	updateCheck="true" monitoring="autodetect" dynamicConfig="true"
+	maxBytesLocalHeap="300M">
+	<sizeOfPolicy maxDepth="2000" maxDepthExceededBehavior="abort" />
+	<diskStore path="java.io.tmpdir" />
+
+	<cache name="all" maxBytesLocalHeap="200M" eternal="true"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+
+	<cache name="one" maxBytesLocalHeap="50M" eternal="true"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+
+	<cache name="ratings" maxBytesLocalHeap="10M" eternal="true"
+		overflowToDisk="false" memoryStoreEvictionPolicy="LRU" />
+
+</ehcache>

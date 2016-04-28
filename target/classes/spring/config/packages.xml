@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- * packages.xml * * Copyright (C) 2013 Universidad de Sevilla * * The 
+	use of this project is hereby constrained to the conditions of the * TDG 
+	Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	">
+
+	<context:component-scan base-package="controllers"/>
+	<context:component-scan base-package="datatypes" />
+	<context:component-scan base-package="domain" />
+	<context:component-scan base-package="formatters" />
+	<context:component-scan base-package="forms" />
+	<context:component-scan base-package="repositories" />
+	<context:component-scan base-package="security" />
+	<context:component-scan base-package="services" />
+	<context:component-scan base-package="utilities" />
+	<context:component-scan base-package="validation" />
+	<context:component-scan base-package="useCases"/>
+	<context:component-scan base-package="social"/>
+	
+	<context:component-scan base-package="es.us.lsi.dp.controllers" />
+	<context:component-scan base-package="es.us.lsi.dp.converters" />
+	<context:component-scan base-package="es.us.lsi.dp.exceptions" />
+	<context:component-scan base-package="es.us.lsi.dp.security" />
+	<context:component-scan base-package="es.us.lsi.dp.repositories" />
+	<context:component-scan base-package="es.us.lsi.dp.services" />
+	<context:component-scan base-package="es.us.lsi.dp.transactions" />
+	<context:component-scan base-package="es.us.lsi.dp.validation" />
+	<context:component-scan base-package="es.us.lsi.dp.drools" />
+
+</beans>
