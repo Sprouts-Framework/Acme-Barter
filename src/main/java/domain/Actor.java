@@ -15,7 +15,7 @@ import es.us.lsi.dp.domain.BaseActor;
 @Entity
 @Access(AccessType.PROPERTY)
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Actor extends BaseActor {
+public abstract class Actor extends BaseActor{
 
 	// Serialisation identifier -----------------------------------------------
 

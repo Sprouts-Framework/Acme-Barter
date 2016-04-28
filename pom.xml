@@ -419,7 +419,7 @@
 
 		<!-- Drools -->
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-core</artifactId>
 			<version>6.3.0.Final</version>
@@ -449,8 +449,7 @@
 			<groupId>org.kie</groupId>
 			<artifactId>kie-ci</artifactId>
 			<version>6.3.0.Final</version>
-		</dependency>
-
+		</dependency> -->
 
 	</dependencies>
 

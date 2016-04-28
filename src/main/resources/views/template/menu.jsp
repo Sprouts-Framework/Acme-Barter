@@ -8,6 +8,7 @@
 <ul class="nav navbar-nav">
 	<security:authorize access="permitAll()">
 		<li><a href="home/barter/list.do"><spring:message code="master.barter.list" /></a></li>
+		<li><a href="home/user/list.do"><spring:message code="master.user.list" /></a></li>
 	</security:authorize>
 </ul>
 

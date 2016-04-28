@@ -1,21 +1,14 @@
 package es.us.lsi.dp.services;
 
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
-import org.kie.api.runtime.KieContainer;
-import org.kie.api.runtime.KieSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import org.springframework.validation.Validator;
 
 import repositories.UserRepository;
-
 import domain.User;
-
 import es.us.lsi.dp.domain.UserAccount;
 import es.us.lsi.dp.services.contracts.ShowService;
 import es.us.lsi.dp.services.contracts.UpdateService;
@@ -25,9 +18,6 @@ import es.us.lsi.dp.validation.contracts.BusinessRule;
 @Transactional
 public class CustomerService extends AbstractService<User, UserRepository> implements ShowService<User>, UpdateService<User> {
 
-	@Autowired
-	private KieContainer kieContainer;
-
 	public User findByPrincipal() {
 		User result;
 		UserAccount userAccount;
@@ -35,18 +25,7 @@ public class CustomerService extends AbstractService<User, UserRepository> imple
 		Assert.notNull(userAccount);
 		result = repository.findByPrincipal(userAccount.getId());
 		Assert.notNull(result);
-
-		KieSession kieSession = kieContainer.newKieSession("KSession");
-		Collection<User> customers = (Collection<User>) repository.findAll();
-		Date date = new Date(System.currentTimeMillis() - 15778500000L * 2);
-		kieSession.insert(date);
-
-		for (User e : customers) {
-			kieSession.insert(e);
-		}
-
-		kieSession.fireAllRules();
-
+		
 		return result;
 	}
 

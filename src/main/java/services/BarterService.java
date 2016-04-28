@@ -1,14 +1,16 @@
-package useCases.UC002;
+package services;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import repositories.BarterRepository;
+
 import domain.Barter;
 import es.us.lsi.dp.services.AbstractService;
 import es.us.lsi.dp.services.contracts.ListService;
 
-@Service("barterServiceUC002")
+@Service
 public class BarterService extends AbstractService<Barter, BarterRepository> implements ListService<Barter>{
 
 	@Override
