@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
-import repositories.CustomerRepository;
+import repositories.UserRepository;
 
 import domain.User;
 
@@ -21,7 +21,7 @@ import es.us.lsi.dp.validation.validators.PasswordValidator;
 
 @Service
 @Transactional
-public class CustomerRegistrationService extends AbstractFormService<User, BaseRegistrationForm, CustomerRepository> implements
+public class CustomerRegistrationService extends AbstractFormService<User, BaseRegistrationForm, UserRepository> implements
 		CreateFormService<BaseRegistrationForm, User> {
 
 	@Autowired

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import domain.SocialIdentity;
 
 
-@Repository
+@Repository("SocialIdentityRepository")
 public interface SocialIdentityRepository extends PagingAndSortingRepository<SocialIdentity, Integer> {
 
 	/**

@@ -14,6 +14,7 @@
 	<jpa:repositories base-package="es.us.lsi.dp.repositories" />
 	<jpa:repositories base-package="repositories" />
 	<jpa:repositories base-package="security" />
+	<jpa:repositories base-package="useCases" />
 	
 
 	<bean id="domainPackages" class="java.lang.String">

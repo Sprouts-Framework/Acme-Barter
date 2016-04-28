@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import org.springframework.validation.Validator;
 
-import repositories.CustomerRepository;
+import repositories.UserRepository;
 
 import domain.User;
 
@@ -23,7 +23,7 @@ import es.us.lsi.dp.validation.contracts.BusinessRule;
 
 @Service
 @Transactional
-public class CustomerService extends AbstractService<User, CustomerRepository> implements ShowService<User>, UpdateService<User> {
+public class CustomerService extends AbstractService<User, UserRepository> implements ShowService<User>, UpdateService<User> {
 
 	@Autowired
 	private KieContainer kieContainer;
