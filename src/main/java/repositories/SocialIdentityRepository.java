@@ -1,10 +1,9 @@
 package repositories;
 
 
-import java.util.Collection;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
-
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
@@ -20,7 +19,6 @@ public interface SocialIdentityRepository extends PagingAndSortingRepository<Soc
 	 * */
 
 	@Query("select u.identities from User u where u.id = ?1")
-	Collection<SocialIdentity> findSocialIdentityByUserId(int userId);
-
+	Page<SocialIdentity> findSocialIdentityByUserId(int userId, Pageable page);
 
 }
