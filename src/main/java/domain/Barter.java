@@ -5,7 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -22,6 +21,8 @@ import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
+
+import cz.jirutka.validator.collection.constraints.EachNotNull;
 
 import es.us.lsi.dp.domain.DomainEntity;
 
@@ -81,7 +82,7 @@ public class Barter extends DomainEntity {
 	private Collection<Barter> requesteds;
 	private Collection<Barter> offereds;
 	private Item offered;
-	private Item requestedItem;
+	private Item requested;
 	
 	@ManyToOne(optional=false)
 	@Valid
@@ -95,12 +96,11 @@ public class Barter extends DomainEntity {
 		this.user = user;
 	}
 	
-	@ManyToMany()
-	@JoinTable(name="relatedBarters", joinColumns= {
-	@JoinColumn(name="requested_barter_id", referencedColumnName="id", nullable=false)}, inverseJoinColumns={
-	@JoinColumn(name="offered_barter_id", referencedColumnName="id", nullable=false)})
-	@ElementCollection
+	@ManyToMany
+	@JoinTable(joinColumns={@JoinColumn(name="requested_id", referencedColumnName="id")},
+	inverseJoinColumns={@JoinColumn(name="offered_id", referencedColumnName="id")})
 	@NotNull
+	@EachNotNull
 	public Collection<Barter> getRequesteds() {
 		return requesteds;
 	}
@@ -110,9 +110,9 @@ public class Barter extends DomainEntity {
 		this.requesteds = requesteds;
 	}
 
-	@ManyToMany(mappedBy = "requesteds")
-	@ElementCollection
+	@ManyToMany(mappedBy="requesteds")
 	@NotNull
+	@EachNotNull
 	public Collection<Barter> getOffereds() {
 		return offereds;
 	}
@@ -135,13 +135,13 @@ public class Barter extends DomainEntity {
 
 	@OneToOne(optional=false)
 	@Valid
-	public Item getRequestedItem() {
-		return requestedItem;
+	public Item getRequested() {
+		return requested;
 	}
 
 	
-	public void setRequestedItem(Item requested) {
-		this.requestedItem = requested;
+	public void setRequested(Item requested) {
+		this.requested = requested;
 	}
 
 	

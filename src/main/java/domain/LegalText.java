@@ -2,6 +2,7 @@ package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -29,6 +30,7 @@ public class LegalText extends DomainEntity{
 
 	@NotBlank
 	@SafeHtml(whitelistType=WhiteListType.NONE)
+	@Column(columnDefinition="text")
 	public String getText() {
 		return text;
 	}

@@ -215,6 +215,7 @@
 	<bean id="user1" class="domain.User">
 	    	<property name="name" value="Bill"/>
 	    	<property name="surname" value="Puertas Abiertas" />
+	    	<property name="phone" value="798484654897"/>
 	    	<property name="userAccount" ref="userAccount5" />
 	    	<property name="followers">
 	    		<list>
@@ -237,6 +238,7 @@
 	<bean id="user2" class="domain.User">
 	    	<property name="name" value="Beatriz"/>
 	    	<property name="surname" value="Jimenez Hidalgo" />
+	    	<property name="phone" value="992148563214"/>
 	    	<property name="userAccount" ref="userAccount6" />
 	    	<property name="followers">
 	    		<list>
@@ -260,6 +262,7 @@
 	<bean id="user3" class="domain.User">
 	    	<property name="name" value="Paula"/>
 	    	<property name="surname" value="Olmo Encinas" />
+	    	<property name="phone" value="9632148828"/>
 	    	<property name="userAccount" ref="userAccount7" />
 	    	<property name="followers">
 	    		<list>
@@ -281,6 +284,7 @@
 	<bean id="user4" class="domain.User">
 	    	<property name="name" value="Fernando"/>
 	    	<property name="surname" value="Durán León" />
+	    	<property name="phone" value="63218995478522"/>
 	    	<property name="userAccount" ref="userAccount8" />
 	    	<property name="followers">
 	    		<list>
@@ -301,6 +305,7 @@
 	<bean id="user5" class="domain.User">
 	    	<property name="name" value="Leandro"/>
 	    	<property name="surname" value="Gado Coca" />
+	    	<property name="phone" value="984456632102"/>
 	    	<property name="userAccount" ref="userAccount9" />
 	    	<property name="followers">
 	    		<list>
@@ -799,10 +804,9 @@
         <!-- Referencias a otras entidades -->
         <property name="user" ref="user1"/>
         <property name="offered" ref="item1_1"/>
-        <property name="requestedItem" ref="item1_2"/>
+        <property name="requested" ref="item1_2"/>
         <property name="requesteds">
             <list>
-                <ref bean="barter2"/>
             </list>
         </property>
         <property name="offereds">
@@ -818,7 +822,7 @@
         <!-- Referencias a otras entidades -->
         <property name="user" ref="user2"/>
         <property name="offered" ref="item2_1"/>
-        <property name="requestedItem" ref="item2_2"/>
+        <property name="requested" ref="item2_2"/>
         <property name="requesteds">
             <list>
             </list>
@@ -836,7 +840,7 @@
         <property name="user" ref="user1"/>
         <!-- Referencias a otras entidades -->
         <property name="offered" ref="item3_1"/>
-        <property name="requestedItem" ref="item3_2"/>
+        <property name="requested" ref="item3_2"/>
         <property name="requesteds">
             <list>
             </list>
@@ -854,7 +858,7 @@
         <!-- Referencias a otras entidades -->
         <property name="user" ref="user1"/>
         <property name="offered" ref="item4_1"/>
-        <property name="requestedItem" ref="item4_2"/>
+        <property name="requested" ref="item4_2"/>
         <property name="requesteds">
             <list>
             </list>
@@ -872,7 +876,7 @@
         <!-- Referencias a otras entidades -->
         <property name="user" ref="user2"/>
         <property name="offered" ref="item5_1"/>
-        <property name="requestedItem" ref="item5_2"/>
+        <property name="requested" ref="item5_2"/>
         <property name="requesteds">
             <list>
             </list>
@@ -891,7 +895,7 @@
         <!-- Referencias a otras entidades -->
         <property name="user" ref="user1"/>
         <property name="offered" ref="item6_1"/>
-        <property name="requestedItem" ref="item6_2"/>
+        <property name="requested" ref="item6_2"/>
         <property name="requesteds">
             <list>
             </list>
@@ -909,7 +913,7 @@
         <!-- Referencias a otras entidades -->
         <property name="user" ref="user2"/>
         <property name="offered" ref="item7_1"/>
-        <property name="requestedItem" ref="item7_2"/>
+        <property name="requested" ref="item7_2"/>
         <property name="requesteds">
             <list>
             </list>
@@ -935,11 +939,11 @@
     
     <!-- Matches -->
     
-   <!--  <bean id="match1" class="domain.Match">
+   		<bean id="match1" class="domain.Match">
         <property name="moment" value="04/26/2016 18:00"/>
         <property name="cancelled" value="false" />
         <property name="report" value="Puede ser un buen intercambio. Les aconsejo que se pongan en contacto para que puedan ponerse en contacto y conoceros mejor." />
-        Referencias a otras entidades
+        
         <property name="auditor" ref="auditor1"/>
         <property name="legalText" ref="legalText1"/>
         <property name="offered" ref="barter1"/>
@@ -951,7 +955,7 @@
         <property name="requestSignedDate" value="04/27/2016 15:00" />
         <property name="offerSignedDate" value="04/27/2016 17:00" />
         <property name="cancelled" value="false" />
-        Referencias a otras entidades
+        
         <property name="legalText" ref="legalText2"/>
         <property name="offered" ref="barter3"/>
         <property name="requested" ref="barter5"/>
@@ -961,11 +965,11 @@
         <property name="moment" value="04/26/2016 18:00"/>
         <property name="requestSignedDate" value="04/27/2016 15:00" />
         <property name="cancelled" value="true" />
-        Referencias a otras entidades
+        
         <property name="auditor" ref="auditor2"/>
         <property name="legalText" ref="legalText2"/>
         <property name="offered" ref="barter7"/>
         <property name="requested" ref="barter4"/>
-    </bean>     -->
+    </bean>     
 	
 </beans>

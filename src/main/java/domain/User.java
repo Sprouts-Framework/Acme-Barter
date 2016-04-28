@@ -5,8 +5,6 @@ import java.util.Collection;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
@@ -48,10 +46,7 @@ public class User extends Actor {
 	public void setIdentities(Collection<SocialIdentity> identities) {
 		this.identities = identities;
 	}
-
-	@JoinTable(name="following", joinColumns= {
-	@JoinColumn(name="follower_id", referencedColumnName="id", nullable=false)}, inverseJoinColumns={
-	@JoinColumn(name="followee_id", referencedColumnName="id", nullable=false)})
+	
 	@ManyToMany
 	@NotNull
 	@EachNotNull
@@ -62,7 +57,7 @@ public class User extends Actor {
 	public void setFollowers(Collection<User> followers) {
 		this.followers = followers;
 	}
-
+	
 	@ManyToMany(mappedBy="followers")
 	@NotNull
 	@EachNotNull
