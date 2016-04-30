@@ -65,11 +65,11 @@
 		<security:authorize access="hasRole('User')">
 			<li>
 				<security:authentication property="principal.actors" var="actors"/>
-				<jstl:forEach items="${actors}" var="actor">
+				<%-- <jstl:forEach items="${actors}" var="actor">
 						<jstl:if test="${actor.socialIdentity != null }">
 	        				<a href="${actor.socialIdentity.homePage}" target="_blank"><img alt="brand" src="${actor.socialIdentity.picture}" width="32px" height="32px" class="img-rounded"></a>
 						</jstl:if>
-				</jstl:forEach>
+				</jstl:forEach> --%>
 			</li>
 		</security:authorize>
 	</ul>

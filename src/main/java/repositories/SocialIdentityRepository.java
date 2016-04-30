@@ -13,7 +13,7 @@ import domain.SocialIdentity;
 @Repository("SocialIdentityRepository")
 public interface SocialIdentityRepository extends PagingAndSortingRepository<SocialIdentity, Integer> {
 
-	@Query("select u.identities from User u where u.id = ?1")
+	@Query("select s from SocialIdentity s where s.user.id = ?1")
 	Page<SocialIdentity> findSocialIdentitiesByUserId(int userId, Pageable page);
 
 }
