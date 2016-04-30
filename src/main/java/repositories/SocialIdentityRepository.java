@@ -15,5 +15,4 @@ public interface SocialIdentityRepository extends PagingAndSortingRepository<Soc
 
 	@Query("select s from SocialIdentity s where s.user.id = ?1")
 	Page<SocialIdentity> findSocialIdentitiesByUserId(int userId, Pageable page);
-
 }

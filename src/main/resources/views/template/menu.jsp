@@ -54,6 +54,7 @@
 			<a href="#" class="dropdown-toggle"	data-toggle="dropdown"> <spring:message	code="master.profile" /> <span class="caret"></span></a>
 				<security:authorize access="hasRole('User')">
 				<ul class="dropdown-menu">
+					<li><a href="profile/user/show.do"><spring:message code="master.profile.data" /></a></li>
 				</ul>
 				</security:authorize>
 			</li>
@@ -65,6 +66,8 @@
 		<security:authorize access="hasRole('User')">
 			<li>
 				<security:authentication property="principal.actors" var="actors"/>
+
+<%-- 				<jstl:forEach items="${actors}" var="actor">
 				<%-- <jstl:forEach items="${actors}" var="actor">
 						<jstl:if test="${actor.socialIdentity != null }">
 	        				<a href="${actor.socialIdentity.homePage}" target="_blank"><img alt="brand" src="${actor.socialIdentity.picture}" width="32px" height="32px" class="img-rounded"></a>

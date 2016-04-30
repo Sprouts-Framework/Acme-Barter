@@ -135,6 +135,7 @@ public abstract class BaseController {
 		usesEntities.addToModel(objects, context);
 
 		modelAndView.addAllObjects(objects);
+		objects.put("_viewName", view());
 	}
 
 	// Template methods ------------------------------------------------------

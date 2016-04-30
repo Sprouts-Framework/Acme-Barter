@@ -21,7 +21,7 @@ public class MatchService extends AbstractService<Match, MatchRepository> implem
 		
 		result = repository.findMatchesByUserId(userId, page);
 		Assert.notNull(result);
-		
+		 
 		return result;
 	}
 
