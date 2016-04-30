@@ -15,7 +15,21 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
+import org.apache.lucene.analysis.core.LowerCaseFilterFactory;
+import org.apache.lucene.analysis.miscellaneous.TruncateTokenFilterFactory;
+import org.apache.lucene.analysis.phonetic.PhoneticFilterFactory;
+import org.apache.lucene.analysis.snowball.SnowballPorterFilterFactory;
+import org.apache.lucene.analysis.standard.StandardTokenizerFactory;
 import org.hibernate.annotations.Type;
+import org.hibernate.search.annotations.Analyzer;
+import org.hibernate.search.annotations.AnalyzerDef;
+import org.hibernate.search.annotations.Boost;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
+import org.hibernate.search.annotations.Parameter;
+import org.hibernate.search.annotations.TokenFilterDef;
+import org.hibernate.search.annotations.TokenizerDef;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
@@ -25,6 +39,23 @@ import es.us.lsi.dp.domain.DomainEntity;
 
 @Entity
 @Access(AccessType.PROPERTY)
+@Indexed
+@AnalyzerDef(name = "customanalyzer", tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class), filters = {
+		@TokenFilterDef(factory = LowerCaseFilterFactory.class),
+		@TokenFilterDef(factory = SnowballPorterFilterFactory.class, params = {
+			@Parameter(name = "language", value = "English")
+		}),
+		@TokenFilterDef(factory = SnowballPorterFilterFactory.class, params = {
+			@Parameter(name = "language", value = "Spanish")
+		}),
+		@TokenFilterDef(factory = TruncateTokenFilterFactory.class, params = {
+			@Parameter(name = "prefixLength", value = "3")
+		}),
+		@TokenFilterDef(factory = PhoneticFilterFactory.class, params = {
+				@Parameter(name = "encoder", value = "DoubleMetaphone"), @Parameter(name = "inject", value = "false"),
+				@Parameter(name = "maxCodeLength", value = "4")
+		})
+})
 public class Barter extends DomainEntity {
 
 	/**
@@ -56,6 +87,9 @@ public class Barter extends DomainEntity {
 
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@Analyzer(definition = "customanalyzer")
+	@Field
+	@Boost(value = 2.0f)
 	public String getTitle() {
 		return title;
 	}
@@ -116,6 +150,7 @@ public class Barter extends DomainEntity {
 
 	@OneToOne(optional = false)
 	@Valid
+	@IndexedEmbedded
 	public Item getOffered() {
 		return offered;
 	}
@@ -126,6 +161,7 @@ public class Barter extends DomainEntity {
 
 	@OneToOne(optional = false)
 	@Valid
+	@IndexedEmbedded
 	public Item getRequested() {
 		return requested;
 	}

@@ -26,8 +26,11 @@
 		<security:intercept-url pattern="/connect/**" access="permitAll" />
 		<security:intercept-url pattern="/security/manage-security.do" access="isAuthenticated()" requires-channel="https"/>
 		<security:intercept-url pattern="/security/manage-security-logout.do" access="isAnonymous()" requires-channel="http"/>
-		<security:intercept-url pattern="/home/customer/create.do" access="isAnonymous()" />
+		<security:intercept-url pattern="/home/user/create.do" access="isAnonymous()" />
 		
+		<!-- PRORIVISONAL -->
+		<security:intercept-url pattern="/barter/user/**" access="hasRole('User')" requires-channel="https"/>
+		<!-- PRORIVISONAL -->
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/favicon.ico" access="permitAll" />
 		<security:intercept-url pattern="/images/**" access="permitAll" />

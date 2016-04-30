@@ -20,6 +20,17 @@
 		<put-attribute name="title" type="string" value="barter.list.title" />
 		<put-attribute name="body"  type="template" value="../barter/list.jsp" />
 	</definition>
+	
+	<definition name="barter/create" extends="template/master">
+		<put-attribute name="title" type="string"
+			value="barter.create.title" />
+		<put-attribute name="body" value="barter/create/body" />
+	</definition>
+
+	<definition name="barter/create/body" template="../barter/edit.jsp">
+		<put-attribute name="readOnly" type="string" value="false" />
+		<put-attribute name="action" type="string" value="create.button" />
+	</definition>
 
 	<definition name="barter/display" extends="template/master">
 		<put-attribute name="title" type="string" value="barter.display" />

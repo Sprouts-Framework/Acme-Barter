@@ -25,6 +25,7 @@
 		<!-- This is an example of how you must add your security configurations -->
 		<!-- <security:intercept-url pattern="booking/customer/**" access="hasRole('Customer')" requires-channel="https"/> -->
 		
+		
 		<security:form-login 
 			always-use-default-target="true"
 			default-target-url="/security/manage-security.do"

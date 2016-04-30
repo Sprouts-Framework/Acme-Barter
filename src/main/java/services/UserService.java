@@ -9,7 +9,9 @@ import org.springframework.util.Assert;
 
 import repositories.UserRepository;
 import domain.User;
+import es.us.lsi.dp.domain.UserAccount;
 import es.us.lsi.dp.services.AbstractService;
+import es.us.lsi.dp.services.SignInService;
 import es.us.lsi.dp.services.contracts.ListService;
 
 @Service
@@ -23,6 +25,17 @@ public class UserService extends AbstractService<User, UserRepository> implement
 		Assert.notNull(result);
 		
 		return result;
+	}
+	
+	
+	public User findByPrincipal(){
+		UserAccount userAccount;
+		User user;
+		userAccount = SignInService.getPrincipal();
+		Assert.notNull(userAccount);
+		user = repository.findByPrincipal(userAccount.getId());
+		Assert.notNull(user);
+		return user;		
 	}
 
 	
