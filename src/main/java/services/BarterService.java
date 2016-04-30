@@ -12,10 +12,11 @@ import repositories.BarterRepository;
 import domain.Barter;
 import es.us.lsi.dp.services.AbstractService;
 import es.us.lsi.dp.services.contracts.ListService;
+import es.us.lsi.dp.services.contracts.ShowService;
 
 @Service
 @Transactional
-public class BarterService extends AbstractService<Barter, BarterRepository> implements ListService<Barter>{
+public class BarterService extends AbstractService<Barter, BarterRepository> implements ListService<Barter>, ShowService<Barter>{
 
 	@Override
 	public Page<Barter> findPage(Pageable page, String searchCriteria) {

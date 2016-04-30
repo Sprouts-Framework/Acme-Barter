@@ -15,7 +15,7 @@
 	<acme:data-column code="barter.moment" path="moment" sortable="true" format="date"/>
 	<acme:data-column code="barter.title" path="title" />
 	<acme:data-column code="barter.requested.name" path="requested.name" />
-	<acme:data-column code="barter.offered.name" path="requested.name" />
+	<acme:data-column code="barter.offered.name" path="offered.name" />
 	
-	<acme:action-button url="barter/{0}/display.do" code="show.button"/>
+	<acme:action-button url="home/barter/{0}/show.do" code="show.button"/>
 </acme:data-table>

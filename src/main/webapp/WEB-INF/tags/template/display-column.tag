@@ -61,5 +61,7 @@
 </jstl:if>
 
 <jstl:if test="${path != null }">
-	<div class="col-xs-12 col-xs-offset-6 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4"><spring:bind path="${path }">${status.value}</spring:bind></div>
+	<div class="row text-center">
+		<div class="col-xs-12 col-xs-offset-6 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4"><spring:bind path="${path }">${status.value}</spring:bind></div>
+	</div>
 </jstl:if>
