@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import repositories.UserRepository;
-import domain.SocialIdentity;
 import domain.User;
 import es.us.lsi.dp.domain.DomainObject;
 import es.us.lsi.dp.domain.SocialAccount;
@@ -77,7 +76,6 @@ public class UserRegistrationService extends AbstractFormService<User, BaseRegis
 
 		result.setUserAccount(userAccount);
 		
-		result.setIdentities(new ArrayList<SocialIdentity>());
 		result.setFollowees(new ArrayList<User>());
 		result.setFollowers(new ArrayList<User>());
 

@@ -7,8 +7,6 @@
  * TDG Licence, a copy of which you may download from 
  * http://www.tdg-seville.info/License.html
  --%>
-
-<%@ include file="../template/libraries.jsp"%>
 	
 <%@ include file="../template/libraries.jsp" %>
 
@@ -42,7 +40,7 @@
 		<h4><acme:display-column title="${itemPictures}"/>	</h4>
 		
 		<acme:pictures-list pictures="${barter.requested.pictures } " size="${barter.requested.pictures.size() }"/>
-
+	</div>
 <!-- Offered item -->
 
 <br />

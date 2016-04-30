@@ -6,7 +6,6 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import cz.jirutka.validator.collection.constraints.EachNotNull;
@@ -33,19 +32,6 @@ public class User extends Actor {
 
 	private Collection<User> followers;
 	private Collection<User> followees;
-	private Collection<SocialIdentity> identities;
-	
-	@NotNull
-	@EachNotNull
-	@OneToMany
-	public Collection<SocialIdentity> getIdentities() {
-		return identities;
-	}
-
-	
-	public void setIdentities(Collection<SocialIdentity> identities) {
-		this.identities = identities;
-	}
 	
 	@ManyToMany
 	@NotNull

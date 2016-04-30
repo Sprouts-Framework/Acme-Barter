@@ -180,36 +180,6 @@
 	    	<property name="userAccount" ref="userAccount4" />
 	</bean>
 	
-	<!-- SocialIdentity -->
-	
-	<bean id="socialIdentity1" class="domain.SocialIdentity">
-   		 <property name="nick" value="@BillGates"/>
-   		 <property name="socialNetwork" value="Twitter"/>
-   		 <property name="homePage" value="https://twitter.com/BillGates"/>
-   		 <property name="picture" value="https://pbs.twimg.com/profile_images/558109954561679360/j1f9DiJi.jpeg"/>
-    </bean>
-	
-	<bean id="socialIdentity2_1" class="domain.SocialIdentity">
-   		 <property name="nick" value="beatriznjime"/>
-   		 <property name="socialNetwork" value="Facebook"/>
-   		 <property name="homePage" value="https://facebook.com/"/>
-   		 <property name="picture" value="http://d33v4339jhl8k0.cloudfront.net/docs/assets/528e78fee4b0865bc066be5a/images/52af1e8ce4b074ab9e98f0e0/file-mxuiNezRS5.jpg"/>
-    </bean>
-    
-    <bean id="socialIdentity2_2" class="domain.SocialIdentity">
-   		 <property name="nick" value="@BeatrizJimenidez"/>
-   		 <property name="socialNetwork" value="Twitter"/>
-   		 <property name="homePage" value="https://twitter.com/beatrizjimenidez"/>
-   		 <property name="picture" value="https://abs.twimg.com/sticky/default_profile_images/default_profile_0_200x200.png"/>
-    </bean>
-    
-    <bean id="socialIdentity4" class="domain.SocialIdentity">
-   		 <property name="nick" value="ferleonduracell"/>
-   		 <property name="socialNetwork" value="Facebook"/>
-   		 <property name="homePage" value="https://facebook.com/ferleonduracell"/>
-   		 <property name="picture" value="http://img04.deviantart.net/b28a/i/2012/235/0/2/facebook_profile_image_by_edgarsvensson-d5c7rhk.jpg"/>
-    </bean>
-    
 	
 	<!-- User -->
 	<bean id="user1" class="domain.User">
@@ -226,11 +196,6 @@
 	    	</property>
 	    	<property name="followees">
 	    		<list>
-	    		</list>
-	    	</property>
-	    	<property name="identities">
-	    		<list>
-	    			<ref bean="socialIdentity1"/>
 	    		</list>
 	    	</property>
 	</bean>
@@ -251,12 +216,6 @@
 	    			<ref bean="user3"/>
 	    		</list>
 	    	</property>
-	    	<property name="identities">
-	    		<list>
-	    			<ref bean="socialIdentity2_1"/>
-	    			<ref bean="socialIdentity2_2"/>
-	    		</list>
-	    	</property>
 	</bean>
 	
 	<bean id="user3" class="domain.User">
@@ -275,10 +234,6 @@
 	    			<ref bean="user2"/>
 	    		</list>
 	    	</property>
-	    	<property name="identities">
-	    		<list>
-	    		</list>
-	    	</property>
 	</bean>
 	
 	<bean id="user4" class="domain.User">
@@ -293,11 +248,6 @@
 	    	<property name="followees">
 	    		<list>
 	    			<ref bean="user1"/>
-	    		</list>
-	    	</property>
-	    	<property name="identities">
-	    		<list>
-	    			<ref bean="socialIdentity4"/>
 	    		</list>
 	    	</property>
 	</bean>
@@ -315,11 +265,43 @@
 	    		<list>
 	    		</list>
 	    	</property>
-	    	<property name="identities">
-	    		<list>
-	    		</list>
-	    	</property>
 	</bean>
+	
+	
+	<!-- SocialIdentity -->
+	
+	<bean id="socialIdentity1" class="domain.SocialIdentity">
+   		 <property name="nick" value="@BillGates"/>
+   		 <property name="socialNetwork" value="Twitter"/>
+   		 <property name="homePage" value="https://twitter.com/BillGates"/>
+   		 <property name="picture" value="https://pbs.twimg.com/profile_images/558109954561679360/j1f9DiJi.jpeg"/>
+   		 <property name="user" ref="user1"/>
+    </bean>
+	
+	<bean id="socialIdentity2_1" class="domain.SocialIdentity">
+   		 <property name="nick" value="beatriznjime"/>
+   		 <property name="socialNetwork" value="Facebook"/>
+   		 <property name="homePage" value="https://facebook.com/"/>
+   		 <property name="picture" value="http://d33v4339jhl8k0.cloudfront.net/docs/assets/528e78fee4b0865bc066be5a/images/52af1e8ce4b074ab9e98f0e0/file-mxuiNezRS5.jpg"/>
+         <property name="user" ref="user2"/>
+    </bean>
+    
+    <bean id="socialIdentity2_2" class="domain.SocialIdentity">
+   		 <property name="nick" value="@BeatrizJimenidez"/>
+   		 <property name="socialNetwork" value="Twitter"/>
+   		 <property name="homePage" value="https://twitter.com/beatrizjimenidez"/>
+   		 <property name="picture" value="https://abs.twimg.com/sticky/default_profile_images/default_profile_0_200x200.png"/>
+    	 <property name="user" ref="user2"/>
+    </bean>
+    
+    <bean id="socialIdentity4" class="domain.SocialIdentity">
+   		 <property name="nick" value="ferleonduracell"/>
+   		 <property name="socialNetwork" value="Facebook"/>
+   		 <property name="homePage" value="https://facebook.com/ferleonduracell"/>
+   		 <property name="picture" value="http://img04.deviantart.net/b28a/i/2012/235/0/2/facebook_profile_image_by_edgarsvensson-d5c7rhk.jpg"/>
+    	 <property name="user" ref="user4"/>
+    </bean>
+    
 
     <!-- Folders -->
     
