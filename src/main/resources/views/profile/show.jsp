@@ -63,7 +63,11 @@
 				<acme:data-column code="socialIdentity.home" path="homePage" format="url"/>
 				<acme:data-column code="socialIdentity.picture" path="picture"/>	
 				
-				<acme:action-button url="home/user/socialIdentity/{0}/show.do" code="user.socialIdentity.show"/>
+				<acme:action-button url="socialIdentity/user/{0}/show.do" code="show.button"/>
+				<acme:action-button url="socialIdentity/user/create.do" code="create.button"/>
+				<acme:action-button url="socialIdentity/user/{0}/update.do" code="update.button"/>
+				<acme:action-button url="socialIdentity/user/{0}/delete.do" code="delete.button"/>
+				
 			</acme:data-table>
 			
 		</fieldset>

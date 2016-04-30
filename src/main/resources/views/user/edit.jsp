@@ -1,5 +1,5 @@
 <%--
- * show.jsp
+ * edit.jsp
  *
  * Copyright (C) 2013 Universidad de Sevilla
  * 

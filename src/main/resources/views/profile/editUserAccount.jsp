@@ -1,5 +1,5 @@
 <%--
- * show.jsp
+ * editUserAccount.jsp
  *
  * Copyright (C) 2013 Universidad de Sevilla
  * 

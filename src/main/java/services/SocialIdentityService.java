@@ -1,13 +1,10 @@
 package services;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -19,21 +16,17 @@ import domain.User;
 import es.us.lsi.dp.domain.DomainEntity;
 import es.us.lsi.dp.services.AbstractService;
 import es.us.lsi.dp.services.CustomerService;
-import es.us.lsi.dp.services.contracts.CreateService;
-import es.us.lsi.dp.services.contracts.DeleteService;
-import es.us.lsi.dp.services.contracts.ListService;
-import es.us.lsi.dp.services.contracts.UpdateService;
+import es.us.lsi.dp.services.contracts.CrudService;
 import es.us.lsi.dp.validation.contracts.BusinessRule;
-
-
 
 @Service
 @Transactional
-public class SocialIdentityService extends AbstractService<SocialIdentity, SocialIdentityRepository> implements DeleteService<SocialIdentity>,
-		CreateService<SocialIdentity>, UpdateService<SocialIdentity>, ListService<SocialIdentity> {
+public class SocialIdentityService extends AbstractService<SocialIdentity, SocialIdentityRepository> implements CrudService<SocialIdentity> {
 
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private UserService userService;
 
 	// Create methods ------------------------------------------
 
@@ -44,6 +37,7 @@ public class SocialIdentityService extends AbstractService<SocialIdentity, Socia
 
 	@Override
 	public void beforeCreating(SocialIdentity validable, List<String> context) {
+		validable.setUser(userService.findByPrincipal());
 	}
 
 	@Override
@@ -65,8 +59,8 @@ public class SocialIdentityService extends AbstractService<SocialIdentity, Socia
 		customer = customerService.findByPrincipal();
 		Assert.notNull(customer);
 
-		//FIXME Arreglar para usar con más de una socialIdentity.
-		//customer.setSocialIdentity(result);
+		// FIXME Arreglar para usar con más de una socialIdentity.
+		// customer.setSocialIdentity(result);
 		customerService.update(customer);
 	}
 
@@ -101,8 +95,8 @@ public class SocialIdentityService extends AbstractService<SocialIdentity, Socia
 		User customer;
 		customer = customerService.findByPrincipal();
 		Assert.notNull(customer);
-		//FIXME Arreglar para usar con más de una socialIdentity.
-		//customer.setSocialIdentity(null);
+		// FIXME Arreglar para usar con más de una socialIdentity.
+		// customer.setSocialIdentity(null);
 		customerService.save(customer);
 	}
 
@@ -113,13 +107,13 @@ public class SocialIdentityService extends AbstractService<SocialIdentity, Socia
 	@Override
 	public void afterCommitingDelete(int id) {
 	}
-	
-	public Page<SocialIdentity> findSocialIdentitiesByUserId(int userId, Pageable page){
+
+	public Page<SocialIdentity> findSocialIdentitiesByUserId(int userId, Pageable page) {
 		Page<SocialIdentity> result;
-		
+
 		result = repository.findSocialIdentitiesByUserId(userId, page);
 		Assert.notNull(result);
-		
+
 		return result;
 	}
 

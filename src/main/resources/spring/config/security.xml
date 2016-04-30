@@ -33,7 +33,7 @@
 		<security:intercept-url pattern="/profile/user/**" access="hasRole('User')" requires-channel="https"/>
 		<security:intercept-url pattern="/profile/userAccount/user/**" access="hasRole('User')" requires-channel="https"/>
 		<security:intercept-url pattern="/user/**" access="hasRole('User')" requires-channel="https"/>
-		
+		<security:intercept-url pattern="/socialIdentity/user/**" access="hasRole('User')" requires-channel="https"/>
 		<!-- PRORIVISONAL -->
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/favicon.ico" access="permitAll" />

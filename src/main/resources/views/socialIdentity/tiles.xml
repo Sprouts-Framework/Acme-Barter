@@ -10,6 +10,17 @@
 
 <tiles-definitions>
 
+	<definition name="socialIdentity/show" extends="template/master">
+		<put-attribute name="title" type="string"
+			value="socialIdentity.show.title" />
+		<put-attribute name="body" value="socialIdentity/show/body" />
+	</definition>
+
+	<definition name="socialIdentity/show/body" template="../socialIdentity/show.jsp">
+		<put-attribute name="readOnly" type="string" value="true" />
+		<put-attribute name="action" type="string" value="create.button" />
+	</definition>
+
 	<definition name="socialIdentity/create" extends="template/master">
 		<put-attribute name="title" type="string"
 			value="socialIdentity.create.title" />
