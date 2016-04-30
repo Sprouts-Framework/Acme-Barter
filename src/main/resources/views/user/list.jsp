@@ -17,5 +17,5 @@
 	
 	<acme:action-button url="home/user/socialIdentity/{0}/list.do" code="user.socialIdentity.list"/>
 	<acme:action-button url="home/user/barter/{0}/list.do" code="user.barter.list"/>
-	<acme:action-button url="home/user/matches/{0}/list.do" code="user.matches.list"/>
+	<acme:action-button url="home/user/match/{0}/list.do" code="user.matches.list"/>
 </acme:data-table>

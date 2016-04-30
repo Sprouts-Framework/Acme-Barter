@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import org.springframework.validation.Validator;
 
+import services.SocialIdentityService;
+
 import domain.User;
 import domain.SocialIdentity;
 

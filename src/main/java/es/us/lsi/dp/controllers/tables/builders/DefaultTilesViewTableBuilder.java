@@ -148,26 +148,36 @@ public class DefaultTilesViewTableBuilder implements TableBuilder {
 					} else
 						result[i][j] = "<a href='" + result[i][j] + "'>" + result[i][j] + "</a>";
 				} else if (column.getFormat() != null && column.getFormat().equals("date")) {
+					boolean alpha = true;
 
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 					Date dateAux = null;
 					try {
 						dateAux = sdf.parse(result[i][j]);
 					} catch (Throwable oops) {
-						throw new RuntimeException(oops);
+						for(int ind=0;ind<result[i][j].length();ind++){
+							if(!Character.isAlphabetic(result[i][j].charAt(ind))){
+								alpha = false;
+								break;
+							}
+						}
+						if(!alpha)
+							throw new RuntimeException(oops);
 					}
-
-					String dateFormatStr;
-					Locale local = LocaleContextHolder.getLocale();
-
-					if (column.getOutFormat() != null)
-						dateFormatStr = messageSource.getMessage(column.getOutFormat(), null, local);
-					else
-						dateFormatStr = messageSource.getMessage("date.format", null, local);
-
-					SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormatStr);
-
-					result[i][j] = dateFormat.format(dateAux);
+					
+					if(!alpha){
+						String dateFormatStr;
+						Locale local = LocaleContextHolder.getLocale();
+	
+						if (column.getOutFormat() != null)
+							dateFormatStr = messageSource.getMessage(column.getOutFormat(), null, local);
+						else
+							dateFormatStr = messageSource.getMessage("date.format", null, local);
+	
+						SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormatStr);
+	
+						result[i][j] = dateFormat.format(dateAux);
+					}
 				} else if (column.getFormat() != null && column.getFormat().equals("currency")) {
 					String decimalMark;
 					String groupingSeparator;

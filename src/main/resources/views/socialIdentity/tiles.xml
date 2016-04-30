@@ -41,5 +41,10 @@
 		<put-attribute name="readOnly" type="string" value="true" />
 		<put-attribute name="action" type="string" value="delete.button" />
 	</definition>
+	
+	<definition name="socialIdentity/list" extends="template/master">
+		<put-attribute name="title" type="string" value="socialIdentity.list" />
+		<put-attribute name="body"  type="template" value="../socialIdentity/list.jsp" />
+	</definition>
 
 </tiles-definitions>
