@@ -31,5 +31,10 @@
 		<put-attribute name="title" type="string" value="user.list" />
 		<put-attribute name="body"  type="template" value="../user/list.jsp" />
 	</definition>
+	
+	<definition name="user/profile" extends="template/master">
+		<put-attribute name="title" type="string" value="user.profile" />
+		<put-attribute name="body"  type="template" value="../user/show.jsp" />
+	</definition>
 
 </tiles-definitions>
