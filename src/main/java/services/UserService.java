@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -61,4 +62,25 @@ public class UserService extends AbstractService<User, UserRepository> implement
 		return user;
 	}
 
+	public Page<User> findFollowersByPrincipal(final Pageable page){		
+		User principal;
+		Page<User> users;
+		List<User> followers;
+		principal = findByPrincipal();
+		followers = (List<User>) principal.getFollowers();
+		users = new PageImpl<>(followers, page, followers.size());
+		Assert.notNull(users);
+		return users;
+	}
+	
+	public Page<User> findFollowingByPrincipal(final Pageable page){		
+		User principal;
+		Page<User> users;
+		List<User> followers;
+		principal = findByPrincipal();
+		followers = (List<User>) principal.getFollowees();
+		users = new PageImpl<>(followers, page, followers.size());
+		Assert.notNull(users);
+		return users;
+	}
 }

@@ -21,7 +21,23 @@
 				<span class="caret"></span>
 		</a>
 			<ul class="dropdown-menu">
-				
+				<li><a href="barter/user/create.do"><spring:message code="master.user.create" /></a></li>
+				<li><a href="user/user/followers/list.do"><spring:message code="master.user.followers" /></a></li>
+				<li><a href="user/user/following/list.do"><spring:message code="master.user.following" /></a></li>
+			</ul></li>
+	</security:authorize>
+</ul>
+
+<!-- Links that are shown to Administrator -->
+
+<ul class="nav navbar-nav">
+	<security:authorize access="hasRole('Administrator')">
+		<li class="dropdown"><a href="#" class="dropdown-toggle"
+			data-toggle="dropdown"> <spring:message code="master.administrator" />
+				<span class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="barter/administrator/update.do"><spring:message code="master.user.relate" /></a></li>
 			</ul></li>
 	</security:authorize>
 </ul>
@@ -63,7 +79,7 @@
 					property="principal.username" />)
 					
 		</a></li>
-		<security:authorize access="hasRole('User')">
+		<%-- <security:authorize access="hasRole('User')">
 			<li>
 				<security:authentication property="principal.actors" var="actors"/>
 
@@ -73,7 +89,6 @@
 	        				<a href="${actor.socialIdentity.homePage}" target="_blank"><img alt="brand" src="${actor.socialIdentity.picture}" width="32px" height="32px" class="img-rounded"></a>
 						</jstl:if>
 				</jstl:forEach> --%>
-			</li>
+			</ul>
 		</security:authorize>
-	</ul>
-</security:authorize>
+	
