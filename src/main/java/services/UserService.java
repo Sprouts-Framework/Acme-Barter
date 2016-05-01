@@ -61,7 +61,9 @@ public class UserService extends AbstractService<User, UserRepository> implement
 		Assert.notNull(user);
 		return user;
 	}
-
+	
+	
+	
 	public Page<User> findFollowersByPrincipal(final Pageable page){		
 		User principal;
 		Page<User> users;

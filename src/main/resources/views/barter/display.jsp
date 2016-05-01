@@ -20,9 +20,14 @@
 	<spring:message var="requestedName" code="barter.requested.name"/>
 	<spring:message var="offeredName" code="barter.offered.name"/>
 	
+	<spring:message var="barterUsername" code="barter.username"/>
+	
 	<div class="text-center">
 		<acme:display-column title="${title}" data="${barter.title}"/>
 		<acme:display-column title="${moment}" path="barter.moment"/>
+		<br/>
+		<acme:display-column title="${barterUsername}" data="${barter.user.userAccount.username}"/>
+		AÑADIR BOTÓN PARA VER PERFIL DEL USUARIO QUE LO CREÓ
 	</div>
 	
 <!-- Requested item -->

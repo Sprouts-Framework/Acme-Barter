@@ -21,6 +21,11 @@
 		<put-attribute name="body"  type="template" value="../barter/list.jsp" />
 	</definition>
 	
+	<definition name="barter/bulletin/list" extends="template/master">
+		<put-attribute name="title" type="string" value="barter.bulletin.title" />
+		<put-attribute name="body"  type="template" value="../barter/list.jsp" />
+	</definition>
+	
 	<definition name="barter/create" extends="template/master">
 		<put-attribute name="title" type="string"
 			value="barter.create.title" />

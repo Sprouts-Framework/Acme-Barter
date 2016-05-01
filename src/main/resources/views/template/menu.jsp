@@ -21,6 +21,7 @@
 				<span class="caret"></span>
 		</a>
 			<ul class="dropdown-menu">
+				<li><a href="barter/bulletin/user/list.do"><spring:message code="master.barter.bulletin.list" /></a></li>
 				<li><a href="barter/user/create.do"><spring:message code="master.user.create" /></a></li>
 				<li><a href="user/user/followers/list.do"><spring:message code="master.user.followers" /></a></li>
 				<li><a href="user/user/following/list.do"><spring:message code="master.user.following" /></a></li>

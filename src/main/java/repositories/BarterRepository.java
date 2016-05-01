@@ -12,6 +12,9 @@ import domain.Barter;
 public interface BarterRepository extends PagingAndSortingRepository<Barter, Integer>{
 	
 	@Query("select b from Barter b where b.user.id = ?1")
-	Page<Barter> findBartersByUserId(int userId, Pageable page);	
+	Page<Barter> findBartersByUserId(int userId, Pageable page);
+	
+	@Query("select b from Barter b where b.user.id IN(select u.id from User u2 join u2.followees u where u2.id=?1) and b.cancelled=false order by b.moment desc")
+	Page<Barter> findBartersOfFollowedUsers(int userId, Pageable page);
 
 }
