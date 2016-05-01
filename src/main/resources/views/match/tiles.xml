@@ -20,5 +20,11 @@
 		<put-attribute name="title" type="string" value="match.list" />
 		<put-attribute name="body"  type="template" value="../match/list.jsp" />
 	</definition>
+	
+	<definition name="match/display" extends="template/master">
+		<put-attribute name="title" type="string" value="match.display" />
+		<put-attribute name="body"  type="template" value="../match/display.jsp" />
+	</definition>
+	
 
 </tiles-definitions>

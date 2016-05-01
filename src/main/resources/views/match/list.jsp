@@ -19,5 +19,5 @@
 	<acme:data-column code="match.barter.offered" path="offered.title"/>
 	<acme:data-column code="match.barter.requested" path="requested.title"/>
 	
-	<acme:action-button url="match/{0}/display.do" code="show.button"/>
+	<acme:action-button url="home/match/{0}/show.do" code="show.button"/>
 </acme:data-table>

@@ -11,10 +11,11 @@ import repositories.MatchRepository;
 import domain.Match;
 import es.us.lsi.dp.services.AbstractService;
 import es.us.lsi.dp.services.contracts.ListService;
+import es.us.lsi.dp.services.contracts.ShowService;
 
 @Service
 @Transactional
-public class MatchService extends AbstractService<Match, MatchRepository> implements ListService<Match>{
+public class MatchService extends AbstractService<Match, MatchRepository> implements ListService<Match>, ShowService<Match>{
 	
 	public Page<Match> findMatchesByUserId(int userId, Pageable page){
 		Page<Match> result;
