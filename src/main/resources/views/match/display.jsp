@@ -41,7 +41,16 @@
 			</jstl:otherwise>
 		</jstl:choose>
 		<acme:display-column title="${cancelled}" data="${cancellation}"/>
-		<acme:display-column title="${report}" data="${match.report}"/>
+		<jstl:choose>
+			<jstl:when test="${match.report != null }">
+				<acme:display-column title="${report}" data="${match.report}"/>
+			</jstl:when>
+			<jstl:otherwise>
+				<spring:message var="pending" code="match.nullCode"/>
+				<acme:display-column title="${report}" data="${pending}"/>
+			</jstl:otherwise>
+		</jstl:choose>
+		
 	</div>
 	
 	
@@ -55,17 +64,19 @@
 	
 <!-- Auditor -->
 
-	<h3 class="text-center">
-		<spring:message var="auditor" code="match.auditor"/>
-		<jstl:out value="${auditor}"/>
-	</h3>
-	
-	<div class="text-center">
-		<spring:message var="name" code="match.auditor.name"/>
-		<spring:message var="surname" code="match.auditor.surname"/>
-		<acme:display-column title="${name}" data="${match.auditor.name}"/>
-		<acme:display-column title="${surname}" data="${match.auditor.surname}"/>
-	</div>
+	<jstl:if test="${match.auditor != null }">
+		<h3 class="text-center">
+			<spring:message var="auditor" code="match.auditor"/>
+			<jstl:out value="${auditor}"/>
+		</h3>
+		
+		<div class="text-center">
+			<spring:message var="name" code="match.auditor.name"/>
+			<spring:message var="surname" code="match.auditor.surname"/>
+			<acme:display-column title="${name}" data="${match.auditor.name}"/>
+			<acme:display-column title="${surname}" data="${match.auditor.surname}"/>
+		</div>
+	</jstl:if>
 
 
 <!-- Requested Barter -->

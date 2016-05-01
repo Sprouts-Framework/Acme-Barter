@@ -156,16 +156,16 @@ public class DefaultTilesViewTableBuilder implements TableBuilder {
 						dateAux = sdf.parse(result[i][j]);
 					} catch (Throwable oops) {
 						for(int ind=0;ind<result[i][j].length();ind++){
-							if(!Character.isAlphabetic(result[i][j].charAt(ind))){
+							if(Character.isAlphabetic(result[i][j].charAt(ind))){
 								alpha = false;
 								break;
 							}
 						}
-						if(!alpha)
+						if(alpha)
 							throw new RuntimeException(oops);
 					}
 					
-					if(!alpha){
+					if(alpha){
 						String dateFormatStr;
 						Locale local = LocaleContextHolder.getLocale();
 	

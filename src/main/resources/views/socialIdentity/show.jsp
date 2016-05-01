@@ -24,19 +24,28 @@
 	<acme:protected path="user"/>
 	
 	<div class="fieldset-btm-margin">
+	
+		<jstl:if test="${crudAction == 'showing' }">
+			<acme:display-image-column src="${modelObject.picture}"/>
+		</jstl:if>
+		
+		<jstl:if test="${crudAction == 'showing' }">
+			<acme:display-column url="${modelObject.homePage}" title="${homePage}" message="${modelObject.homePage}"/>
+		</jstl:if>
+		
 		
 		<acme:textbox-input code="socialIdentity.nick" path="nick" />
 		<acme:textbox-input code="socialIdentity.network" path="socialNetwork" />
-		<acme:textbox-input code="socialIdentity.home" path="homePage" />
+		
+		<jstl:if test="${crudAction != 'showing' }">
+			<acme:textbox-input code="socialIdentity.home" path="homePage" />
+		</jstl:if>
+		
 		
 		<jstl:if test="${crudAction != 'showing' }">
 			<acme:textbox-input code="socialIdentity.picture" path="picture" />
 		</jstl:if>
 	</div>
-
-	<jstl:if test="${crudAction == 'showing' }">
-		<acme:display-image-column src="${modelObject.picture}"/>
-	</jstl:if>
 
 	<jstl:if test="${crudAction != 'showing'}">
 		<acme:submit-button code="${action}" name="${action}" />
