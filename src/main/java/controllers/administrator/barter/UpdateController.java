@@ -1,4 +1,4 @@
-package controllers.user.barter;
+package controllers.administrator.barter;
 
 import java.util.Collection;
 import java.util.List;
