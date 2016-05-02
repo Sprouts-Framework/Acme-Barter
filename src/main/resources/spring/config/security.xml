@@ -38,6 +38,8 @@
 		<security:intercept-url pattern="/legalText/administrator/**" access="hasRole('Administrator')" requires-channel="https"/>
 		<security:intercept-url pattern="/barter/bulletin/user/**" access="hasRole('User')" requires-channel="https"/>
 		
+		<security:intercept-url pattern="/match/user/**" access="hasRole('User')" requires-channel="https"/>
+		
 		<security:intercept-url pattern="/folder/administrator/**" access="hasRole('Administrator')" requires-channel="https"/>
 		<security:intercept-url pattern="/folder/user/**" access="hasRole('User')" requires-channel="https"/>
 		<security:intercept-url pattern="/folder/auditor/**" access="hasRole('Auditor')" requires-channel="https"/>
