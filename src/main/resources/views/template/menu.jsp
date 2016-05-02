@@ -29,6 +29,20 @@
 	</security:authorize>
 </ul>
 
+<!-- Links that are shown to Administrator -->
+
+<ul class="nav navbar-nav">
+	<security:authorize access="hasRole('Administrator')">
+		<li class="dropdown"><a href="#" class="dropdown-toggle"
+			data-toggle="dropdown"> <spring:message code="master.user" />
+				<span class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="legalText/administrator/list.do"><spring:message code="master.legalText.list" /></a></li>
+			</ul></li>
+	</security:authorize>
+</ul>
+
 
 <!-- Links that are shown to Anonymous users -->
 

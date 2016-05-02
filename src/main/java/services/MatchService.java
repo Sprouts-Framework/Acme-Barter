@@ -1,5 +1,7 @@
 package services;
 
+import java.util.Collection;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.domain.Page;
@@ -29,6 +31,13 @@ public class MatchService extends AbstractService<Match, MatchRepository> implem
 	@Override
 	public Page<Match> findPage(Pageable page, String searchCriteria) {
 		return repository.findAll(page);
+	}
+	
+	public Collection<Match> findMatchesByLegalTextId(int legalTextId){
+		Collection<Match> result;
+		result = repository.findMatchesByLegalTextId(legalTextId);
+		Assert.notNull(result);
+		return result;
 	}
 
 }

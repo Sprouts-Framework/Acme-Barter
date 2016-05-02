@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles.xml
+ *
+ * Copyright (C) 2013 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+	
+	<definition name="legalText/list" extends="template/master">
+		<put-attribute name="title" type="string" value="legalText.list.title" />
+		<put-attribute name="body"  type="template" value="../legalText/list.jsp" />
+	</definition>
+	
+	<definition name="legalText/create" extends="template/master">
+		<put-attribute name="title" type="string"
+			value="legalText.create.title" />
+		<put-attribute name="body" value="legalText/create/body" />
+	</definition>
+
+	<definition name="legalText/create/body" template="../legalText/edit.jsp">
+		<put-attribute name="readOnly" type="string" value="false" />
+		<put-attribute name="action" type="string" value="create.button" />
+	</definition>
+	
+		<definition name="legalText/update" extends="template/master">
+		<put-attribute name="title" type="string" value="legalText.update.title" />
+		<put-attribute name="body" value="legalText/update/body" />
+	</definition>
+
+	<definition name="legalText/update/body" template="../legalText/edit.jsp">
+		<put-attribute name="readOnly" type="string" value="false" />
+		<put-attribute name="action" type="string" value="update.button" />
+	</definition>
+	
+	<definition name="legalText/delete" extends="template/master">
+		<put-attribute name="title" type="string" value="legalText.delete.title" />
+		<put-attribute name="body" value="legalText/delete/body" />
+	</definition>
+
+	<definition name="legalText/delete/body" template="../legalText/edit.jsp">
+		<put-attribute name="readOnly" type="string" value="true" />
+		<put-attribute name="action" type="string" value="delete.button" />
+	</definition>
+	
+</tiles-definitions>
