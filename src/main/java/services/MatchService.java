@@ -1,6 +1,5 @@
 package services;
 
-import java.util.Collection;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -64,9 +63,9 @@ public class MatchService extends AbstractService<Match, MatchRepository> implem
 	}
 
 	
-	public Collection<Match> findMatchesByLegalTextId(int legalTextId){
-		Collection<Match> result;
-		result = repository.findMatchesByLegalTextId(legalTextId);
+	public Long matchesAssignedToLegalText(int legalTextId){
+		Long result;
+		result = repository.matchesAssignedToLegalText(legalTextId);
 		Assert.notNull(result);
 		return result;
 	}

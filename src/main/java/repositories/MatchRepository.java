@@ -1,7 +1,5 @@
 package repositories;
 
-import java.util.Collection;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -21,8 +19,8 @@ public interface MatchRepository extends PagingAndSortingRepository<Match, Integ
 	Page<Match> findMatchesOfFollowedUsers(int userId, Pageable page);
 	
 
-	@Query("select m from Match m where m.legalText.id = ?1")
-	Collection<Match> findMatchesByLegalTextId(int legalTextId);
+	@Query("select count(m) from Match m where m.legalText.id = ?1")
+	Long matchesAssignedToLegalText(int legalTextId);
 	
 	@Query("select m from Match m where m.auditor.id = ?1")
 	Page<Match> findMatchesByAuditor(int auditorId, Pageable page);
