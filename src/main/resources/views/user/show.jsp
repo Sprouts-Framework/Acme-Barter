@@ -21,6 +21,8 @@
 			
 			<acme:display-column title="${name}" data="${modelObject.name}"/>
 			<acme:display-column title="${surname}" data="${modelObject.surname}"/>
+			
+			<acme:button url="user/${modelObject.id }/follow.do" code="user.follow-unfollow"/>
 		</fieldset>
 	</div>
 	

@@ -15,6 +15,7 @@
 	<acme:data-column code="user.name" path="name" sortable="true"/>
 	<acme:data-column code="user.surname" path="surname"/>
 	
+	<acme:action-button url="user/{0}/follow.do" code="user.follow-unfollow"/>
 	<acme:action-button url="home/user/profile/{0}/show.do" code="user.profile.viewDetails"/>
 	<acme:action-button url="home/user/socialIdentity/{0}/list.do" code="user.socialIdentity.list"/>
 	<acme:action-button url="home/user/barter/{0}/list.do" code="user.barter.list"/>

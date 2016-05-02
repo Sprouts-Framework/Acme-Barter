@@ -19,4 +19,7 @@ public interface UserRepository extends PagingAndSortingRepository<User, Integer
 	@Query("select c from User c where c.userAccount.id = ?1")
 	User findByPrincipal(int userAccountId);
 	
+	@Query("select u2 from User u join u.followees u2 where u.id = ?1 and u2.id = ?2")
+	User findFollower(int principalId, int followerId);
+	
 }

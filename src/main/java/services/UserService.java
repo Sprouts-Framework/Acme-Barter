@@ -42,7 +42,7 @@ public class UserService extends AbstractService<User, UserRepository> implement
 	public void afterCommitingUpdate(int id) {
 	}
 
-	//Find methods
+	// Find methods
 	@Override
 	public Page<User> findPage(Pageable page, String searchCriteria) {
 		Page<User> result;
@@ -61,10 +61,8 @@ public class UserService extends AbstractService<User, UserRepository> implement
 		Assert.notNull(user);
 		return user;
 	}
-	
-	
-	
-	public Page<User> findFollowersByPrincipal(final Pageable page){		
+
+	public Page<User> findFollowersByPrincipal(final Pageable page) {
 		User principal;
 		Page<User> users;
 		List<User> followers;
@@ -74,8 +72,8 @@ public class UserService extends AbstractService<User, UserRepository> implement
 		Assert.notNull(users);
 		return users;
 	}
-	
-	public Page<User> findFollowingByPrincipal(final Pageable page){		
+
+	public Page<User> findFollowingByPrincipal(final Pageable page) {
 		User principal;
 		Page<User> users;
 		List<User> followers;
@@ -85,4 +83,41 @@ public class UserService extends AbstractService<User, UserRepository> implement
 		Assert.notNull(users);
 		return users;
 	}
+
+	// Follow/unfollow methods
+	public boolean isFollowing(int userId) {
+		User toFollow = findById(userId);
+		Assert.notNull(toFollow);
+
+		User principal = findByPrincipal();
+
+		User toFollowAux = repository.findFollower(principal.getId(), userId);
+		if (toFollowAux == null)
+			return false;
+		else
+			return true;
+
+	}
+	
+	public void followOrUnfollow(int userId){
+		boolean isFollowing = isFollowing(userId);
+		
+		User principal = findByPrincipal();
+		User toFollow = findById(userId);
+		Assert.notNull(principal);
+		Assert.notNull(toFollow);
+		Assert.isTrue(!principal.equals(toFollow));
+		
+		if(isFollowing){
+			principal.getFollowees().remove(toFollow);
+			toFollow.getFollowers().remove(principal);
+		} else {
+			principal.getFollowees().add(toFollow);
+			toFollow.getFollowers().add(principal);
+		}
+		
+		update(principal);
+		update(toFollow);
+	}
+
 }

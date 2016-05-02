@@ -27,7 +27,8 @@
 		<acme:display-column title="${moment}" path="barter.moment"/>
 		<br/>
 		<acme:display-column title="${barterUsername}" data="${barter.user.userAccount.username}"/>
-		AÑADIR BOTÓN PARA VER PERFIL DEL USUARIO QUE LO CREÓ
+		
+		<acme:button url="home/user/${user.id }/show.do" code="user.profile"/>
 	</div>
 	
 <!-- Requested item -->

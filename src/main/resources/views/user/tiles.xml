@@ -16,6 +16,11 @@
        
 <tiles-definitions>
 	
+	<definition name="user/follow-unfollow" extends="template/master">
+		<put-attribute name="title" type="string" value="user.follow-title" />
+		<put-attribute name="body" type="template" value="../user/follow.jsp" />
+	</definition>
+	
 	<definition name="user/edit" extends="template/master">
 		<put-attribute name="title" type="string"
 			value="user.edit.title" />
@@ -40,6 +45,11 @@
 	<definition name="user/following" extends="template/master">
 		<put-attribute name="title" type="string" value="user.following" />
 		<put-attribute name="body"  type="template" value="../user/list.jsp" />
+	</definition>
+
+	<definition name="user/profile" extends="template/master">
+		<put-attribute name="title" type="string" value="user.profile" />
+		<put-attribute name="body"  type="template" value="../user/show.jsp" />
 	</definition>
 
 </tiles-definitions>

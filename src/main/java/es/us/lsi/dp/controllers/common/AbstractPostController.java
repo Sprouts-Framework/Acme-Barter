@@ -16,6 +16,7 @@ import es.us.lsi.dp.controllers.core.PostController;
 import es.us.lsi.dp.domain.DomainObject;
 import es.us.lsi.dp.domain.UserAccount;
 import es.us.lsi.dp.services.contracts.Service;
+import es.us.lsi.dp.utilities.ContextParser;
 import es.us.lsi.dp.validation.contracts.BusinessRule;
 
 @Controller
@@ -35,7 +36,7 @@ public abstract class AbstractPostController<S extends Service<? extends DomainO
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView get(final HttpServletRequest request) {
 		setRequest(request);
-		return get(getPathVariables(request));
+		return currentView();
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -52,7 +53,7 @@ public abstract class AbstractPostController<S extends Service<? extends DomainO
 
 	@Override
 	public void postAction(final DomainObject object, final DomainObject entity, final Map<String, String> pathVariables) {
-		action(pathVariables);
+		action(ContextParser.parse(pathVariables));
 	}
 
 	@Override
@@ -70,8 +71,9 @@ public abstract class AbstractPostController<S extends Service<? extends DomainO
 	}
 
 	// Template methods --------------------------------------------------------
-
-	protected abstract void action(Map<String, String> pathVariables);
+	
+	//TODO: He tenido que hacer que reciba un contexto, verificar que funciona bien
+	protected abstract void action(List<String> context);
 
 	@Override
 	protected abstract String onSuccess();

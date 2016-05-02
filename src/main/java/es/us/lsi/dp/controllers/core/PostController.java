@@ -186,4 +186,10 @@ public abstract class PostController<D extends Validable, E extends Validable> e
 	public void beforeCommiting(D datatype, E entity) {
 
 	}
+	
+	//TODO: Ver si esto afecta al comportamiento normal
+	@Override
+	public void beforeCommiting(E object) {}{
+		
+	}
 }
