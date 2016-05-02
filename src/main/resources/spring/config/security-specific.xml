@@ -19,8 +19,8 @@
         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
     ">
 	
-	<security:http auto-config="true" use-expressions="true" pattern="/">
-		<!-- TODO: Here you must add the security configuration for your application -->
+	<security:http auto-config="true" use-expressions="true" pattern="/test">
+		<!-- TODO: Here you must add the security configuration for your application -->		
 	
 		<!-- This is an example of how you must add your security configurations -->
 		<!-- <security:intercept-url pattern="booking/customer/**" access="hasRole('Customer')" requires-channel="https"/> -->

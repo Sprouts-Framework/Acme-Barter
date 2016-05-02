@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles.xml
+ *
+ * Copyright (C) 2013 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+	
+	<definition name="message/list" extends="template/master">
+		<put-attribute name="title" type="string" value="message.list.title" />
+		<put-attribute name="body"  type="template" value="../message/list.jsp" />
+	</definition>
+
+	<definition name="message/show" extends="template/master">
+		<put-attribute name="title" type="string" value="message.display" />
+		<put-attribute name="body" value="message/show/body" />
+	</definition>
+
+	<definition name="message/show/body" template="../message/show.jsp">
+		<put-attribute name="readOnly" type="string" value="true" />
+		<put-attribute name="action" type="string" value="create.button" />
+	</definition>
+	
+		<definition name="message/create" extends="template/master">
+		<put-attribute name="title" type="string"
+			value="message.create.title" />
+		<put-attribute name="body" value="message/create/body" />
+	</definition>
+
+	<definition name="message/create/body" template="../message/show.jsp">
+		<put-attribute name="readOnly" type="string" value="false" />
+		<put-attribute name="action" type="string" value="create.button" />
+	</definition>
+	
+		<definition name="message/update" extends="template/master">
+		<put-attribute name="title" type="string" value="message.update.title" />
+		<put-attribute name="body" value="message/update/body" />
+	</definition>
+
+	<definition name="message/update/body" template="../message/move.jsp">
+		<put-attribute name="readOnly" type="string" value="false" />
+		<put-attribute name="action" type="string" value="update.button" />
+	</definition>
+	
+	<definition name="message/delete" extends="template/master">
+		<put-attribute name="title" type="string" value="message.delete.title" />
+		<put-attribute name="body" value="message/delete/body" />
+	</definition>
+
+	<definition name="message/delete/body" template="../message/show.jsp">
+		<put-attribute name="readOnly" type="string" value="true" />
+		<put-attribute name="action" type="string" value="delete.button" />
+	</definition>
+	
+</tiles-definitions>

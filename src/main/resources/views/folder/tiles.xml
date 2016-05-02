@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles.xml
+ *
+ * Copyright (C) 2013 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+	
+	<definition name="folder/list" extends="template/master">
+		<put-attribute name="title" type="string" value="folder.list.title" />
+		<put-attribute name="body"  type="template" value="../folder/list.jsp" />
+	</definition>
+
+	<definition name="folder/show" extends="template/master">
+		<put-attribute name="title" type="string" value="folder.display" />
+		<put-attribute name="body" value="folder/show/body" />
+	</definition>
+
+	<definition name="folder/show/body" template="../folder/show.jsp">
+		<put-attribute name="readOnly" type="string" value="true" />
+		<put-attribute name="action" type="string" value="create.button" />
+	</definition>
+	
+		<definition name="folder/create" extends="template/master">
+		<put-attribute name="title" type="string"
+			value="folder.create.title" />
+		<put-attribute name="body" value="folder/create/body" />
+	</definition>
+
+	<definition name="folder/create/body" template="../folder/show.jsp">
+		<put-attribute name="readOnly" type="string" value="false" />
+		<put-attribute name="action" type="string" value="create.button" />
+	</definition>
+	
+	<definition name="folder/update" extends="template/master">
+		<put-attribute name="title" type="string" value="folder.update.title" />
+		<put-attribute name="body" value="folder/update/body" />
+	</definition>
+
+	<definition name="folder/update/body" template="../folder/show.jsp">
+		<put-attribute name="readOnly" type="string" value="false" />
+		<put-attribute name="action" type="string" value="update.button" />
+	</definition>
+	
+	<definition name="folder/delete" extends="template/master">
+		<put-attribute name="title" type="string" value="folder.delete.title" />
+		<put-attribute name="body" value="folder/delete/body" />
+	</definition>
+
+	<definition name="folder/delete/body" template="../folder/show.jsp">
+		<put-attribute name="readOnly" type="string" value="true" />
+		<put-attribute name="action" type="string" value="delete.button" />
+	</definition>
+	
+</tiles-definitions>

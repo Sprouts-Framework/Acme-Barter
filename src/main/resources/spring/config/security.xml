@@ -36,7 +36,16 @@
 		<security:intercept-url pattern="/socialIdentity/user/**" access="hasRole('User')" requires-channel="https"/>
 		<security:intercept-url pattern="/barter/administrator/**" access="hasRole('Administrator')" requires-channel="https"/>
 		<security:intercept-url pattern="/barter/bulletin/user/**" access="hasRole('User')" requires-channel="https"/>
+		
+		<security:intercept-url pattern="/folder/administrator/**" access="hasRole('Administrator')" requires-channel="https"/>
+		<security:intercept-url pattern="/folder/user/**" access="hasRole('User')" requires-channel="https"/>
+		<security:intercept-url pattern="/folder/auditor/**" access="hasRole('Auditor')" requires-channel="https"/>
+		
+		<security:intercept-url pattern="/message/administrator/**" access="hasRole('Administrator')" requires-channel="https"/>
+		<security:intercept-url pattern="/message/user/**" access="hasRole('User')" requires-channel="https"/>
+		<security:intercept-url pattern="/message/auditor/**" access="hasRole('Auditor')" requires-channel="https"/>
 		<!-- PRORIVISONAL -->
+		
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/favicon.ico" access="permitAll" />
 		<security:intercept-url pattern="/images/**" access="permitAll" />

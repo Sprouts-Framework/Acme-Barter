@@ -56,9 +56,20 @@
 	<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown">
 			<a href="#" class="dropdown-toggle"	data-toggle="dropdown"> <spring:message	code="master.profile" /> <span class="caret"></span></a>
+				<security:authorize access="hasRole('Administrator')">
+				<ul class="dropdown-menu">
+					<li><a href="folder/administrator/list.do"><spring:message code="master.folder" /></a></li>
+				</ul>
+				</security:authorize>
 				<security:authorize access="hasRole('User')">
 				<ul class="dropdown-menu">
 					<li><a href="profile/user/show.do"><spring:message code="master.profile.data" /></a></li>
+					<li><a href="folder/customer/list.do"><spring:message code="master.folder" /></a></li>
+				</ul>
+				</security:authorize>
+				<security:authorize access="hasRole('Auditor')">
+				<ul class="dropdown-menu">
+					<li><a href="folder/auditor/list.do"><spring:message code="master.folder" /></a></li>
 				</ul>
 				</security:authorize>
 			</li>
