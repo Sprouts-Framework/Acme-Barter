@@ -24,5 +24,6 @@ public interface MatchRepository extends PagingAndSortingRepository<Match, Integ
 	@Query("select m from Match m where m.legalText.id = ?1")
 	Collection<Match> findMatchesByLegalTextId(int legalTextId);
 	
-
+	@Query("select m from Match m where m.auditor.id = ?1")
+	Page<Match> findMatchesByAuditor(int auditorId, Pageable page);
 }

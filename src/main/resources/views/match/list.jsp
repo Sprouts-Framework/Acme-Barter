@@ -20,4 +20,7 @@
 	<acme:data-column code="match.barter.requested" path="requested.title"/>
 	
 	<acme:action-button url="home/match/{0}/show.do" code="show.button"/>
+	<security:authorize access="hasRole('Auditor')">
+		<acme:action-button url="match/auditor/{0}/update.do" code="report.button"/>
+	</security:authorize>
 </acme:data-table>

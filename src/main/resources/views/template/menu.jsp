@@ -44,6 +44,21 @@
 	</security:authorize>
 </ul>
 
+<!-- Links that are shown to Auditor -->
+
+<ul class="nav navbar-nav">
+	<security:authorize access="hasRole('Auditor')">
+		<li class="dropdown"><a href="#" class="dropdown-toggle"
+			data-toggle="dropdown"> <spring:message code="master.auditor" />
+				<span class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="match/auditor/list.do"><spring:message code="master.auditor.list" /></a></li>
+			</ul></li>
+	</security:authorize>
+</ul>
+
+
 
 <!-- Links that are shown to Anonymous users -->
 

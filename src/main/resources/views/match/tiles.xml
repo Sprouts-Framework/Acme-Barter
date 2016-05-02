@@ -31,5 +31,16 @@
 		<put-attribute name="body"  type="template" value="../match/display.jsp" />
 	</definition>
 	
+	<definition name="match/update" extends="template/master">
+		<put-attribute name="title" type="string"
+			value="match.writeReport.title" />
+		<put-attribute name="body" value="match/update/body" />
+	</definition>
+
+	<definition name="match/update/body" template="../match/edit.jsp">
+		<put-attribute name="readOnly" type="string" value="false" />
+		<put-attribute name="action" type="string" value="update.button" />
+	</definition>
+	
 
 </tiles-definitions>
