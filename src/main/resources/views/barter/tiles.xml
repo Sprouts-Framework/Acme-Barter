@@ -41,5 +41,17 @@
 		<put-attribute name="title" type="string" value="barter.display" />
 		<put-attribute name="body"  type="template" value="../barter/display.jsp" />
 	</definition>
+	
+	<definition name="barter/relate" extends="template/master">
+		<put-attribute name="title" type="string"
+			value="barter.relate.title" />
+		<put-attribute name="body" value="barter/relate/body" />
+	</definition>
+
+	<definition name="barter/relate/body" template="../barter/relate.jsp">
+		<put-attribute name="readOnly" type="string" value="false" />
+		<put-attribute name="action" type="string" value="relate.button" />
+	</definition>
+	
 
 </tiles-definitions>

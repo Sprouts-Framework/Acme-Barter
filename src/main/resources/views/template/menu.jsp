@@ -29,19 +29,6 @@
 	</security:authorize>
 </ul>
 
-<!-- Links that are shown to Administrator -->
-
-<ul class="nav navbar-nav">
-	<security:authorize access="hasRole('Administrator')">
-		<li class="dropdown"><a href="#" class="dropdown-toggle"
-			data-toggle="dropdown"> <spring:message code="master.administrator" />
-				<span class="caret"></span>
-		</a>
-			<ul class="dropdown-menu">
-				<li><a href="barter/administrator/update.do"><spring:message code="master.user.relate" /></a></li>
-			</ul></li>
-	</security:authorize>
-</ul>
 
 <!-- Links that are shown to Anonymous users -->
 

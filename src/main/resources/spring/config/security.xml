@@ -34,6 +34,7 @@
 		<security:intercept-url pattern="/profile/userAccount/user/**" access="hasRole('User')" requires-channel="https"/>
 		<security:intercept-url pattern="/user/**" access="hasRole('User')" requires-channel="https"/>
 		<security:intercept-url pattern="/socialIdentity/user/**" access="hasRole('User')" requires-channel="https"/>
+		<security:intercept-url pattern="/barter/administrator/**" access="hasRole('Administrator')" requires-channel="https"/>
 		<security:intercept-url pattern="/barter/bulletin/user/**" access="hasRole('User')" requires-channel="https"/>
 		<!-- PRORIVISONAL -->
 		<security:intercept-url pattern="/" access="permitAll" />
