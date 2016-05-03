@@ -20,16 +20,17 @@ import org.apache.lucene.analysis.miscellaneous.TruncateTokenFilterFactory;
 import org.apache.lucene.analysis.phonetic.PhoneticFilterFactory;
 import org.apache.lucene.analysis.snowball.SnowballPorterFilterFactory;
 import org.apache.lucene.analysis.standard.StandardTokenizerFactory;
-import org.hibernate.annotations.Type;
 import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.AnalyzerDef;
 import org.hibernate.search.annotations.Boost;
 import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.FieldBridge;
 import org.hibernate.search.annotations.Indexed;
 import org.hibernate.search.annotations.IndexedEmbedded;
 import org.hibernate.search.annotations.Parameter;
 import org.hibernate.search.annotations.TokenFilterDef;
 import org.hibernate.search.annotations.TokenizerDef;
+import org.hibernate.search.bridge.builtin.BooleanBridge;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
@@ -97,9 +98,10 @@ public class Barter extends DomainEntity {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-	@Type(type = "org.hibernate.type.NumericBooleanType")
-	public boolean isCancelled() {
+	
+	@Field
+	@FieldBridge(impl = BooleanBridge.class)
+	public boolean getCancelled() {
 		return cancelled;
 	}
 

@@ -16,6 +16,13 @@
        
 <tiles-definitions>
 	
+	
+	
+	<definition name="barter/cancel-procedure" extends="template/master">
+		<put-attribute name="title" type="string" value="administrator.cancel-barters-procedure" />
+		<put-attribute name="body"  type="template" value="../barter/cancel-procedure.jsp" />
+	</definition>
+	
 	<definition name="barter/list" extends="template/master">
 		<put-attribute name="title" type="string" value="barter.list.title" />
 		<put-attribute name="body"  type="template" value="../barter/list.jsp" />

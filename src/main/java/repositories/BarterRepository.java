@@ -16,5 +16,7 @@ public interface BarterRepository extends PagingAndSortingRepository<Barter, Int
 	
 	@Query("select b from Barter b where b.user.id IN(select u.id from User u2 join u2.followees u where u2.id=?1) and b.cancelled=false order by b.moment desc")
 	Page<Barter> findBartersOfFollowedUsers(int userId, Pageable page);
-
+	
+	@Query("select b from Barter b where b.cancelled = false")
+	Page<Barter> findAllDefaultFullText(Pageable page);
 }

@@ -776,10 +776,65 @@
         </property>
     </bean>
         
+
+    <bean id="item8_1" class="domain.Item">
+        <property name="name" value="Item barter 8" />
+        <property name="description" value="Item barter 8" />
+        <property name="pictures">
+            <list>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="item8_2" class="domain.Item">
+        <property name="name" value="Item barter 8" />
+        <property name="description" value="Item barter 8" />
+        <property name="pictures">
+            <list>
+            </list>
+        </property>
+    </bean>
+        
+
+    <bean id="item9_1" class="domain.Item">
+        <property name="name" value="Item barter 9" />
+        <property name="description" value="Item barter 9" />
+        <property name="pictures">
+            <list>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="item9_2" class="domain.Item">
+        <property name="name" value="Item barter 9" />
+        <property name="description" value="Item barter 9" />
+        <property name="pictures">
+            <list>
+            </list>
+        </property>
+    </bean>
+        
+    <bean id="item10_1" class="domain.Item">
+        <property name="name" value="Item barter 10" />
+        <property name="description" value="Item barter 10" />
+        <property name="pictures">
+            <list>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="item10_2" class="domain.Item">
+        <property name="name" value="Item barter 10" />
+        <property name="description" value="Item barter 10" />
+        <property name="pictures">
+            <list>
+            </list>
+        </property>
+    </bean>
         
 		<!-- Barters -->
 
-        <bean id="barter1" class="domain.Barter">
+      <bean id="barter1" class="domain.Barter">
         <property name="moment" value="04/26/2016 15:00"/>
         <property name="title" value="Cambio Samsumg Galaxy por iPhone 4G" />
         <property name="cancelled" value="false" />
@@ -907,6 +962,59 @@
         </property>
     </bean>
     
+    <bean id="barter8" class="domain.Barter">
+        <property name="moment" value="03/31/2016 15:00"/>
+        <property name="title" value="Barter que debe ser cancelado" />
+        <property name="cancelled" value="false" />
+        <!-- Referencias a otras entidades -->
+        <property name="user" ref="user2"/>
+        <property name="offered" ref="item8_1"/>
+        <property name="requested" ref="item8_2"/>
+        <property name="requesteds">
+            <list>
+            </list>
+        </property>
+        <property name="offereds">
+            <list>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="barter9" class="domain.Barter">
+        <property name="moment" value="03/31/2016 15:00"/>
+        <property name="title" value="Barter que NO debe ser cancelado" />
+        <property name="cancelled" value="false" />
+        <!-- Referencias a otras entidades -->
+        <property name="user" ref="user2"/>
+        <property name="offered" ref="item9_1"/>
+        <property name="requested" ref="item9_2"/>
+        <property name="requesteds">
+            <list>
+            </list>
+        </property>
+        <property name="offereds">
+            <list>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="barter10" class="domain.Barter">
+        <property name="moment" value="03/31/2016 15:00"/>
+        <property name="title" value="Barter que NO debe ser cancelado2" />
+        <property name="cancelled" value="false" />
+        <!-- Referencias a otras entidades -->
+        <property name="user" ref="user1"/>
+        <property name="offered" ref="item10_1"/>
+        <property name="requested" ref="item10_2"/>
+        <property name="requesteds">
+            <list>
+            </list>
+        </property>
+        <property name="offereds">
+            <list>
+            </list>
+        </property>
+    </bean>
     
     <!-- LegalText -->
     
@@ -954,5 +1062,15 @@
         <property name="offered" ref="barter7"/>
         <property name="requested" ref="barter4"/>
     </bean>     
+    
+    <bean id="match4" class="domain.Match">
+        <property name="moment" value="04/26/2016 18:00"/>
+        <property name="cancelled" value="false" />
+        <property name="requestSignedDate" value="04/17/2016 15:00" />
+        <property name="offerSignedDate" value="04/23/2016 17:00" />
+        <property name="legalText" ref="legalText2"/>
+        <property name="offered" ref="barter9"/>
+        <property name="requested" ref="barter10"/>
+    </bean>    
 	
 </beans>
