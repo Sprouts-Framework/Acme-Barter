@@ -36,8 +36,9 @@
 			<acme:textbox-input code="sign-in.username" path="username" />
 			<acme:password-input code="sign-in.password" path="password" />
 			<acme:password-input code="sign-in.password" path="password2" />
-			
-			<acme:checkbox labelSize="4" code="sign-up.check" path="checkBox"/>
+			<security:authorize access="isAnonymous()">
+				<acme:checkbox labelSize="4" code="sign-up.check" path="checkBox"/>
+			</security:authorize>
 		</fieldset>
 	</div>
 

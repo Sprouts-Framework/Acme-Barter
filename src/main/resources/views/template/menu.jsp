@@ -40,6 +40,7 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li><a href="legalText/administrator/list.do"><spring:message code="master.legalText.list" /></a></li>
+				<li><a href="auditor/administrator/create.do"><spring:message code="master.registerAuditor.list" /></a></li>
 			</ul></li>
 	</security:authorize>
 </ul>
@@ -94,7 +95,7 @@
 				<security:authorize access="hasRole('User')">
 				<ul class="dropdown-menu">
 					<li><a href="profile/user/show.do"><spring:message code="master.profile.data" /></a></li>
-					<li><a href="folder/customer/list.do"><spring:message code="master.folder" /></a></li>
+					<li><a href="folder/user/list.do"><spring:message code="master.folder" /></a></li>
 				</ul>
 				</security:authorize>
 				<security:authorize access="hasRole('Auditor')">

@@ -1,4 +1,4 @@
-package es.us.lsi.dp.services;
+package services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,29 +8,26 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
-import repositories.UserRepository;
-import services.ActorService;
-import services.FolderService;
+import repositories.AuditorRepository;
 import domain.Actor;
-import domain.User;
+import domain.Auditor;
 import es.us.lsi.dp.domain.DomainObject;
 import es.us.lsi.dp.domain.SocialAccount;
 import es.us.lsi.dp.domain.UserAccount;
-import es.us.lsi.dp.forms.BaseRegistrationForm;
+import es.us.lsi.dp.services.AbstractFormService;
+import es.us.lsi.dp.services.UserAccountService;
 import es.us.lsi.dp.services.contracts.forms.CreateFormService;
 import es.us.lsi.dp.validation.contracts.BusinessRule;
-import es.us.lsi.dp.validation.validators.LegalTermsValidator;
 import es.us.lsi.dp.validation.validators.PasswordValidator;
+import forms.AuditorRegistrationForm;
 
 @Service
 @Transactional
-public class UserRegistrationService extends AbstractFormService<User, BaseRegistrationForm, UserRepository> implements
-		CreateFormService<BaseRegistrationForm, User> {
+public class AuditorRegistrationService extends AbstractFormService<Auditor, AuditorRegistrationForm, AuditorRepository> implements
+		CreateFormService<AuditorRegistrationForm, Auditor> {
 
 	@Autowired
 	private UserAccountService userAccountService;
-	@Autowired
-	private LegalTermsValidator legalTermsValidator;
 	@Autowired
 	private PasswordValidator passwordValidator;
 	@Autowired
@@ -38,23 +35,23 @@ public class UserRegistrationService extends AbstractFormService<User, BaseRegis
 	@Autowired
 	private ActorService actorService;
 
+
 	// Create methods ---------------------------------------
 	@Override
 	public Class<? extends DomainObject> getEntityClass() {
-		return BaseRegistrationForm.class;
+		return AuditorRegistrationForm.class;
 	}
 
 	@Override
-	public void beforeCreating(BaseRegistrationForm validable, List<String> context) {
+	public void beforeCreating(AuditorRegistrationForm validable, List<String> context) {
 	}
 
 	@Override
-	public void beforeCommitingCreate(BaseRegistrationForm validable) {
+	public void beforeCommitingCreate(AuditorRegistrationForm validable) {
 	}
 
 	@Override
-	public void createBusinessRules(List<BusinessRule<BaseRegistrationForm>> rules, List<Validator> validators) {
-		validators.add(legalTermsValidator);
+	public void createBusinessRules(List<BusinessRule<AuditorRegistrationForm>> rules, List<Validator> validators) {
 		validators.add(passwordValidator);
 	}
 
@@ -67,9 +64,9 @@ public class UserRegistrationService extends AbstractFormService<User, BaseRegis
 
 	// Convert metods -----------------------------------
 	@Override
-	public User convertToEntity(BaseRegistrationForm form) {
-		User result;
-		result = new User();
+	public Auditor convertToEntity(AuditorRegistrationForm form) {
+		Auditor result;
+		result = new Auditor();
 		UserAccount userAccount;
 		userAccount = userAccountService.create(result);
 
@@ -84,9 +81,6 @@ public class UserRegistrationService extends AbstractFormService<User, BaseRegis
 		userAccount = userAccountService.save(userAccount);
 
 		result.setUserAccount(userAccount);
-		
-		result.setFollowees(new ArrayList<User>());
-		result.setFollowers(new ArrayList<User>());
 
 		return result;
 	}
