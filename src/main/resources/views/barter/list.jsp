@@ -20,6 +20,9 @@
 	
 	<acme:action-button url="home/user/profile/{0}/show.do" code="user.profile.viewDetails"/>
 	<acme:action-button url="home/barter/{0}/show.do" code="show.button"/>
+	<security:authorize access="hasRole('User')">
+		<acme:action-button url="match/user/{0}/create.do" code="match.create.title"/>
+	</security:authorize>
 	<security:authorize access="hasRole('Administrator')">
 		<acme:action-button url="barter/administrator/{0}/update.do" code="relate.button"/>
 	</security:authorize>

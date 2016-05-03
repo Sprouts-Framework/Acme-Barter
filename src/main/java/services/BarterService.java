@@ -1,11 +1,16 @@
 package services;
 
+
+import java.util.Collection;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +75,30 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 		principal = userService.findByPrincipal();
 		result = repository.findBartersOfFollowedUsers(principal.getId(), page);
 		Assert.notNull(result);
+		return result;
+	}
+	
+	public Collection<Barter> findNotMatchedBartersByUserId(){
+		Collection<Barter> result;
+		User user;
+		
+		user = userService.findByPrincipal();
+		Assert.notNull(user);
+		
+		result = repository.findNotMatchedBartersByUserId(user.getId());
+		
+		return result;
+	}
+	
+	public Collection<Barter> findNotMatchedBartersNotOwnByUserId(){
+		Collection<Barter> result;
+		User user;
+		
+		user = userService.findByPrincipal();
+		Assert.notNull(user);
+		
+		result = repository.findNotMatchedBartersNotOwnedByUserId(user.getId());
+		
 		return result;
 	}
 

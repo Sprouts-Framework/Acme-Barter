@@ -22,6 +22,13 @@ public interface MatchRepository extends PagingAndSortingRepository<Match, Integ
 	@Query("select count(m) from Match m where m.legalText.id = ?1")
 	Long matchesAssignedToLegalText(int legalTextId);
 	
+	@Query("select count(m.offered) from Match m where m.offered.id = ?1")
+	Long countOfferedBarters(int barterId);
+	
+	@Query("select count(m.requested) from Match m where m.requested.id = ?1")
+	Long countRequestedBarters(int barterId);
+
 	@Query("select m from Match m where m.auditor.id = ?1")
 	Page<Match> findMatchesByAuditor(int auditorId, Pageable page);
+
 }
