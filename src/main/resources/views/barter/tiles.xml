@@ -16,8 +16,6 @@
        
 <tiles-definitions>
 	
-	
-	
 	<definition name="barter/cancel-procedure" extends="template/master">
 		<put-attribute name="title" type="string" value="administrator.cancel-barters-procedure" />
 		<put-attribute name="body"  type="template" value="../barter/cancel-procedure.jsp" />
@@ -26,6 +24,11 @@
 	<definition name="barter/list" extends="template/master">
 		<put-attribute name="title" type="string" value="barter.list.title" />
 		<put-attribute name="body"  type="template" value="../barter/list.jsp" />
+	</definition>
+	
+	<definition name="barter/list-admin" extends="template/master">
+		<put-attribute name="title" type="string" value="barter.list.title" />
+		<put-attribute name="body"  type="template" value="../barter/listAdmin.jsp" />
 	</definition>
 	
 	<definition name="barter/bulletin/list" extends="template/master">
@@ -42,6 +45,17 @@
 	<definition name="barter/create/body" template="../barter/edit.jsp">
 		<put-attribute name="readOnly" type="string" value="false" />
 		<put-attribute name="action" type="string" value="create.button" />
+	</definition>
+	
+	<definition name="barter/cancel" extends="template/master">
+		<put-attribute name="title" type="string"
+			value="barter.cancel" />
+		<put-attribute name="body" value="barter/cancel/body" />
+	</definition>
+
+	<definition name="barter/cancel/body" template="../barter/cancel.jsp">
+		<put-attribute name="readOnly" type="string" value="true" />
+		<put-attribute name="action" type="string" value="cancel.barter" />
 	</definition>
 
 	<definition name="barter/display" extends="template/master">

@@ -40,6 +40,7 @@
 				<span class="caret"></span>
 		</a>
 			<ul class="dropdown-menu">
+				<li><a href="barter/administrator/list.do"><spring:message code="master.barter.list" /></a></li>
 				<li><a href="barter/administrator/cancel-procedure.do"><spring:message code="master.barter.cancel-procedure" /></a></li>
 				<li><a href="legalText/administrator/list.do"><spring:message code="master.legalText.list" /></a></li>
 				<li><a href="auditor/administrator/create.do"><spring:message code="master.registerAuditor.list" /></a></li>

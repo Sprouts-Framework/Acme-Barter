@@ -27,6 +27,10 @@ public interface BarterRepository extends PagingAndSortingRepository<Barter, Int
 	@Query("select b from Barter b where b.user.id != ?1 and b.cancelled = false and b not IN (select m.offered from Match m) and b NOT IN (select m.requested from Match m)")
 	Collection<Barter> findNotMatchedBartersNotOwnedByUserId(int userId);
 	
+	@Query("select b from Barter b")
+	Page<Barter> findAllPaged(Pageable page);
+
 	@Query("select 1.0*(select count(b) from Barter b where b.offereds.size = 0 and b.requesteds.size = 0)/ count(b) from Barter b")
 	Double ratioOfBartersThatAreNotRelated();
+
 }

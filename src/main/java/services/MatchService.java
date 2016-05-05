@@ -96,6 +96,14 @@ public class MatchService extends AbstractService<Match, MatchRepository> implem
 		Auditor principal = (Auditor) actorService.findActorByPrincipal();
 		return repository.findMatchesByAuditor(principal.getId(), page);
 	}
+	
+	public Page<Match> findNonCancelledMatches(Pageable page){
+		Page<Match> result;
+		
+		result = repository.findNonCancelledMatches(page);
+		
+		return result;
+	}
 
 	@Override
 	public void updateBusinessRules(List<BusinessRule<Match>> rules, List<Validator> validators) {
@@ -118,12 +126,15 @@ public class MatchService extends AbstractService<Match, MatchRepository> implem
 		Barter requested;
 		int barterId;
 		
-		barterId = new Integer(context.get(0));
-		requested = barterService.findById(barterId);
+		if(!context.isEmpty()){
+			barterId = new Integer(context.get(0));
+			requested = barterService.findById(barterId);
+			validable.setRequested(requested);
+		}
 		
 		validable.setMoment(Moment.now());
 		validable.setCancelled(false);
-		validable.setRequested(requested);		
+				
 	}
 
 	@Override

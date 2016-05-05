@@ -18,7 +18,7 @@ import es.us.lsi.dp.domain.UserAccount;
 import forms.RelateBarterForm;
 
 @Controller("barterUserUpdate")
-@RequestMapping("barter/administrator")
+@RequestMapping("barter/administrator/relate")
 public class UpdateController extends AbstractUpdateController<RelateBarterForm, RelateBarterFormService> implements AddsToModel{
 
 	@Autowired

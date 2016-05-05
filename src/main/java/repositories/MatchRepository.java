@@ -13,11 +13,12 @@ public interface MatchRepository extends PagingAndSortingRepository<Match, Integ
 
 	@Query("select m from Match m where m.offered.user.id = ?1 or m.requested.user.id = ?1")
 	Page<Match> findMatchesByUserId(int userId, Pageable page);
-	
 
 	@Query("select m from Match m where (m.offered.user IN(select u from User u2 join u2.followees u where u2.id=?1) or m.requested.user IN(select u from User u2 join u2.followees u where u2.id=?1)) and m.cancelled=false order by m.moment desc")
 	Page<Match> findMatchesOfFollowedUsers(int userId, Pageable page);
-	
+
+	@Query("select m from Match m where m.cancelled = false")
+	Page<Match> findNonCancelledMatches(Pageable page);
 
 	@Query("select count(m) from Match m where m.legalText.id = ?1")
 	Long matchesAssignedToLegalText(int legalTextId);

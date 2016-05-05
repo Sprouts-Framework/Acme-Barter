@@ -26,4 +26,7 @@
 	<security:authorize access="hasRole('Administrator')">
 		<acme:action-button url="barter/administrator/relate/{0}/update.do" code="relate.button"/>
 	</security:authorize>
+	<security:authorize access="hasRole('Administrator')">
+		<acme:action-button url="barter/administrator/{0}/update.do" code="cancel.button"/>
+	</security:authorize>
 </acme:data-table>

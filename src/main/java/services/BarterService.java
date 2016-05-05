@@ -1,16 +1,13 @@
 package services;
 
 
-import java.util.Collection;
-
-
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +15,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.validation.Validator;
 
 import repositories.BarterRepository;
+import validation.rules.DoesNotHaveFinishedMatch;
+import validation.rules.IsNotCancelled;
 import domain.Barter;
 import domain.User;
 import es.us.lsi.dp.fulltext.FullTextConstraint;
@@ -27,16 +27,24 @@ import es.us.lsi.dp.fulltext.FullTextCustomQuery;
 import es.us.lsi.dp.services.AbstractService;
 import es.us.lsi.dp.services.contracts.ListService;
 import es.us.lsi.dp.services.contracts.ShowService;
+import es.us.lsi.dp.services.contracts.UpdateService;
+import es.us.lsi.dp.validation.contracts.BusinessRule;
 
 @Service
 @Transactional
-public class BarterService extends AbstractService<Barter, BarterRepository> implements ListService<Barter>, ShowService<Barter> {
+public class BarterService extends AbstractService<Barter, BarterRepository> implements ListService<Barter>, ShowService<Barter>, UpdateService<Barter> {
 
 	@Autowired
 	private EntityManagerFactory entityManagerFactory;
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private IsNotCancelled isNotCancelled;
+	
+	@Autowired
+	private DoesNotHaveFinishedMatch doesNotHaveFinishedMatch;
 
 	public void cancelBarters() {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -100,6 +108,35 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 		result = repository.findNotMatchedBartersNotOwnedByUserId(user.getId());
 		
 		return result;
+	}
+	
+	public Page<Barter> findAllPaged(Pageable page){
+		Page<Barter> result;
+		
+		result = repository.findAllPaged(page);
+		
+		return result;
+	}
+
+	@Override
+	public void updateBusinessRules(List<BusinessRule<Barter>> rules, List<Validator> validators) {
+		rules.add(isNotCancelled);
+		rules.add(doesNotHaveFinishedMatch);
+	}
+
+	@Override
+	public void beforeUpdating(Barter validable, List<String> context) {
+	
+	}
+
+	@Override
+	public void beforeCommitingUpdate(Barter validable) {
+		validable.setCancelled(true);		
+	}
+
+	@Override
+	public void afterCommitingUpdate(int id) {
+		
 	}
 	
 	public Double ratioOfBartersThatAreNotRelated(){

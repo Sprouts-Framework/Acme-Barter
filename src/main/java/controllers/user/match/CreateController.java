@@ -57,5 +57,10 @@ public class CreateController extends AbstractCreateController<Match, MatchServi
 	protected String view() {
 		return "match/create";
 	}
+	
+	@Override
+	protected String onSuccess() {
+		return "../../home/match/list.do";
+	}
 
 }
