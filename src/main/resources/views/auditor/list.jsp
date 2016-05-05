@@ -15,19 +15,11 @@
 	<acme:data-column code="user.name" path="name" sortable="true"/>
 	<acme:data-column code="user.surname" path="surname"/>
 	<acme:data-column code="user.username" path="userAccount.username"/>
-	
-	<security:authorize access="hasRole('User')">
-		<acme:action-button url="user/{0}/follow.do" code="user.follow-unfollow"/>
-	</security:authorize>
-	<acme:action-button url="home/user/profile/{0}/show.do" code="user.profile.viewDetails"/>
-	<acme:action-button url="home/user/socialIdentity/{0}/list.do" code="user.socialIdentity.list"/>
-	<acme:action-button url="home/user/barter/{0}/list.do" code="user.barter.list"/>
-	<acme:action-button url="home/user/match/{0}/list.do" code="user.matches.list"/>
 </acme:data-table>
 
 <%-- Para dashboard --%>
 <br/>
-<jstl:if test="${option=='1' }">
+<jstl:if test="${option=='0' }">
 	<strong>
 		<spring:message code="administrator.quantityOfMatchesAudited"/>: <jstl:out value="${quantity}"/>
 	</strong>	

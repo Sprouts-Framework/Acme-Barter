@@ -6,7 +6,9 @@ import javax.transaction.Transactional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import org.springframework.validation.Validator;
@@ -120,4 +122,17 @@ public class UserService extends AbstractService<User, UserRepository> implement
 		update(toFollow);
 	}
 
+	public Page<User> usersWhoHaveGotMoreMatchesAudited(Pageable page){
+		Sort sort = new Sort(Sort.DEFAULT_DIRECTION, "id");
+		Pageable aux = new PageRequest(page.getPageNumber(), page.getPageSize(), sort);
+		return repository.usersWhoHaveGotMoreMatchesAudited(aux);
+	}
+	
+	public Long quantityOfMatchesAudited(){
+		return repository.quantityOfMatchesAudited();
+	}
+	
+	public Long totalNumberOfUsersRegistedInTheSystem(){
+		return repository.totalNumberOfUsersRegistedInTheSystem();
+	}
 }

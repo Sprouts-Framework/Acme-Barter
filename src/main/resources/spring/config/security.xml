@@ -49,6 +49,7 @@
 		<security:intercept-url pattern="/message/auditor/**" access="hasRole('Auditor')" requires-channel="https"/>
 		<security:intercept-url pattern="/match/auditor/**" access="hasRole('Auditor')" requires-channel="https"/>
 		<security:intercept-url pattern="/auditor/administrator/**" access="hasRole('Administrator')" requires-channel="https"/>
+		<security:intercept-url pattern="/dashboard/administrator/**" access="hasRole('Administrator')" requires-channel="https"/>
 		<!-- PRORIVISONAL -->
 		
 		<security:intercept-url pattern="/" access="permitAll" />

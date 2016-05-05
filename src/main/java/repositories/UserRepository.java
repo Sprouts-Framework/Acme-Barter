@@ -1,5 +1,7 @@
 package repositories;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
@@ -21,5 +23,14 @@ public interface UserRepository extends PagingAndSortingRepository<User, Integer
 	
 	@Query("select u2 from User u join u.followees u2 where u.id = ?1 and u2.id = ?2")
 	User findFollower(int principalId, int followerId);
+	
+	@Query("select b.user from Barter b where (b IN(select m.offered from Match m where m.auditor is not null and m.report is not null) or b IN(select m.requested from Match m where m.auditor is not null and m.report is not null)) group by b.user having count(b.user) >=  ALL(select count(b.user) from Barter b where (b IN(select m.offered from Match m where m.auditor is not null and m.report is not null) or b IN(select m.requested from Match m where m.auditor is not null and m.report is not null)) group by b.user)")
+	Page<User> usersWhoHaveGotMoreMatchesAudited(Pageable page);
+
+	@Query("select count(b) from Barter b where (b IN(select m.offered from Match m where m.auditor is not null and m.report is not null) or b IN(select m.requested from Match m where m.auditor is not null and m.report is not null)) group by b.user having count(b.user) >=  ALL(select count(b.user) from Barter b where (b IN(select m.offered from Match m where m.auditor is not null and m.report is not null) or b IN(select m.requested from Match m where m.auditor is not null and m.report is not null)) group by b.user)")
+	Long quantityOfMatchesAudited();
+	
+	@Query("select count(u) from User u")
+	Long totalNumberOfUsersRegistedInTheSystem();
 	
 }

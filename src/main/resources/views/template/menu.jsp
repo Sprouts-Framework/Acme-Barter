@@ -43,6 +43,7 @@
 				<li><a href="barter/administrator/cancel-procedure.do"><spring:message code="master.barter.cancel-procedure" /></a></li>
 				<li><a href="legalText/administrator/list.do"><spring:message code="master.legalText.list" /></a></li>
 				<li><a href="auditor/administrator/create.do"><spring:message code="master.registerAuditor.list" /></a></li>
+				<li><a href="dashboard/administrator/list.do"><spring:message code="master.dashboard.list" /></a></li>
 			</ul></li>
 	</security:authorize>
 </ul>
