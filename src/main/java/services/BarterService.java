@@ -136,7 +136,12 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 
 	@Override
 	public void afterCommitingUpdate(int id) {
-		
+		Barter barter;
+		barter = findById(id);
+		if(!barter.getCancelled()){
+			barter.setCancelled(true);
+			update(barter);
+		}
 	}
 	
 	public Double ratioOfBartersThatAreNotRelated(){

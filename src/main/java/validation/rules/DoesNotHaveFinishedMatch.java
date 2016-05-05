@@ -16,7 +16,7 @@ public class DoesNotHaveFinishedMatch implements BusinessRule<Barter>{
 	
 	@Override
 	public boolean rule(Barter barter) {
-		return (matchService.countOfferedBarters(barter.getId()) == 0 && matchService.countRequestedBarters(barter.getId())== 0);
+		return (matchService.countFinishedOfferedBarters(barter.getId()) == 0 && matchService.countFinishedRequestedBarters(barter.getId())== 0);
 	}
 
 	@Override

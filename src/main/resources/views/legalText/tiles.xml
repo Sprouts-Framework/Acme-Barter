@@ -15,6 +15,8 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
        
 <tiles-definitions>
+
+	<definition name="legalText/info" template="/WEB-INF/classes/views/legalText/info.jsp"/>
 	
 	<definition name="legalText/list" extends="template/master">
 		<put-attribute name="title" type="string" value="legalText.list.title" />
@@ -32,7 +34,7 @@
 		<put-attribute name="action" type="string" value="create.button" />
 	</definition>
 	
-		<definition name="legalText/update" extends="template/master">
+	<definition name="legalText/update" extends="template/master">
 		<put-attribute name="title" type="string" value="legalText.update.title" />
 		<put-attribute name="body" value="legalText/update/body" />
 	</definition>

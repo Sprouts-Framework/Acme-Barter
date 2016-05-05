@@ -73,7 +73,7 @@ public class Barter extends DomainEntity {
 	// Attributes -------------------------------------------------------------
 	private Date moment;
 	private String title;
-	private boolean cancelled;
+	private Boolean cancelled;
 
 	@Past
 	@NotNull
@@ -101,11 +101,11 @@ public class Barter extends DomainEntity {
 	
 	@Field
 	@FieldBridge(impl = BooleanBridge.class)
-	public boolean getCancelled() {
+	public Boolean getCancelled() {
 		return cancelled;
 	}
 
-	public void setCancelled(boolean cancelled) {
+	public void setCancelled(Boolean cancelled) {
 		this.cancelled = cancelled;
 	}
 

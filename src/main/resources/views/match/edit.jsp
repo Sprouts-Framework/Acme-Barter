@@ -19,13 +19,7 @@
 	
 	<spring:message code="match.legalText.info" var="legalTextInfo"/>
 	
-	<div id="legalPanel" class="panel panel-default">
-		<div class="panel-heading"><jstl:out value="${legalTextInfo}"/></div>
-  		<div id="panelContent" class="panel-body">
-  			<p id="prueba">
-   				Panel content
-   			</p>
-	  	</div>
+	<div id="legalPanel">
 	</div>
 
 	<acme:submit-button code="${action}" name="${action}"/>
@@ -36,16 +30,12 @@
 <script type="text/javascript">
 		function loadLegalTextInfo() {
 			var keyword = $('#legalTextSelect').val();
-			var legalPanel = $('#legalPanel');
-			var placeholder = $('#prueba');
+			var placeholder = $('#legalPanel');
 			if(keyword == 0){
-				legalPanel.hide();
+				placeholder.hide();
 			} else {
-				var index = keyword-1;
-				var cad = '${legalTexts[0].text}';
-				window.alert(cad);
-				legalPanel.show();
-				placeholder.text(cad);
+				placeholder.show();
+				placeholder.load("home/legalText/"+keyword+"/show.do");
 			}
 		}
 </script>

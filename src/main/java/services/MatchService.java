@@ -167,6 +167,24 @@ public class MatchService extends AbstractService<Match, MatchRepository> implem
 		
 		return result;
 	}
+	
+	public Long countFinishedOfferedBarters(int barterId){
+		Long result;
+		
+		result = repository.countOfferedFinishedBarters(barterId);
+		Assert.notNull(result);
+		
+		return result;
+	}
+	
+	public Long countFinishedRequestedBarters(int barterId){
+		Long result;
+		
+		result = repository.countRequestedFinishedBarters(barterId);
+		Assert.notNull(result);
+		
+		return result;
+	}
 
 
 	@Override

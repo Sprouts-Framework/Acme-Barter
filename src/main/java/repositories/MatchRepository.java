@@ -26,6 +26,12 @@ public interface MatchRepository extends PagingAndSortingRepository<Match, Integ
 	@Query("select count(m.offered) from Match m where m.offered.id = ?1")
 	Long countOfferedBarters(int barterId);
 	
+	@Query("select count(m.requested) from Match m where m.requested.id = ?1 and m.requestSignedDate is not null and m.offerSignedDate is not null")
+	Long countRequestedFinishedBarters(int barterId);
+	
+	@Query("select count(m.offered) from Match m where m.offered.id = ?1 and m.requestSignedDate is not null and m.offerSignedDate is not null")
+	Long countOfferedFinishedBarters(int barterId);
+	
 	@Query("select count(m.requested) from Match m where m.requested.id = ?1")
 	Long countRequestedBarters(int barterId);
 
