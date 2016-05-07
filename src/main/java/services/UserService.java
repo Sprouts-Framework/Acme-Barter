@@ -1,5 +1,8 @@
 package services;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -135,6 +138,40 @@ public class UserService extends AbstractService<User, UserRepository> implement
 	public Long totalNumberOfUsersRegistedInTheSystem(){
 		return repository.totalNumberOfUsersRegistedInTheSystem();
 	}
+
 	
+	public Page<User> findUsersMaxCreatedBarters(Pageable page){
+		Page<User> result;
+		
+		Sort sort = new Sort(Sort.DEFAULT_DIRECTION, "id");
+		Pageable aux = new PageRequest(page.getPageNumber(), page.getPageSize(), sort);
+		
+		result = repository.findUsersMaxCreatedBarters(aux);
+		
+		return result;
+	}
 	
+	public List<Double> ninetyPercentileMaxCreatedBarters(){
+		List<Double> result;
+		
+		result = repository.ninetyPercentileMaxCreatedBarters();
+		
+		return result;
+	}
+	
+	public Page<User> findNonActiveUsersLastMonth(Pageable page){
+		Page<User> result;
+		Date date;
+		Calendar cal;
+		
+		cal = new GregorianCalendar();
+		cal.add(Calendar.MONTH, -1);
+		
+		date = cal.getTime();
+		result = repository.findNonActiveUsersLastMonth(date, page);
+		
+		return result;
+	}
+	
+
 }

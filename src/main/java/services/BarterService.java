@@ -140,5 +140,23 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 	public Double ratioOfBartersThatAreNotRelated() {
 		return repository.ratioOfBartersThatAreNotRelated();
 	}
+	
+	public Long totalNumber(){
+		Long result;
+		
+		result = repository.count();
+		Assert.notNull(result);
+		
+		return result;
+	}
+	
+	public Long totalNumberOfCancelledBarters(){
+		Long result;
+		
+		result = repository.totalNumberOfCancelledBarters();
+		Assert.notNull(result);
+		
+		return result;
+	}
 
 }

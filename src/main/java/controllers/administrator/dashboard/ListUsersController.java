@@ -24,14 +24,23 @@ public class ListUsersController extends AbstractListController<User, UserServic
 	
 	@Override
 	protected Page<User> getPage(Pageable page, String searchCriteria, List<String> context) {
+		Page<User> result = null;
 		Integer option = new Integer(context.get(0));
 		
 		switch(option){
 		case 1:
-			return service.usersWhoHaveGotMoreMatchesAudited(page);
+			result = service.usersWhoHaveGotMoreMatchesAudited(page);
+			break;
+		case 6:
+			result = service.findUsersMaxCreatedBarters(page);
+			break;
+		case 7:
+			result = service.findNonActiveUsersLastMonth(page);
 		default:
-			return null;
+			break;
 		}
+		
+		return result;
 	}
 
 	@Override
@@ -39,17 +48,22 @@ public class ListUsersController extends AbstractListController<User, UserServic
 		Integer option = new Integer(context.get(0));
 		
 		Long quantity = null;
-
-	
+		Double quantity6 = null;
+		
 		switch(option){
 		case 1:
 			quantity = service.quantityOfMatchesAudited();
+			objects.put("quantity", quantity);
 			break;
+		case 6:
+			if(!service.ninetyPercentileMaxCreatedBarters().isEmpty())
+				quantity6 = service.ninetyPercentileMaxCreatedBarters().get(0);
+			objects.put("quantity", quantity6);
 		default:
 			break;
 		}
 		
-		objects.put("quantity", quantity);
+		
 		objects.put("option", option);
 	}
 

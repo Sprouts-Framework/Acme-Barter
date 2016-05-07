@@ -1,5 +1,8 @@
 package repositories;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -33,4 +36,12 @@ public interface UserRepository extends PagingAndSortingRepository<User, Integer
 	@Query("select count(u) from User u")
 	Long totalNumberOfUsersRegistedInTheSystem();
 	
+	@Query("select b.user from Barter b group by b.user having count(b) >= ALL(select 0.9*count(b) from Barter b group by b.user)")
+	Page<User> findUsersMaxCreatedBarters(Pageable page);
+	
+	@Query("select 0.9*count(b) from Barter b group by b.user")
+	List<Double> ninetyPercentileMaxCreatedBarters();
+	
+	@Query("select u from User u where u NOT IN (select b.user from Barter b where b.moment >= ?1 group by b.user)")
+	Page<User> findNonActiveUsersLastMonth(Date lastMonth, Pageable page);
 }

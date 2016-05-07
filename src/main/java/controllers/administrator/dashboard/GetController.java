@@ -33,21 +33,31 @@ public class GetController extends AbstractGetController implements AddsToModel{
 
 			Double radioOfBarter = null;
 			Long totalNumberOfUsers = null;
+			Long totalNumberOfBarters = null;
+			Long totalNumberOfCancelledBarters = null;
 			
 			switch(option){
 			case 2:
 				radioOfBarter = barterService.ratioOfBartersThatAreNotRelated();
+				objects.put("radioOfBarter", radioOfBarter);
 				break;
 			case 3:
 				totalNumberOfUsers = userService.totalNumberOfUsersRegistedInTheSystem();
+				objects.put("totalNumberOfUsers", totalNumberOfUsers);
+				break;
+			case 4:
+				totalNumberOfBarters = barterService.totalNumber();
+				objects.put("totalNumberOfBarters", totalNumberOfBarters);
+				break;
+			case 5:
+				totalNumberOfCancelledBarters = barterService.totalNumberOfCancelledBarters();
+				objects.put("totalNumberOfCancelledBarters", totalNumberOfCancelledBarters);
 				break;
 			default:
 				break;
 			}
 			
-			objects.put("radioOfBarter", radioOfBarter);		
-			objects.put("totalNumberOfUsers", totalNumberOfUsers);	
-
+					
 			objects.put("option", option);
 		}
 	}

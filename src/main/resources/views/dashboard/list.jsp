@@ -37,10 +37,42 @@
 	</a>
 </h4>
 
+<h4>
+	<a href="dashboard/administrator/4/list.do">
+		<spring:message code="administrator.totalNumberOfBarters"/>
+	</a>
+</h4>
+
+<h4>
+	<a href="dashboard/administrator/5/list.do">
+		<spring:message code="administrator.totalNumberOfCancelledBarters"/>
+	</a>
+</h4>
+
+<h4>
+	<a href="dashboard/administrator/user/6/list.do">
+		<spring:message code="administrator.usersWhoCreatedMaxNumOfBarters"/>
+	</a>
+</h4>
+
+<h4>
+	<a href="dashboard/administrator/user/7/list.do">
+		<spring:message code="administrator.usersWhoAreNotActive"/>
+	</a>
+</h4>
+
 <jstl:if test="${option=='2' }">
 	<strong><spring:message code="administrator.radioOfBarter"/>:</strong> <jstl:out value="${radioOfBarter}"/>
 </jstl:if>
 
 <jstl:if test="${option=='3' }">
 	<strong><spring:message code="administrator.totalNumberOfUsers"/>:</strong> <jstl:out value="${totalNumberOfUsers}"/>
+</jstl:if>
+
+<jstl:if test="${option=='4' }">
+	<strong><spring:message code="administrator.totalNumberOfBarters"/>:</strong> <jstl:out value="${totalNumberOfBarters}"/>
+</jstl:if>
+
+<jstl:if test="${option=='5' }">
+	<strong><spring:message code="administrator.totalNumberOfCancelledBarters"/>:</strong> <jstl:out value="${totalNumberOfCancelledBarters}"/>
 </jstl:if>

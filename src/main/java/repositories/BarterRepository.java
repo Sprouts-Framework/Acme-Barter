@@ -32,5 +32,7 @@ public interface BarterRepository extends PagingAndSortingRepository<Barter, Int
 
 	@Query("select 1.0*(select count(b) from Barter b where b.offereds.size = 0 and b.requesteds.size = 0)/ count(b) from Barter b")
 	Double ratioOfBartersThatAreNotRelated();
-
+	
+	@Query("select count(b) from Barter b where b.cancelled = true")
+	Long totalNumberOfCancelledBarters();
 }
