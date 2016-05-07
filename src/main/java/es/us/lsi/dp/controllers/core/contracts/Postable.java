@@ -30,7 +30,7 @@ public interface Postable<V extends Validable, E extends Validable> {
 	 * called depending on if we are dealing with datatypes or entities.
 	 * 
 	 * */
-	public void beforeCommiting(E object);
+	public void beforeCommiting(E object, List<String> context);
 
-	public void beforeCommiting(V datatype, E object);
+	public void beforeCommiting(V datatype, E object, List<String> context);
 }

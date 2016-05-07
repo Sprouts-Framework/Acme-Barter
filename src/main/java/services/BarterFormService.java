@@ -44,7 +44,7 @@ public class BarterFormService extends AbstractFormService<Barter, BarterForm, B
 	}
 
 	@Override
-	public void beforeCommitingCreate(BarterForm validable) {
+	public void beforeCommitingCreate(BarterForm validable, List<String> context) {
 	}
 
 	@Override

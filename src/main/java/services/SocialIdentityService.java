@@ -41,7 +41,7 @@ public class SocialIdentityService extends AbstractService<SocialIdentity, Socia
 	}
 
 	@Override
-	public void beforeCommitingCreate(SocialIdentity validable) {
+	public void beforeCommitingCreate(SocialIdentity validable, List<String> context) {
 
 	}
 
@@ -70,7 +70,7 @@ public class SocialIdentityService extends AbstractService<SocialIdentity, Socia
 	}
 
 	@Override
-	public void beforeCommitingUpdate(SocialIdentity validable) {
+	public void beforeCommitingUpdate(SocialIdentity validable, List<String> context) {
 
 	}
 
@@ -90,7 +90,7 @@ public class SocialIdentityService extends AbstractService<SocialIdentity, Socia
 	}
 
 	@Override
-	public void beforeCommitingDelete(SocialIdentity validable) {
+	public void beforeCommitingDelete(SocialIdentity validable, List<String> context) {
 		Assert.notNull(validable);
 		User customer;
 		customer = customerService.findByPrincipal();

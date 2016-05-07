@@ -62,7 +62,7 @@ public class MessageService extends AbstractService<Message, MessageRepository> 
 	}
 
 	@Override
-	public void beforeCommitingCreate(Message validable) {
+	public void beforeCommitingCreate(Message validable, List<String> context) {
 
 	}
 
@@ -127,7 +127,7 @@ public class MessageService extends AbstractService<Message, MessageRepository> 
 	}
 
 	@Override
-	public void beforeCommitingUpdate(Message validable) {
+	public void beforeCommitingUpdate(Message validable, List<String> context) {
 
 	}
 
@@ -149,7 +149,7 @@ public class MessageService extends AbstractService<Message, MessageRepository> 
 	}
 
 	@Override
-	public void beforeCommitingDelete(Message validable) {
+	public void beforeCommitingDelete(Message validable, List<String> context) {
 
 	}
 

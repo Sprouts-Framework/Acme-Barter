@@ -21,6 +21,11 @@
 		<put-attribute name="body"  type="template" value="../match/list.jsp" />
 	</definition>
 	
+	<definition name="match/list-user" extends="template/master">
+		<put-attribute name="title" type="string" value="match.list-my" />
+		<put-attribute name="body"  type="template" value="../match/list-for-user.jsp" />
+	</definition>
+	
 	<definition name="match/bulletin" extends="template/master">
 		<put-attribute name="title" type="string" value="match.bulletin" />
 		<put-attribute name="body"  type="template" value="../match/list.jsp" />
@@ -49,6 +54,29 @@
 	</definition>
 
 	<definition name="match/update/body" template="../match/edit.jsp">
+		<put-attribute name="readOnly" type="string" value="false" />
+		<put-attribute name="action" type="string" value="update.button" />
+	</definition>
+
+
+	<definition name="match/cancel" extends="template/master">
+		<put-attribute name="title" type="string"
+			value="match.cancel.title" />
+		<put-attribute name="body" value="match/cancel/body" />
+	</definition>
+
+	<definition name="match/cancel/body" template="../match/cancel-sign.jsp">
+		<put-attribute name="readOnly" type="string" value="false" />
+		<put-attribute name="action" type="string" value="update.button" />
+	</definition>
+
+	<definition name="match/sign" extends="template/master">
+		<put-attribute name="title" type="string"
+			value="match.sign.title" />
+		<put-attribute name="body" value="match/sign/body" />
+	</definition>
+
+	<definition name="match/sign/body" template="../match/cancel-sign.jsp">
 		<put-attribute name="readOnly" type="string" value="false" />
 		<put-attribute name="action" type="string" value="update.button" />
 	</definition>

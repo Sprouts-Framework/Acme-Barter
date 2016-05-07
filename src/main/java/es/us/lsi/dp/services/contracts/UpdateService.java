@@ -17,7 +17,7 @@ public interface UpdateService<D extends Validable> {
 
 	public void beforeUpdating(final D validable, List<String> context);
 
-	public void beforeCommitingUpdate(final D validable);
+	public void beforeCommitingUpdate(final D validable, List<String> context);
 
 	public void afterCommitingUpdate(final int id);
 }

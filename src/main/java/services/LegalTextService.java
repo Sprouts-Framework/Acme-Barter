@@ -40,7 +40,7 @@ public class LegalTextService extends AbstractService<LegalText, LegalTextReposi
 	}
 
 	@Override
-	public void beforeCommitingCreate(LegalText validable) {
+	public void beforeCommitingCreate(LegalText validable, List<String> context) {
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class LegalTextService extends AbstractService<LegalText, LegalTextReposi
 	}
 
 	@Override
-	public void beforeCommitingUpdate(LegalText validable) {
+	public void beforeCommitingUpdate(LegalText validable, List<String> context) {
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class LegalTextService extends AbstractService<LegalText, LegalTextReposi
 	}
 
 	@Override
-	public void beforeCommitingDelete(LegalText validable) {		
+	public void beforeCommitingDelete(LegalText validable, List<String> context) {		
 	}
 
 	@Override

@@ -95,6 +95,11 @@ public abstract class PostController<D extends Validable, E extends Validable> e
 		E entityToAuthorize;
 
 		beforeAuthorization(entity, ContextParser.parse(pathVariables));
+		
+		beforeCommiting(entity, ContextParser.parse(pathVariables));
+		// This method if defined in this class and does nothing. It is needed
+		// to redefine if we are dealing with datatypes
+		beforeCommiting(entityOrDatatype, entity, ContextParser.parse(pathVariables));
 
 		safeObject = getSafeObject(entityOrDatatype, entity);
 
@@ -108,12 +113,7 @@ public abstract class PostController<D extends Validable, E extends Validable> e
 		// the user didn't fill in.
 		if (ValidationHandler.validationFailed(bindingResult))
 			return errors(entityOrDatatype, ContextParser.parse(pathVariables));
-
-		beforeCommiting(entity);
-		// This method if defined in this class and does nothing. It is needed
-		// to redefine if we are dealing with datatypes
-		beforeCommiting(entityOrDatatype, entity);
-
+		
 		try {
 			newOrReconstructed = getNewOrReconstructed(safeObject, entity);
 			validate.businessRules(newOrReconstructed);
@@ -183,13 +183,13 @@ public abstract class PostController<D extends Validable, E extends Validable> e
 
 	// Default definitions -----------------------------------------------------
 	@Override
-	public void beforeCommiting(D datatype, E entity) {
+	public void beforeCommiting(D datatype, E entity, List<String> context) {
 
 	}
 	
 	//TODO: Ver si esto afecta al comportamiento normal
 	@Override
-	public void beforeCommiting(E object) {}{
+	public void beforeCommiting(E object, List<String> context) {}{
 		
 	}
 }

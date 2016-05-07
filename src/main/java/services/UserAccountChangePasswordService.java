@@ -36,7 +36,7 @@ public class UserAccountChangePasswordService extends AbstractFormService<UserAc
 	}
 
 	@Override
-	public void beforeCommitingUpdate(UserAccountForm validable) {
+	public void beforeCommitingUpdate(UserAccountForm validable, List<String> context) {
 	}
 
 	@Override

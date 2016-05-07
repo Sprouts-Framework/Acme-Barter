@@ -130,7 +130,7 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 	}
 
 	@Override
-	public void beforeCommitingUpdate(Barter validable) {
+	public void beforeCommitingUpdate(Barter validable, List<String> context) {
 		validable.setCancelled(true);		
 	}
 

@@ -70,7 +70,7 @@ public class FolderService extends AbstractService<Folder, FolderRepository> imp
 	}
 
 	@Override
-	public void beforeCommitingCreate(Folder validable) {
+	public void beforeCommitingCreate(Folder validable, List<String> context) {
 
 	}
 
@@ -92,7 +92,7 @@ public class FolderService extends AbstractService<Folder, FolderRepository> imp
 	}
 
 	@Override
-	public void beforeCommitingUpdate(Folder validable) {
+	public void beforeCommitingUpdate(Folder validable, List<String> context) {
 
 	}
 
@@ -114,7 +114,7 @@ public class FolderService extends AbstractService<Folder, FolderRepository> imp
 	}
 
 	@Override
-	public void beforeCommitingDelete(Folder validable) {
+	public void beforeCommitingDelete(Folder validable, List<String> context) {
 		// checkIsAuthorised(box.getActor().getId());
 		Collection<Message> messages;
 		messages = messageService.findMessagesInFolder(validable.getId());

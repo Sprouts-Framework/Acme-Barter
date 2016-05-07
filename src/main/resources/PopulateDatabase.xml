@@ -985,7 +985,7 @@
         <property name="title" value="Barter que NO debe ser cancelado" />
         <property name="cancelled" value="false" />
         <!-- Referencias a otras entidades -->
-        <property name="user" ref="user2"/>
+        <property name="user" ref="user3"/>
         <property name="offered" ref="item9_1"/>
         <property name="requested" ref="item9_2"/>
         <property name="requesteds">

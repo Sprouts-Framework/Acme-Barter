@@ -12,18 +12,18 @@ import es.us.lsi.dp.validation.contracts.BusinessRule;
 
 @Component
 public class IsAuthorisedToManageFolder implements BusinessRule<Folder> {
-	
+
 	@Autowired
 	private ActorService actorService;
-	
+
 	@Override
 	public boolean rule(final Folder folder) {
-		
+
 		Actor actor;
 		UserAccount userAccount;
 		userAccount = SignInService.getPrincipal();
 		actor = actorService.findActorByUserAccount(userAccount.getUsername());
-		return actor.getId()==folder.getActor().getId();
+		return actor.getId() == folder.getActor().getId();
 	}
 
 	@Override

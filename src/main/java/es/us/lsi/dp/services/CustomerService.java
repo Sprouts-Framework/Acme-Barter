@@ -36,7 +36,7 @@ public class CustomerService extends AbstractService<User, UserRepository> imple
 	}
 
 	@Override
-	public void beforeCommitingUpdate(User validable) {
+	public void beforeCommitingUpdate(User validable, List<String> context) {
 
 	}
 

@@ -40,7 +40,7 @@ public class RelateBarterFormService extends AbstractFormService<Barter, RelateB
 	}
 
 	@Override
-	public void beforeCommitingUpdate(RelateBarterForm validable) {
+	public void beforeCommitingUpdate(RelateBarterForm validable, List<String> context) {
 		// TODO Auto-generated method stub
 		
 	}

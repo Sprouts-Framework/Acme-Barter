@@ -76,8 +76,8 @@ public abstract class AbstractUpdateController<D extends DomainObject, S extends
 	}
 
 	@Override
-	public void beforeCommiting(D domainObject) {
-		service.beforeCommitingUpdate(domainObject);
+	public void beforeCommiting(D domainObject, List<String> context) {
+		service.beforeCommitingUpdate(domainObject, context);
 	}
 
 	@Override

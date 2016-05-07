@@ -37,7 +37,7 @@ public class UserService extends AbstractService<User, UserRepository> implement
 	}
 
 	@Override
-	public void beforeCommitingUpdate(User validable) {
+	public void beforeCommitingUpdate(User validable, List<String> context) {
 	}
 
 	@Override

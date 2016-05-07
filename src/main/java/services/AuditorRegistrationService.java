@@ -47,7 +47,7 @@ public class AuditorRegistrationService extends AbstractFormService<Auditor, Aud
 	}
 
 	@Override
-	public void beforeCommitingCreate(AuditorRegistrationForm validable) {
+	public void beforeCommitingCreate(AuditorRegistrationForm validable, List<String> context) {
 	}
 
 	@Override

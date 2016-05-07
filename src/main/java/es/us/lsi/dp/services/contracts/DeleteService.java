@@ -17,7 +17,7 @@ public interface DeleteService<D extends Validable> {
 
 	public void beforeDeleting(final D validable, List<String> context);
 
-	public void beforeCommitingDelete(final D validable);
+	public void beforeCommitingDelete(final D validable, List<String> context);
 
 	public void afterCommitingDelete(final int id);
 }
