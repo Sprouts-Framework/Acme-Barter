@@ -135,4 +135,6 @@ public class UserService extends AbstractService<User, UserRepository> implement
 	public Long totalNumberOfUsersRegistedInTheSystem(){
 		return repository.totalNumberOfUsersRegistedInTheSystem();
 	}
+	
+	
 }

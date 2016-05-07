@@ -21,5 +21,7 @@ public class UpdateController extends AbstractUpdateController<LegalText, LegalT
 	protected String view() {
 		return "legalText/update";
 	}
+	
+	
 
 }
