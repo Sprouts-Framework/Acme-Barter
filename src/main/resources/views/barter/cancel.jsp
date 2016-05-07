@@ -3,7 +3,7 @@
 <tiles:importAttribute name="readOnly" toName="readOnly" />
 <tiles:importAttribute name="action" toName="action" />
 
-<acme:form modelAttribute="modelObject" readOnly="${readOnly}">
+<acme:form modelAttribute="modelObject" readOnly="true">
 
 	<form:hidden path="id"/>
 	<form:hidden path="version"/>

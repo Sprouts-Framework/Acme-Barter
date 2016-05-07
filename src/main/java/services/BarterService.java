@@ -1,6 +1,5 @@
 package services;
 
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -39,10 +38,10 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private IsNotCancelled isNotCancelled;
-	
+
 	@Autowired
 	private DoesNotHaveFinishedMatch doesNotHaveFinishedMatch;
 
@@ -85,36 +84,36 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 		Assert.notNull(result);
 		return result;
 	}
-	
-	public Collection<Barter> findNotMatchedBartersByUserId(){
+
+	public Collection<Barter> findNotMatchedBartersByUserId() {
 		Collection<Barter> result;
 		User user;
-		
+
 		user = userService.findByPrincipal();
 		Assert.notNull(user);
-		
+
 		result = repository.findNotMatchedBartersByUserId(user.getId());
-		
+
 		return result;
 	}
-	
-	public Collection<Barter> findNotMatchedBartersNotOwnByUserId(){
+
+	public Collection<Barter> findNotMatchedBartersNotOwnByUserId() {
 		Collection<Barter> result;
 		User user;
-		
+
 		user = userService.findByPrincipal();
 		Assert.notNull(user);
-		
+
 		result = repository.findNotMatchedBartersNotOwnedByUserId(user.getId());
-		
+
 		return result;
 	}
-	
-	public Page<Barter> findAllPaged(Pageable page){
+
+	public Page<Barter> findAllPaged(Pageable page) {
 		Page<Barter> result;
-		
+
 		result = repository.findAllPaged(page);
-		
+
 		return result;
 	}
 
@@ -126,25 +125,19 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 
 	@Override
 	public void beforeUpdating(Barter validable, List<String> context) {
-	
+
 	}
 
 	@Override
 	public void beforeCommitingUpdate(Barter validable, List<String> context) {
-		validable.setCancelled(true);		
+		validable.setCancelled(true);
 	}
 
 	@Override
 	public void afterCommitingUpdate(int id) {
-		Barter barter;
-		barter = findById(id);
-		if(!barter.getCancelled()){
-			barter.setCancelled(true);
-			update(barter);
-		}
 	}
-	
-	public Double ratioOfBartersThatAreNotRelated(){
+
+	public Double ratioOfBartersThatAreNotRelated() {
 		return repository.ratioOfBartersThatAreNotRelated();
 	}
 

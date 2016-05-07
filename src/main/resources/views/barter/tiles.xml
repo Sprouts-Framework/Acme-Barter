@@ -54,7 +54,7 @@
 	</definition>
 
 	<definition name="barter/cancel/body" template="../barter/cancel.jsp">
-		<put-attribute name="readOnly" type="string" value="true" />
+		<put-attribute name="readOnly" type="string" value="false" />
 		<put-attribute name="action" type="string" value="cancel.barter" />
 	</definition>
 
