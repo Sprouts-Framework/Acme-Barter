@@ -14,9 +14,9 @@
 	<form:hidden path="requested"/>
 	<form:hidden path="auditor"/>
 	
-	<acme:textbox-input code="match.moment" path="moment"/>
-	<acme:textbox-input code="match.requestSignedDate" path="requestSignedDate"/>
-	<acme:textbox-input code="match.offerSignedDate" path="offerSignedDate"/>
+	<acme:textbox-input code="match.moment" path="moment" readonly="true"/>
+	<acme:textbox-input code="match.requestSignedDate" path="requestSignedDate" readonly="true"/>
+	<acme:textbox-input code="match.offerSignedDate" path="offerSignedDate" readonly="true"/>
 
 	<acme:submit-button code="${action}" name="${action}" />
 	<acme:cancel-button code="return.button" url="home/match/list.do"/>

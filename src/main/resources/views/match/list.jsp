@@ -15,7 +15,7 @@
 	<acme:data-column code="match.moment" path="moment" sortable="true" format="date"/>
 	<acme:data-column code="match.requestSignedDate" path="requestSignedDate" format="date" nullCode="match.nullCode"/>
 	<acme:data-column code="match.offerSignedDate" path="offerSignedDate" format="date" nullCode="match.nullCode"/>
-	<acme:data-column code="match.cancelled" path="cancelled" falseCode="match.cancelled.false" trueCode="match.cancelled.true"/>
+	<acme:data-column code="match.cancelled.column" path="cancelled" falseCode="match.cancelled.false" trueCode="match.cancelled.true"/>
 	<acme:data-column code="match.barter.offered" path="offered.title"/>
 	<acme:data-column code="match.barter.requested" path="requested.title"/>
 	
