@@ -17,7 +17,7 @@ public class ListController extends AbstractListController<Match, MatchService>{
 
 	@Override
 	protected String view() {
-		return "match/list";
+		return "match/list-user";
 	}
 	
 	@Override

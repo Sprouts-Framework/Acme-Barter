@@ -11,6 +11,7 @@ import org.springframework.validation.Validator;
 import repositories.MatchRepository;
 import validation.rules.MatchMustNotBeCancelled;
 import validation.rules.MustNotBeAssigned;
+import validation.rules.MustNotBeSigned;
 import domain.Auditor;
 import domain.Match;
 import es.us.lsi.dp.services.AbstractService;
@@ -30,12 +31,16 @@ public class SelfAssignService extends AbstractService<Match, MatchRepository> i
 	private MatchMustNotBeCancelled matchMustNotBeCancelled;
 	
 	@Autowired
+	private MustNotBeSigned mustNotBeSigned;
+	
+	@Autowired
 	private ActorService actorService;
 	
 	@Override
 	public void updateBusinessRules(List<BusinessRule<Match>> rules, List<Validator> validators) {
 		rules.add(mustNotBeAssigned);
 		rules.add(matchMustNotBeCancelled);
+		rules.add(mustNotBeSigned);
 		
 	}
 

@@ -9,7 +9,7 @@ import domain.Match;
 import es.us.lsi.dp.validation.contracts.BusinessRule;
 
 @Component
-public class MatchMustNotBeCancelled implements BusinessRule<Match>{
+public class MustNotBeSigned implements BusinessRule<Match> {
 
 	@Autowired
 	private MatchService matchService;
@@ -17,12 +17,12 @@ public class MatchMustNotBeCancelled implements BusinessRule<Match>{
 	@Override
 	public boolean rule(Match domainObject) {
 		Match match = matchService.findById(domainObject.getId());
-		return (!match.isCancelled());
+		return match.getOfferSignedDate()== null || match.getRequestSignedDate() == null;
 	}
 
 	@Override
 	public String warning() {
-		return "match.cancelled.warning";
+		return "match.signedError";
 	}
 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import services.MatchService;
+import services.WriteReportMatchService;
 import domain.Auditor;
 import domain.Match;
 import es.us.lsi.dp.controllers.entities.crud.AbstractUpdateController;
@@ -14,7 +14,7 @@ import es.us.lsi.dp.domain.UserAccount;
 
 @Controller("matchAuditorUpdate")
 @RequestMapping("match/auditor")
-public class UpdateController extends AbstractUpdateController<Match, MatchService>{
+public class UpdateController extends AbstractUpdateController<Match, WriteReportMatchService>{
 
 	@Override
 	public boolean authorize(Match domainObject, UserAccount principal) {
@@ -25,7 +25,7 @@ public class UpdateController extends AbstractUpdateController<Match, MatchServi
 
 	@Override
 	protected String view() {
-		return "match/update";
+		return "match/writeReport/update";
 	}
 
 }
