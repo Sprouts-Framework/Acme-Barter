@@ -26,11 +26,17 @@
 		<acme:display-column title="${title}" data="${barter.title}"/>
 		<acme:display-column title="${moment}" path="barter.moment"/>
 		<br/>
-		<acme:display-column title="${barterUsername}" data="${barter.user.userAccount.username}"/>
+		<acme:display-column title="${barterUsername}" 
+		data="${barter.user.name } ${barter.user.surname } (${barter.user.userAccount.username })"/>
 		
 		<acme:button url="home/user/${user.id }/show.do" code="user.profile"/>
 	</div>
-	
+
+<br />
+<br />
+<br />
+
+
 <!-- Requested item -->
 	
 	<h3 class="text-center">
@@ -40,13 +46,13 @@
 	<div class="text-center">
 		<acme:display-column title="${barter.requested.name}"/>
 		<acme:display-column data="${barter.requested.description}"/>
-		
-		<br />
-		
 		<h4><acme:display-column title="${itemPictures}"/>	</h4>
-		
 		<acme:pictures-list pictures="${barter.requested.pictures } " size="${barter.requested.pictures.size() }"/>
 	</div>
+	
+<br />
+<br /> 
+	
 <!-- Offered item -->
 
 <br />
@@ -59,11 +65,6 @@
 	<div class="text-center">
 		<acme:display-column title="${barter.offered.name}"/>
 		<acme:display-column data="${barter.offered.description}"/>
-		
-		<br />
-		
 		<h4><acme:display-column title="${itemPictures}"/>	</h4>
-		
 		<acme:pictures-list pictures="${barter.offered.pictures } " size="${barter.offered.pictures.size() }"/>
-		
 	</div>
