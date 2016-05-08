@@ -32,3 +32,18 @@
 		<spring:message code="administrator.quantityOfMatchesAudited"/>: <jstl:out value="${quantity}"/>
 	</strong>	
 </jstl:if>
+<jstl:if test="${option=='9' }">
+	<strong>
+		<spring:message code="administrator.maxNumberOfBartersPerUser"/>: <jstl:out value="${quantity}"/>
+	</strong>	
+</jstl:if>
+<jstl:if test="${option=='10' }">
+	<strong>
+		<spring:message code="administrator.numberCancelledBarters"/>: <jstl:out value="${quantity}"/>
+	</strong>	
+</jstl:if>
+<jstl:if test="${option=='11' }">
+	<strong>
+		<spring:message code="administrator.quantityMatches"/>: <jstl:out value="${quantity}"/>
+	</strong>	
+</jstl:if>

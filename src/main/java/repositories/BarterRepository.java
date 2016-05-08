@@ -35,4 +35,13 @@ public interface BarterRepository extends PagingAndSortingRepository<Barter, Int
 	
 	@Query("select count(b) from Barter b where b.cancelled = true")
 	Long totalNumberOfCancelledBarters();
+	
+	@Query("select count(b.user) from Barter b group by b.user having count(b.user) >= ALL(select count(b2.user) from Barter b2 group by b2.user)")
+	Long maxNumberOfBartersPerUser();
+	
+	@Query("select count(b.user) from Barter b group by b.user having count(b.user) <= ALL(select count(b2.user) from Barter b2 group by b2.user)")
+	Long minNumberOfBartersPerUser();
+	
+	@Query("select (1.0*(select count(b) from Barter b))/(1.0*count(u)) from User u")
+	Double averageOfBartersPerUser();
 }

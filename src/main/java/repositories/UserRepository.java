@@ -44,4 +44,19 @@ public interface UserRepository extends PagingAndSortingRepository<User, Integer
 	
 	@Query("select u from User u where u NOT IN (select b.user from Barter b where b.moment >= ?1 group by b.user)")
 	Page<User> findNonActiveUsersLastMonth(Date lastMonth, Pageable page);
+	
+	@Query("select b.user from Barter b group by b.user having count(b.user) >= ALL(select count(b2.user) from Barter b2 group by b2.user)")
+	Page<User> theUsersWhoHaveRegisteredMoreBarters(Pageable page);
+	
+	@Query("select b.user from Barter b where b.cancelled = true group by b.user having count(b.user) >= ALL(select count(b2.user) from Barter b2 where b2.cancelled = true group by b2.user)")
+	Page<User> theUsersWhoHaveCancelledMoreBarters(Pageable page);
+	
+	@Query("select count(b) from Barter b where b.cancelled = true group by b.user having count(b.user) >= ALL(select count(b2.user) from Barter b2 where b2.cancelled = true group by b2.user)")
+	Long quantityBartersCancelled();
+	
+	@Query("select b.user from Barter b where (b IN(select m.offered from Match m) or b IN(select m.requested from Match m)) group by b.user having count(b.user) >=  ALL(select count(b.user) from Barter b where (b IN(select m.offered from Match m) or b IN(select m.requested from Match m)) group by b.user)")
+	Page<User> theUsersWhoHaveMoreMatches(Pageable page);
+	
+	@Query("select count(b) from Barter b where (b IN(select m.offered from Match m) or b IN(select m.requested from Match m)) group by b.user having count(b.user) >=  ALL(select count(b.user) from Barter b where (b IN(select m.offered from Match m) or b IN(select m.requested from Match m)) group by b.user)")
+	Long quantityMatches();
 }

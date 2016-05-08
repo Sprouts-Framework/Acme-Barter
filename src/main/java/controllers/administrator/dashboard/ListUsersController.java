@@ -3,11 +3,13 @@ package controllers.administrator.dashboard;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import services.BarterService;
 import services.UserService;
 import domain.User;
 import es.us.lsi.dp.controllers.core.contracts.AddsToModel;
@@ -16,7 +18,10 @@ import es.us.lsi.dp.controllers.entities.crud.AbstractListController;
 @Controller("userListAdministrator")
 @RequestMapping("dashboard/administrator/user")
 public class ListUsersController extends AbstractListController<User, UserService> implements AddsToModel{
-
+	
+	@Autowired
+	private BarterService barterService;
+	
 	@Override
 	protected String view() {
 		return "dashboard/users/list";
@@ -36,6 +41,12 @@ public class ListUsersController extends AbstractListController<User, UserServic
 			break;
 		case 7:
 			result = service.findNonActiveUsersLastMonth(page);
+		case 9:
+			result = service.theUsersWhoHaveRegisteredMoreBarters(page);
+		case 10:
+			result = service.theUsersWhoHaveCancelledMoreBarters(page);
+		case 11:
+			result = service.theUsersWhoHaveMoreMatches(page);
 		default:
 			break;
 		}
@@ -59,6 +70,15 @@ public class ListUsersController extends AbstractListController<User, UserServic
 			if(!service.ninetyPercentileMaxCreatedBarters().isEmpty())
 				quantity6 = service.ninetyPercentileMaxCreatedBarters().get(0);
 			objects.put("quantity", quantity6);
+		case 9:
+			quantity = barterService.maxNumberOfBartersPerUser();
+			objects.put("quantity", quantity);
+		case 10:
+			quantity = service.quantityBartersCancelled();
+			objects.put("quantity", quantity);	
+		case 11:
+			quantity = service.quantityMatches();
+			objects.put("quantity", quantity);
 		default:
 			break;
 		}

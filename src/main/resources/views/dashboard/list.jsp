@@ -61,6 +61,30 @@
 	</a>
 </h4>
 
+<h4>
+	<a href="dashboard/administrator/8/list.do">
+		<spring:message code="administrator.maxMinAverageBartersPerUser"/>
+	</a>
+</h4>
+
+<h4>
+	<a href="dashboard/administrator/user/9/list.do">
+		<spring:message code="administrator.theUsersWhoHaveRegisteredMoreBarters"/>
+	</a>
+</h4>
+
+<h4>
+	<a href="dashboard/administrator/user/10/list.do">
+		<spring:message code="administrator.theUsersWhoHaveCancelledMoreBarters"/>
+	</a>
+</h4>
+
+<h4>
+	<a href="dashboard/administrator/user/11/list.do">
+		<spring:message code="administrator.theUsersWhoHaveMoreMatches"/>
+	</a>
+</h4>
+
 <jstl:if test="${option=='2' }">
 	<strong><spring:message code="administrator.radioOfBarter"/>:</strong> <jstl:out value="${radioOfBarter}"/>
 </jstl:if>
@@ -75,4 +99,12 @@
 
 <jstl:if test="${option=='5' }">
 	<strong><spring:message code="administrator.totalNumberOfCancelledBarters"/>:</strong> <jstl:out value="${totalNumberOfCancelledBarters}"/>
+</jstl:if>
+
+<jstl:if test="${option=='8' }">
+	<strong><spring:message code="administrator.minNumberOfBartersPerUser"/>:</strong> <jstl:out value="${minNumberOfBartersPerUser}"/>
+	<br />
+	<strong><spring:message code="administrator.maxNumberOfBartersPerUser"/>:</strong> <jstl:out value="${maxNumberOfBartersPerUser}"/>
+	<br />
+	<strong><spring:message code="administrator.averageNumberOfBartersPerUser"/>:</strong> <jstl:out value="${averageNumberOfBartersPerUser}"/>
 </jstl:if>

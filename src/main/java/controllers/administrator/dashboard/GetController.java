@@ -35,6 +35,9 @@ public class GetController extends AbstractGetController implements AddsToModel{
 			Long totalNumberOfUsers = null;
 			Long totalNumberOfBarters = null;
 			Long totalNumberOfCancelledBarters = null;
+			Long maxNumberOfBartersPerUser = null;
+			Long minNumberOfBartersPerUser = null;
+			Double averageNumberOfBartersPerUser = null;
 			
 			switch(option){
 			case 2:
@@ -53,6 +56,15 @@ public class GetController extends AbstractGetController implements AddsToModel{
 				totalNumberOfCancelledBarters = barterService.totalNumberOfCancelledBarters();
 				objects.put("totalNumberOfCancelledBarters", totalNumberOfCancelledBarters);
 				break;
+			case 8:
+				maxNumberOfBartersPerUser = barterService.maxNumberOfBartersPerUser();
+				minNumberOfBartersPerUser = barterService.minNumberOfBartersPerUser();
+				averageNumberOfBartersPerUser = barterService.averageNumberOfBartersPerUser();
+				
+				objects.put("maxNumberOfBartersPerUser", maxNumberOfBartersPerUser);
+				objects.put("minNumberOfBartersPerUser", minNumberOfBartersPerUser);
+				objects.put("averageNumberOfBartersPerUser", averageNumberOfBartersPerUser);
+				
 			default:
 				break;
 			}

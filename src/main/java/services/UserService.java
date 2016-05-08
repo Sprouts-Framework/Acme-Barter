@@ -103,75 +103,115 @@ public class UserService extends AbstractService<User, UserRepository> implement
 			return true;
 
 	}
-	
-	public void followOrUnfollow(int userId){
+
+	public void followOrUnfollow(int userId) {
 		boolean isFollowing = isFollowing(userId);
-		
+
 		User principal = findByPrincipal();
 		User toFollow = findById(userId);
 		Assert.notNull(principal);
 		Assert.notNull(toFollow);
 		Assert.isTrue(!principal.equals(toFollow));
-		
-		if(isFollowing){
+
+		if (isFollowing) {
 			principal.getFollowees().remove(toFollow);
 			toFollow.getFollowers().remove(principal);
 		} else {
 			principal.getFollowees().add(toFollow);
 			toFollow.getFollowers().add(principal);
 		}
-		
+
 		update(principal);
 		update(toFollow);
 	}
 
-	public Page<User> usersWhoHaveGotMoreMatchesAudited(Pageable page){
+	public Page<User> usersWhoHaveGotMoreMatchesAudited(Pageable page) {
 		Sort sort = new Sort(Sort.DEFAULT_DIRECTION, "id");
 		Pageable aux = new PageRequest(page.getPageNumber(), page.getPageSize(), sort);
 		return repository.usersWhoHaveGotMoreMatchesAudited(aux);
 	}
-	
-	public Long quantityOfMatchesAudited(){
+
+	public Long quantityOfMatchesAudited() {
 		return repository.quantityOfMatchesAudited();
 	}
-	
-	public Long totalNumberOfUsersRegistedInTheSystem(){
+
+	public Long totalNumberOfUsersRegistedInTheSystem() {
 		return repository.totalNumberOfUsersRegistedInTheSystem();
 	}
 
-	
-	public Page<User> findUsersMaxCreatedBarters(Pageable page){
+	public Page<User> findUsersMaxCreatedBarters(Pageable page) {
 		Page<User> result;
-		
+
 		Sort sort = new Sort(Sort.DEFAULT_DIRECTION, "id");
 		Pageable aux = new PageRequest(page.getPageNumber(), page.getPageSize(), sort);
-		
+
 		result = repository.findUsersMaxCreatedBarters(aux);
-		
+
 		return result;
 	}
-	
-	public List<Double> ninetyPercentileMaxCreatedBarters(){
+
+	public List<Double> ninetyPercentileMaxCreatedBarters() {
 		List<Double> result;
-		
+
 		result = repository.ninetyPercentileMaxCreatedBarters();
-		
+
 		return result;
 	}
-	
-	public Page<User> findNonActiveUsersLastMonth(Pageable page){
+
+	public Page<User> findNonActiveUsersLastMonth(Pageable page) {
 		Page<User> result;
 		Date date;
 		Calendar cal;
-		
+
 		cal = new GregorianCalendar();
 		cal.add(Calendar.MONTH, -1);
-		
+
 		date = cal.getTime();
-		result = repository.findNonActiveUsersLastMonth(date, page);
-		
+		Sort sort = new Sort(Sort.DEFAULT_DIRECTION, "id");
+		Pageable aux = new PageRequest(page.getPageNumber(), page.getPageSize(), sort);
+
+		result = repository.findNonActiveUsersLastMonth(date, aux);
+
+		return result;
+	}
+
+	public Page<User> theUsersWhoHaveRegisteredMoreBarters(Pageable page) {
+		Page<User> result;
+		Sort sort = new Sort(Sort.DEFAULT_DIRECTION, "id");
+		Pageable aux = new PageRequest(page.getPageNumber(), page.getPageSize(), sort);
+		result = repository.theUsersWhoHaveRegisteredMoreBarters(aux);
+		Assert.notNull(result);
+		return result;
+	}
+
+	public Page<User> theUsersWhoHaveCancelledMoreBarters(Pageable page) {
+		Page<User> result;
+		Sort sort = new Sort(Sort.DEFAULT_DIRECTION, "id");
+		Pageable aux = new PageRequest(page.getPageNumber(), page.getPageSize(), sort);
+		result = repository.theUsersWhoHaveCancelledMoreBarters(aux);
+		Assert.notNull(result);
 		return result;
 	}
 	
-
+	public Long quantityBartersCancelled(){
+		Long result;
+		result = repository.quantityBartersCancelled();
+		return result;
+	}
+	
+	public Page<User> theUsersWhoHaveMoreMatches(Pageable page){
+		Page<User> result;
+		Sort sort = new Sort(Sort.DEFAULT_DIRECTION, "id");
+		Pageable aux = new PageRequest(page.getPageNumber(), page.getPageSize(), sort);
+		result = repository.theUsersWhoHaveMoreMatches(aux);
+		Assert.notNull(result);
+		return result;
+	}
+	
+	public Long quantityMatches(){
+		Long result;
+		result = repository.quantityMatches();
+		return result;
+	}
+	
 }

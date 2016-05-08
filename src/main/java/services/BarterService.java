@@ -158,5 +158,32 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 		
 		return result;
 	}
-
+	
+	public Long maxNumberOfBartersPerUser(){
+		Long result;
+		
+		result = repository.maxNumberOfBartersPerUser();
+		Assert.notNull(result);
+		
+		return result;
+	}
+	
+	public Long minNumberOfBartersPerUser(){
+		Long result;
+		
+		result = repository.minNumberOfBartersPerUser();
+		Assert.notNull(result);
+		
+		return result;
+	}
+	
+	public Double averageNumberOfBartersPerUser(){
+		Double result;
+		
+		result = repository.averageOfBartersPerUser();
+		Assert.notNull(result);
+		
+		return result;
+	}
+	
 }
