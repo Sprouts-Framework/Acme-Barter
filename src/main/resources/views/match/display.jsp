@@ -28,22 +28,22 @@
 		<spring:message var="offerUserDidNotSign" code="match.offer-user-did-not-sign" />
 		
 		<acme:display-column title="${moment}" path="match.moment"/>
-		<jstl:if test="${match.requestSignedDate != null }">
-			<acme:display-column title="${requestSignedDate}" path="match.requestSignedDate"/>
+		<jstl:if test="${modelObject.requestSignedDate != null }">
+			<acme:display-column title="${requestSignedDate}" path="modelObject.requestSignedDate"/>
 		</jstl:if>
-		<jstl:if test="${match.requestSignedDate == null }">
+		<jstl:if test="${modelObject.requestSignedDate == null }">
 			<acme:display-column title="${requestSignedDate}" data="${requestUserDidNotSign}"/>
 		</jstl:if>
 		
-		<jstl:if test="${match.offerSignedDate != null }">
-			<acme:display-column title="${offerSignedDate}" path="match.offerSignedDate"/>
+		<jstl:if test="${modelObject.offerSignedDate != null }">
+			<acme:display-column title="${offerSignedDate}" path="modelObject.offerSignedDate"/>
 		</jstl:if>
-		<jstl:if test="${match.offerSignedDate == null }">
+		<jstl:if test="${modelObject.offerSignedDate == null }">
 			<acme:display-column title="${offerSignedDate}" data="${offerUserDidNotSign}"/>
 		</jstl:if>
 		
 		<jstl:choose>
-			<jstl:when test="${match.cancelled == true}">
+			<jstl:when test="${modelObject.cancelled == true}">
 				<spring:message var="cancellation" code="match.cancelled.true"/>
 			</jstl:when>
 			<jstl:otherwise>
@@ -55,8 +55,8 @@
 
 		
 		<jstl:choose>
-			<jstl:when test="${match.report != null }">
-				<acme:display-column title="${report}" data="${match.report}"/>
+			<jstl:when test="${modelObject.report != null }">
+				<acme:display-column title="${report}" data="${modelObject.report}"/>
 			</jstl:when>
 			<jstl:otherwise>
 				<spring:message var="pending" code="match.nullCode"/>
@@ -80,10 +80,10 @@
 	<spring:message	var="creator" code ="barter.username" />
 	
 	<div class="text-center">
-		<acme:display-column title="${title}" data="${match.offered.title}"/>
+		<acme:display-column title="${title}" data="${modelObject.offered.title}"/>
 		<acme:display-column title="${creator}" 
-		data="${match.offered.user.name } ${match.offered.user.surname } (${match.offered.user.userAccount.username })"/>
-		<acme:button url="home/barter/${match.offered.id}/show.do" code="match.barter.offer.button"/>
+		data="${modelObject.offered.user.name } ${modelObject.offered.user.surname } (${modelObject.offered.user.userAccount.username })"/>
+		<acme:button url="home/barter/${modelObject.offered.id}/show.do" code="match.barter.offer.button"/>
 	</div>
 
 <br />
@@ -99,10 +99,10 @@
 	<spring:message	var="creator" code ="barter.username" />
 	
 	<div class="text-center">
-		<acme:display-column title="${title}" data="${match.requested.title}"/>
+		<acme:display-column title="${title}" data="${modelObject.requested.title}"/>
 		<acme:display-column title="${creator}" 
-		data="${match.requested.user.name } ${match.requested.user.surname } (${match.requested.user.userAccount.username })"/>
-		<acme:button url="home/barter/${match.requested.id}/show.do" code="match.barter.request.button"/>
+		data="${modelObject.requested.user.name } ${modelObject.requested.user.surname } (${modelObject.requested.user.userAccount.username })"/>
+		<acme:button url="home/barter/${modelObject.requested.id}/show.do" code="match.barter.request.button"/>
 	</div>
 
 <br />
@@ -116,15 +116,15 @@
 		<jstl:out value="${auditor}"/>
 	</h3>
 
-<jstl:if test="${match.auditor != null }">
+<jstl:if test="${modelObject.auditor != null }">
 	<div class="text-center">
 		<spring:message var="name" code="match.auditor.name"/>
 		<spring:message var="surname" code="match.auditor.surname"/>
-		<acme:display-column title="${name}" data="${match.auditor.name}"/>
-		<acme:display-column title="${surname}" data="${match.auditor.surname}"/>
+		<acme:display-column title="${name}" data="${modelObject.auditor.name}"/>
+		<acme:display-column title="${surname}" data="${modelObject.auditor.surname}"/>
 	</div>
 </jstl:if>
-<jstl:if test="${match.auditor == null }">
+<jstl:if test="${modelObject.auditor == null }">
 	<div class="text-center">
 		<spring:message var="auditorNotAssinged" code="match.auditor.not.assigned"/>
 		<acme:display-column  data="${auditorNotAssinged}"/>
@@ -141,7 +141,7 @@
 	</h3>
 
 	<div class="text-center">
-		<acme:display-column data="${match.legalText.text}"/>
+		<acme:display-column data="${modelObject.legalText.text}"/>
 	</div>
 	
 	

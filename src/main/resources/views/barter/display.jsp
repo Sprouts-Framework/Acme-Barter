@@ -23,11 +23,11 @@
 	<spring:message var="barterUsername" code="barter.username"/>
 	
 	<div class="text-center">
-		<acme:display-column title="${title}" data="${barter.title}"/>
-		<acme:display-column title="${moment}" path="barter.moment"/>
+		<acme:display-column title="${title}" data="${modelObject.title}"/>
+		<acme:display-column title="${moment}" path="modelObject.moment"/>
 		<br/>
 		<acme:display-column title="${barterUsername}" 
-		data="${barter.user.name } ${barter.user.surname } (${barter.user.userAccount.username })"/>
+		data="${modelObject.user.name } ${modelObject.user.surname } (${modelObject.user.userAccount.username })"/>
 		
 		<acme:button url="home/user/${user.id }/show.do" code="user.profile"/>
 	</div>
@@ -44,10 +44,10 @@
 	</h3>
 	
 	<div class="text-center">
-		<acme:display-column title="${barter.requested.name}"/>
-		<acme:display-column data="${barter.requested.description}"/>
+		<acme:display-column title="${modelObject.requested.name}"/>
+		<acme:display-column data="${modelObject.requested.description}"/>
 		<h4><acme:display-column title="${itemPictures}"/>	</h4>
-		<acme:pictures-list pictures="${barter.requested.pictures } " size="${barter.requested.pictures.size() }"/>
+		<acme:pictures-list pictures="${modelObject.requested.pictures } " size="${modelObject.requested.pictures.size() }"/>
 	</div>
 	
 <br />
@@ -63,8 +63,8 @@
 	</h3>
 	
 	<div class="text-center">
-		<acme:display-column title="${barter.offered.name}"/>
-		<acme:display-column data="${barter.offered.description}"/>
+		<acme:display-column title="${modelObject.offered.name}"/>
+		<acme:display-column data="${modelObject.offered.description}"/>
 		<h4><acme:display-column title="${itemPictures}"/>	</h4>
-		<acme:pictures-list pictures="${barter.offered.pictures } " size="${barter.offered.pictures.size() }"/>
+		<acme:pictures-list pictures="${modelObject.offered.pictures } " size="${modelObject.offered.pictures.size() }"/>
 	</div>
