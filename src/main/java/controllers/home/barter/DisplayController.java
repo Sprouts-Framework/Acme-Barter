@@ -8,9 +8,9 @@ import domain.Barter;
 import es.us.lsi.dp.controllers.entities.crud.AbstractShowController;
 import es.us.lsi.dp.domain.UserAccount;
 
-@Controller("barterDisplayControllerUC002")
+@Controller("barterDisplayController")
 @RequestMapping("home/barter")
-public class DisplayController extends AbstractShowController<Barter, BarterService>{
+public class DisplayController extends AbstractShowController<Barter, BarterService> {
 
 	@Override
 	public boolean authorize(Barter domainObject, UserAccount principal) {
@@ -21,5 +21,4 @@ public class DisplayController extends AbstractShowController<Barter, BarterServ
 	protected String view() {
 		return "barter/display";
 	}
-
 }
