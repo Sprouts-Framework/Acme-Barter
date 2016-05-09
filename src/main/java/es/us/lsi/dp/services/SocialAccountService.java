@@ -93,12 +93,11 @@ public class SocialAccountService extends AbstractService<SocialAccount, SocialA
 		socialIdentity.setPicture(connection.getImageUrl());
 		socialIdentity.setHomePage(connection.getProfileUrl());
 		socialIdentity.setSocialNetwork(connection.getKey().getProviderId());
-		int socialIdentityId = socialIdentityService.save(socialIdentity);
-		socialIdentity = socialIdentityService.findById(socialIdentityId);
+		
 
 		BaseRegistrationForm customerForm = userRegistrationService.create();
 		customerForm.setCheckBox(true);
-		// customerForm.setContactPhone("None");
+		customerForm.setPhone("None");
 		customerForm.setName(profile.getFirstName());
 		if (profile.getLastName() != null)
 			customerForm.setSurname(profile.getLastName());
@@ -115,10 +114,9 @@ public class SocialAccountService extends AbstractService<SocialAccount, SocialA
 		int customerId = userRegistrationService.save(customerForm);
 		userRegistrationService.afterCommitingCreate(customerId);
 		User customer = customerService.findById(customerId);
-		//FIXME Arreglar para usar con más de una socialIdentity.
-		//customer.setSocialIdentity(socialIdentity);
-		customerId = customerService.save(customer);
-		customer = customerService.findById(customerId);
+
+		socialIdentity.setUser(customer);
+		socialIdentityService.save(socialIdentity);	
 
 		UserAccount userAccount = customer.getUserAccount();
 		Collection<SocialAccount> socialAccounts = new ArrayList<SocialAccount>();
@@ -149,16 +147,14 @@ public class SocialAccountService extends AbstractService<SocialAccount, SocialA
 		if (profile.getLastName() != null)
 			customer.setSurname(profile.getLastName());
 
-		//FIXME Arreglar para usar con más de una socialIdentity.
-//		SocialIdentity socialIdentity = customer.getSocialIdentity() == null ? new SocialIdentity() : customer.getSocialIdentity();
-//		socialIdentity.setNick(profile.getUsername());
-//		socialIdentity.setPicture(connection.getImageUrl());
-//		socialIdentity.setHomePage(connection.getProfileUrl());
-//		socialIdentity.setSocialNetwork(connection.getKey().getProviderId());
-//		int socialIdentityId = socialIdentityService.save(socialIdentity);
-//		socialIdentity = socialIdentityService.findById(socialIdentityId);
-//		customer.setSocialIdentity(socialIdentity);
-
+		Collection<SocialIdentity> identities = socialIdentityService.findSocialIdentityByUserAndSocialNetwork(customer.getId(), connection.getKey().getProviderId());
+		SocialIdentity socialIdentity =  identities.isEmpty() ? new SocialIdentity() : identities.iterator().next();
+		socialIdentity.setNick(profile.getUsername());
+		socialIdentity.setPicture(connection.getImageUrl());
+		socialIdentity.setHomePage(connection.getProfileUrl());
+		socialIdentity.setSocialNetwork(connection.getKey().getProviderId());
+		socialIdentityService.save(socialIdentity);
+		
 		UserAccount userAccount = customer.getUserAccount();
 		if (connection.getKey().getProviderId().equals("google"))
 			userAccount.setUsername(profile.getEmail().split("@")[0]);

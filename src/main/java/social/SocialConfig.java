@@ -28,11 +28,11 @@ import org.springframework.social.twitter.connect.TwitterConnectionFactory;
 @EnableSocial
 public class SocialConfig implements SocialConfigurer {
 
-	private static String TWITTER_CONSUMER_KEY = "";
-	private static String TWITTER_CONSUMER_SECRET = "";
+	private static String TWITTER_CONSUMER_KEY = "AIAeFLcQDEcoe1zWLJNtaZZKz";
+	private static String TWITTER_CONSUMER_SECRET = "UPtLe86tUGOURx951OgjmLyeIJd6blobzJUlODXwM9qjj9ipG9";
 
-	private static String GOOGLE_CLIENT_ID = "";
-	private static String GOOGLE_CLIENT_SECRET = "";
+	private static String GOOGLE_CLIENT_ID = "805582426400-muc30kf84k2ffjsv53cd4oogj3kvqkm0.apps.googleusercontent.com";
+	private static String GOOGLE_CLIENT_SECRET = "Nn2N7Wel_GF-94p4v4btDW1J";
 
 	@Autowired
 	DataSource dataSource;

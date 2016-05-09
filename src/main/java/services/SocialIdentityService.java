@@ -1,5 +1,6 @@
 package services;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +13,8 @@ import org.springframework.validation.Validator;
 
 import repositories.SocialIdentityRepository;
 import domain.SocialIdentity;
-import domain.User;
 import es.us.lsi.dp.domain.DomainEntity;
 import es.us.lsi.dp.services.AbstractService;
-import es.us.lsi.dp.services.CustomerService;
 import es.us.lsi.dp.services.contracts.CrudService;
 import es.us.lsi.dp.validation.contracts.BusinessRule;
 
@@ -23,8 +22,6 @@ import es.us.lsi.dp.validation.contracts.BusinessRule;
 @Transactional
 public class SocialIdentityService extends AbstractService<SocialIdentity, SocialIdentityRepository> implements CrudService<SocialIdentity> {
 
-	@Autowired
-	private CustomerService customerService;
 	@Autowired
 	private UserService userService;
 
@@ -51,17 +48,7 @@ public class SocialIdentityService extends AbstractService<SocialIdentity, Socia
 
 	@Override
 	public void afterCommitingCreate(int id) {
-		SocialIdentity result;
-		result = super.findById(id);
-		Assert.notNull(result);
-
-		User customer;
-		customer = customerService.findByPrincipal();
-		Assert.notNull(customer);
-
-		// FIXME Arreglar para usar con más de una socialIdentity.
-		// customer.setSocialIdentity(result);
-		customerService.update(customer);
+	
 	}
 
 	// Update methods -------------------------------------------
@@ -91,13 +78,7 @@ public class SocialIdentityService extends AbstractService<SocialIdentity, Socia
 
 	@Override
 	public void beforeCommitingDelete(SocialIdentity validable, List<String> context) {
-		Assert.notNull(validable);
-		User customer;
-		customer = customerService.findByPrincipal();
-		Assert.notNull(customer);
-		// FIXME Arreglar para usar con más de una socialIdentity.
-		// customer.setSocialIdentity(null);
-		customerService.save(customer);
+
 	}
 
 	@Override
@@ -122,4 +103,12 @@ public class SocialIdentityService extends AbstractService<SocialIdentity, Socia
 		return repository.findAll(page);
 	}
 
+	public Collection<SocialIdentity> findSocialIdentityByUserAndSocialNetwork(int userId, String socialNetwork){
+		Collection<SocialIdentity> result;
+		
+		result = repository.findSocialIdentityByUserAndSocialNetwork(userId, socialNetwork);
+		
+		return result;
+	}
+	
 }

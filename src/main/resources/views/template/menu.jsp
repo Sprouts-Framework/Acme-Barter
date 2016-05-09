@@ -126,5 +126,5 @@
 						</jstl:if>
 				</jstl:forEach> --%>
 			</ul>
-		</security:authorize>
+</security:authorize>
 	
