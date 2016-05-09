@@ -12,7 +12,7 @@ import domain.Barter;
 import es.us.lsi.dp.controllers.entities.crud.AbstractListController;
 
 @Controller("barterUserBulletinListController")
-@RequestMapping("barter/bulletin/user")
+@RequestMapping("barter/user/bulletin")
 public class ListController extends AbstractListController<Barter, BarterService>{
 	
 	@Override

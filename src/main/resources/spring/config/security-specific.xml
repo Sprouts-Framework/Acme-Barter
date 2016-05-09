@@ -18,26 +18,42 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd		
         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
     ">
-	
-	<security:http auto-config="true" use-expressions="true" pattern="/test">
-		<!-- TODO: Here you must add the security configuration for your application -->		
-	
-		<!-- This is an example of how you must add your security configurations -->
-		<!-- <security:intercept-url pattern="booking/customer/**" access="hasRole('Customer')" requires-channel="https"/> -->
-		
-		
-		<security:form-login 
-			always-use-default-target="true"
-			default-target-url="/security/manage-security.do"
-			login-page="/home/sign-in.do"
-			authentication-failure-url="/home/sign-in.do?showError=true"			 
-			username-parameter="username"
-			password-parameter="password" />
 
-		<security:logout 
-			logout-url="/home/sign-out.do"
-			logout-success-url="/security/manage-security-logout.do"
-			invalidate-session="true" />
-	</security:http>
- 	
+		<!-- TODO: Here you must add the security configuration for your application -->		
+		
+		<security:http pattern="/barter/**" use-expressions="true" auto-config="true" >
+			<security:intercept-url pattern="/user/**" access="hasRole('User')"  requires-channel="https"/>
+			<security:intercept-url pattern="/administrator/**" access="hasRole('Administrator')"  requires-channel="https"/>
+		</security:http>
+		<security:http pattern="/profile/**" use-expressions="true" auto-config="true" >
+			<security:intercept-url pattern="/user/**" access="hasRole('User')"  requires-channel="https"/>
+			<security:intercept-url pattern="/userAccount/user/**" access="hasRole('User')" requires-channel="https"/>
+		</security:http>
+		<security:http pattern="/user/**" use-expressions="true" auto-config="true" >
+			<security:intercept-url pattern="/**" access="hasRole('User')" requires-channel="https"/>
+		</security:http>
+		<security:http pattern="/socialIdentity/**" use-expressions="true" auto-config="true" >
+			<security:intercept-url pattern="/user/**" access="hasRole('User')" requires-channel="https"/>
+		</security:http>
+		<security:http pattern="/legalText/**" use-expressions="true" auto-config="true" >
+			<security:intercept-url pattern="/administrator/**" access="hasRole('Administrator')" requires-channel="https"/>
+		</security:http>
+		<security:http pattern="/match/**" use-expressions="true" auto-config="true" >
+			<security:intercept-url pattern="/user/**" access="hasRole('User')" requires-channel="https"/>
+			<security:intercept-url pattern="/auditor/**" access="hasRole('Auditor')" requires-channel="https"/>
+			<security:intercept-url pattern="/administrator/**" access="hasRole('Administrator')" requires-channel="https"/>
+		</security:http>
+		<security:http pattern="/folder/**" use-expressions="true" auto-config="true" >
+			<security:intercept-url pattern="/user/**" access="hasRole('User')" requires-channel="https"/>
+			<security:intercept-url pattern="/auditor/**" access="hasRole('Auditor')" requires-channel="https"/>
+			<security:intercept-url pattern="/administrator/**" access="hasRole('Administrator')" requires-channel="https"/>
+		</security:http>
+		<security:http pattern="/message/**" use-expressions="true" auto-config="true" >
+			<security:intercept-url pattern="/administrator/**" access="hasRole('Administrator')" requires-channel="https"/>
+			<security:intercept-url pattern="/user/**" access="hasRole('User')" requires-channel="https"/>
+			<security:intercept-url pattern="/auditor/**" access="hasRole('Auditor')" requires-channel="https"/>
+		</security:http>
+		<security:http pattern="/dashboard/**" use-expressions="true" auto-config="true" >
+			<security:intercept-url pattern="/administrator/**" access="hasRole('Administrator')" requires-channel="https"/>
+		</security:http>
 </beans>
