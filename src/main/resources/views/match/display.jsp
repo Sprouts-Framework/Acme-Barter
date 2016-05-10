@@ -70,12 +70,12 @@
 <br />
 
 <!-- Offered Barter -->
-
 	<h3 class="text-center">
 		<spring:message var="offeredBarter" code="match.barter.offered"/>
 		<jstl:out value="${offeredBarter}"/>
 	</h3>
-
+<jstl:choose>
+<jstl:when test="${modelObject.cancelled == true }">
 	<spring:message var="title" code="barter.title"/>
 	<spring:message	var="creator" code ="barter.username" />
 	
@@ -85,7 +85,14 @@
 		data="${modelObject.offered.user.name } ${modelObject.offered.user.surname } (${modelObject.offered.user.userAccount.username })"/>
 		<acme:button url="home/barter/${modelObject.offered.id}/show.do" code="match.barter.offer.button"/>
 	</div>
-
+</jstl:when>
+<jstl:otherwise>
+	<h4 class="text-center">
+		<spring:message var="offeredBarterCancelled" code="match.barter.is.cancelled"/>
+		<jstl:out value="${offeredBarterCancelled}"/>
+	</h4>
+</jstl:otherwise>
+</jstl:choose>
 <br />
 <br />
 <!-- Requested Barter -->
@@ -95,6 +102,8 @@
 		<jstl:out value="${requestedBarter}"/>
 	</h3>
 
+<jstl:choose>
+<jstl:when test="${modelObject.cancelled == true }">
 	<spring:message var="title" code="barter.title"/>
 	<spring:message	var="creator" code ="barter.username" />
 	
@@ -105,6 +114,14 @@
 		<acme:button url="home/barter/${modelObject.requested.id}/show.do" code="match.barter.request.button"/>
 	</div>
 
+</jstl:when>
+<jstl:otherwise>
+	<h4 class="text-center">
+		<spring:message var="requestedBarterCancelled" code="match.barter.is.cancelled"/>
+		<jstl:out value="${requestedBarterCancelled}"/>
+	</h4>
+</jstl:otherwise>
+</jstl:choose>
 <br />
 <br />
 

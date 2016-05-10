@@ -11,7 +11,7 @@ import domain.Match;
 @Repository("MatchRepository")
 public interface MatchRepository extends PagingAndSortingRepository<Match, Integer>{
 
-	@Query("select m from Match m where m.offered.user.id = ?1 or m.requested.user.id = ?1")
+	@Query("select m from Match m where (m.offered.user.id = ?1 or m.requested.user.id = ?1) and m.cancelled=false")
 	Page<Match> findMatchesByUserId(int userId, Pageable page);
 
 	@Query("select m from Match m where (m.offered.user IN(select u from User u2 join u2.followees u where u2.id=?1) or m.requested.user IN(select u from User u2 join u2.followees u where u2.id=?1)) and m.cancelled=false order by m.moment desc")
