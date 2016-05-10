@@ -7,10 +7,16 @@
 
 	<acme:hidden-field path="id" />
 	<acme:hidden-field path="version" />
+
 	<jstl:if test="${crudAction != 'showing' }">
 		<acme:hidden-field path="moment" />
+		<acme:hidden-field path="createdAt" />
+		<acme:hidden-field path="updatedAt" />
 		<acme:protected path="moment"/>
+		<acme:protected path="createdAt" />
+		<acme:protected path="updatedAt" />
 	</jstl:if>
+
 	
 	<jstl:if test="${crudAction == 'showing' }">
 		<acme:textbox-input code="message.recipient" path="recipient.userAccount.username"/>

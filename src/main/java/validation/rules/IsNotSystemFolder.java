@@ -16,7 +16,7 @@ public class IsNotSystemFolder implements BusinessRule<Folder> {
 
 	@Override
 	public String warning() {
-		return "box.isSystemFolder.error";
+		return "folder.isSystemFolder.error";
 	}
 
 }

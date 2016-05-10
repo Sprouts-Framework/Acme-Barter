@@ -115,18 +115,19 @@ public class FolderService extends AbstractService<Folder, FolderRepository> imp
 
 	@Override
 	public void beforeCommitingDelete(Folder validable, List<String> context) {
-		// checkIsAuthorised(box.getActor().getId());
-		Collection<Message> messages;
-		messages = messageService.findMessagesInFolder(validable.getId());
-		if (!messages.isEmpty()) {
-			Folder trashbox;
-			trashbox = repository.findSystemFolder(validable.getActor().getId(), "trash box");
-			while (messages.toArray().length != 0) {
-				Message m = (Message) messages.toArray()[0];
-				m.setFolder(trashbox);
-				// Guardo la carpeta y el mensaje
-				messageService.save(m);
-				messages = messageService.findMessagesInFolder(validable.getId());
+		if(!validable.getSystem()){
+			Collection<Message> messages;
+			messages = messageService.findMessagesInFolder(validable.getId());
+			if (!messages.isEmpty()) {
+				Folder trashbox;
+				trashbox = repository.findSystemFolder(validable.getActor().getId(), "trash box");
+				while (messages.toArray().length != 0) {
+					Message m = (Message) messages.toArray()[0];
+					m.setFolder(trashbox);
+					// Guardo la carpeta y el mensaje
+					messageService.save(m);
+					messages = messageService.findMessagesInFolder(validable.getId());
+				}
 			}
 		}
 	}
