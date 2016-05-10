@@ -42,6 +42,6 @@ public class UpdateController extends AbstractUpdateController<RelateBarterForm,
 
 	@Override
 	protected String onSuccess() {
-		return "../../../home/barter/list.do";
+		return "/home/barter/list.do";
 	}
 }

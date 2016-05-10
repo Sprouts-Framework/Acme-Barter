@@ -10,8 +10,6 @@
 
 <%@ include file="../template/libraries.jsp"%>
 
-
-
 <acme:data-table searcheable="false" i18n="datatables.language">
 	<acme:data-column code="user.name" path="name" sortable="true"/>
 	<acme:data-column code="user.surname" path="surname"/>

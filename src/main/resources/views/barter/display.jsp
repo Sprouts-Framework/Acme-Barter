@@ -21,6 +21,8 @@
 	<spring:message var="offeredName" code="barter.offered.name"/>
 	
 	<spring:message var="barterUsername" code="barter.username"/>
+	<spring:message var="relatedRequestedBarters" code="barter.requested.related"/>
+	<spring:message var="relatedOfferedBarters" code="barter.offered.related"/>
 	
 	<div class="text-center">
 		<acme:display-column title="${title}" data="${modelObject.title}"/>
@@ -68,3 +70,48 @@
 		<h4><acme:display-column title="${itemPictures}"/>	</h4>
 		<acme:pictures-list pictures="${modelObject.offered.pictures } " size="${modelObject.offered.pictures.size() }"/>
 	</div>
+	
+	<br />
+	<br />
+	<h3 class="text-center">
+		<jstl:out value="${relatedRequestedBarters }"/>
+	</h3>
+	
+	<acme:data-table i18n="datatables.language"  source="home/barter/related/${modelObject.id},requesteds/list/data.do" searcheable="false" >
+		<acme:data-column code="barter.username" path="user.userAccount.username" />
+		<acme:data-column code="barter.moment" path="moment" sortable="true" format="date"/>
+		<acme:data-column code="barter.title" path="title" />
+		<acme:data-column code="barter.requested.name" path="requested.name" />
+		<acme:data-column code="barter.offered.name" path="offered.name" />
+		
+		<acme:action-button url="home/barter/{0}/show.do" code="show.button"/>
+		<security:authorize access="hasRole('User')">
+			<acme:action-button url="match/user/{0}/create.do" code="match.create.title"/>
+		</security:authorize>
+		<security:authorize access="hasRole('Administrator')">
+			<acme:action-button url="barter/administrator/relate/{0}/update.do" code="relate.button"/>
+		</security:authorize>
+	</acme:data-table>
+	
+	
+	<br />
+	<br />
+	<h3 class="text-center">
+		<jstl:out value="${relatedOfferedBarters }"/>
+	</h3>
+	
+	<acme:data-table i18n="datatables.language"  source="home/barter/related/${modelObject.id},offereds/list/data.do" searcheable="false">
+		<acme:data-column code="barter.username" path="user.userAccount.username" />
+		<acme:data-column code="barter.moment" path="moment" sortable="true" format="date"/>
+		<acme:data-column code="barter.title" path="title" />
+		<acme:data-column code="barter.requested.name" path="requested.name" />
+		<acme:data-column code="barter.offered.name" path="offered.name" />
+		
+		<acme:action-button url="home/barter/{0}/show.do" code="show.button"/>
+		<security:authorize access="hasRole('User')">
+			<acme:action-button url="match/user/{0}/create.do" code="match.create.title"/>
+		</security:authorize>
+		<security:authorize access="hasRole('Administrator')">
+			<acme:action-button url="barter/administrator/relate/{0}/update.do" code="relate.button"/>
+		</security:authorize>
+	</acme:data-table>

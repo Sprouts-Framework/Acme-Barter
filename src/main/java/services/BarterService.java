@@ -117,6 +117,16 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 		return result;
 	}
 
+	public Page<Barter> findRelatedBarters(Integer barterId, String type, Pageable page) {
+		Page<Barter> result;
+		if (type.equals("requesteds"))
+			result = repository.findRelatedRequestedBarters(barterId, page);
+		else
+			result = repository.findRelatedOfferedBarters(barterId, page);
+		Assert.notNull(result);
+		return result;
+	}
+
 	@Override
 	public void updateBusinessRules(List<BusinessRule<Barter>> rules, List<Validator> validators) {
 		rules.add(isNotCancelled);
@@ -140,50 +150,50 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 	public Double ratioOfBartersThatAreNotRelated() {
 		return repository.ratioOfBartersThatAreNotRelated();
 	}
-	
-	public Long totalNumber(){
+
+	public Long totalNumber() {
 		Long result;
-		
+
 		result = repository.count();
 		Assert.notNull(result);
-		
+
 		return result;
 	}
-	
-	public Long totalNumberOfCancelledBarters(){
+
+	public Long totalNumberOfCancelledBarters() {
 		Long result;
-		
+
 		result = repository.totalNumberOfCancelledBarters();
 		Assert.notNull(result);
-		
+
 		return result;
 	}
-	
-	public Long maxNumberOfBartersPerUser(){
+
+	public Long maxNumberOfBartersPerUser() {
 		Long result;
-		
+
 		result = repository.maxNumberOfBartersPerUser();
 		Assert.notNull(result);
-		
+
 		return result;
 	}
-	
-	public Long minNumberOfBartersPerUser(){
+
+	public Long minNumberOfBartersPerUser() {
 		Long result;
-		
+
 		result = repository.minNumberOfBartersPerUser();
 		Assert.notNull(result);
-		
+
 		return result;
 	}
-	
-	public Double averageNumberOfBartersPerUser(){
+
+	public Double averageNumberOfBartersPerUser() {
 		Double result;
-		
+
 		result = repository.averageOfBartersPerUser();
 		Assert.notNull(result);
-		
+
 		return result;
 	}
-	
+
 }
