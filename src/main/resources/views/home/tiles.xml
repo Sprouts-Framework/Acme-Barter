@@ -47,7 +47,7 @@
 
 
 	<definition name="home/sign-up-user" extends="template/master">
-		<put-attribute name="title" type="string" value="sign-up.customer.title" />
+		<put-attribute name="title" type="string" value="sign-up.user.title" />
 		<put-attribute name="body" value="base-sign-up" />
 	</definition>
 

@@ -74,6 +74,9 @@ public class ValidationHandler<V extends Validable, D extends Validable> impleme
 
 	private void addDefaultRules(final V domainObject, final List<Validator> validators) {
 		if (domainObject instanceof RegistersUsers)
-			validators.add((Validator) appContext.getBean(Rules.UNIQUE_USERNAME));
+			if(!validators.contains((Validator) appContext.getBean(Rules.UNIQUE_USERNAME)))
+					validators.add((Validator) appContext.getBean(Rules.UNIQUE_USERNAME));
+		
+			
 	}
 }
