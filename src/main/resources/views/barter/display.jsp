@@ -29,7 +29,7 @@
 		<acme:display-column title="${barterUsername}" 
 		data="${modelObject.user.name } ${modelObject.user.surname } (${modelObject.user.userAccount.username })"/>
 		
-		<acme:button url="home/user/${modelObject.user.id }/show.do" code="user.profile"/>
+		<acme:button url="home/user/profile/${modelObject.user.id }/show.do" code="user.profile"/>
 	</div>
 
 <br />

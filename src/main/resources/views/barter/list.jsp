@@ -18,7 +18,6 @@
 	<acme:data-column code="barter.requested.name" path="requested.name" />
 	<acme:data-column code="barter.offered.name" path="offered.name" />
 	
-	<acme:action-button url="home/user/profile/{0}/show.do" code="user.profile.viewDetails"/>
 	<acme:action-button url="home/barter/{0}/show.do" code="show.button"/>
 	<security:authorize access="hasRole('User')">
 		<acme:action-button url="match/user/{0}/create.do" code="match.create.title"/>
