@@ -75,7 +75,7 @@
 		<jstl:out value="${offeredBarter}"/>
 	</h3>
 <jstl:choose>
-<jstl:when test="${modelObject.cancelled == true }">
+<jstl:when test="${modelObject.cancelled == false }">
 	<spring:message var="title" code="barter.title"/>
 	<spring:message	var="creator" code ="barter.username" />
 	
@@ -103,7 +103,7 @@
 	</h3>
 
 <jstl:choose>
-<jstl:when test="${modelObject.cancelled == true }">
+<jstl:when test="${modelObject.cancelled == false }">
 	<spring:message var="title" code="barter.title"/>
 	<spring:message	var="creator" code ="barter.username" />
 	
