@@ -12,7 +12,7 @@
 	
 	<acme:textbox-input code="barter.item.name" path="offeredName"/>
 	<acme:textarea-input code="barter.item.description" path="offeredDescription"/>
-	<acme:textarea-input code="barter.item.pictures" path="offeredPictures"/>
+	<acme:textarea-input code="barter.item.pictures.info" path="offeredPictures"/>
 	
 	
 	<spring:message code="barter.requested.name" var="requestedItem"/>
@@ -20,7 +20,7 @@
 	
 	<acme:textbox-input code="barter.item.name" path="requestedName"/>
 	<acme:textarea-input code="barter.item.description" path="requestedDescription"/>
-	<acme:textarea-input code="barter.item.pictures" path="requestedPictures"/>
+	<acme:textarea-input code="barter.item.pictures.info" path="requestedPictures"/>
 
 	<acme:submit-button code="${action}" name="${action}" />
 	<acme:cancel-button code="return.button" url="home/barter/list.do" />

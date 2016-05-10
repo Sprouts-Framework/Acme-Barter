@@ -26,11 +26,17 @@
 					<spring:message var="lowpriority" code="message.lowPriority"/>
 					<spring:message var="normalpriority" code="message.normalPriority"/>
 					<spring:message var="highpriority" code="message.highPriority"/>
-					<form:select class="form-control" path="priority">
-						<form:option label="${lowpriority}" value="-1"/>
-						<form:option label="${normalpriority}" value="0"/>
-						<form:option label="${highpriority}" value="1"/>
-					</form:select>
+					<jstl:if test="${crudAction == 'showing' }">
+						<fieldset disabled>
+					</jstl:if>
+						<form:select class="form-control" path="priority">
+							<form:option label="${lowpriority}" value="-1"/>
+							<form:option label="${normalpriority}" value="0"/>
+							<form:option label="${highpriority}" value="1"/>
+						</form:select>
+					<jstl:if test="${crudAction == 'showing' }">
+						</fieldset>
+					</jstl:if>
 				</div>
 			</div>
 			<form:errors class="alert alert-danger col-sm-3" path="priority"/>

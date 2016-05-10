@@ -27,7 +27,7 @@
 		<spring:message var="requestUserDidNotSign" code="match.request-user-did-not-sign" />
 		<spring:message var="offerUserDidNotSign" code="match.offer-user-did-not-sign" />
 		
-		<acme:display-column title="${moment}" path="match.moment"/>
+		<acme:display-column title="${moment}" path="modelObject.moment"/>
 		<jstl:if test="${modelObject.requestSignedDate != null }">
 			<acme:display-column title="${requestSignedDate}" path="modelObject.requestSignedDate"/>
 		</jstl:if>

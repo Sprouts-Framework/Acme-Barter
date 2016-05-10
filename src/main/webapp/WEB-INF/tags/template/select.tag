@@ -27,6 +27,7 @@
 <%@ attribute name="code" required="true" %>
 <%@ attribute name="items" required="true" type="java.util.Collection" %>
 <%@ attribute name="itemLabel" required="true" %>
+<%@ attribute name="readonly" required="false" %>
 
 <%@ attribute name="id" required="false" %>
 <%@ attribute name="onchange" required="false" %>
@@ -48,7 +49,9 @@
 	<jstl:set var="onchange" value="javascript: return true;" />
 </jstl:if>
 
-
+<jstl:if test="${readonly == null}">
+	<jstl:set var="readonly" value="false" />
+</jstl:if>
 
 <%-- Definition --%>
 
@@ -58,7 +61,7 @@
 	</div>
 	<div class="row">
 			<div class="col-sm-${boxSize} col-xs-12">
-				<form:select class="form-control" path="${path}" id="${id}" onchange="${onchange}">
+				<form:select class="form-control" path="${path}" id="${id}" onchange="${onchange}"  >
 					<form:option label="----" value="0"/>
 					<form:options items="${items}" itemLabel="${itemLabel}" itemValue="id"/>
 				</form:select>
@@ -67,5 +70,3 @@
 			<br/>
 	</div>
 </div>
-
-

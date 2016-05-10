@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.search.annotations.Analyzer;
-import org.hibernate.search.annotations.Boost;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
@@ -41,7 +40,6 @@ public class Item extends DomainEntity {
 	@SafeHtml(whitelistType=WhiteListType.NONE)
 	@Analyzer(definition = "customanalyzer")
 	@Field
-	@Boost(value = 1.5f)
 	public String getName() {
 		return name;
 	}
@@ -54,7 +52,6 @@ public class Item extends DomainEntity {
 	@SafeHtml(whitelistType=WhiteListType.NONE)
 	@Analyzer(definition = "customanalyzer")
 	@Field
-	@Boost(value = 1.0f)
 	public String getDescription() {
 		return description;
 	}

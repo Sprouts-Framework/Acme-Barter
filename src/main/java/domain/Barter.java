@@ -22,7 +22,6 @@ import org.apache.lucene.analysis.snowball.SnowballPorterFilterFactory;
 import org.apache.lucene.analysis.standard.StandardTokenizerFactory;
 import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.AnalyzerDef;
-import org.hibernate.search.annotations.Boost;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.FieldBridge;
 import org.hibernate.search.annotations.Indexed;
@@ -50,10 +49,11 @@ import es.us.lsi.dp.domain.DomainEntity;
 			@Parameter(name = "language", value = "Spanish")
 		}),
 		@TokenFilterDef(factory = TruncateTokenFilterFactory.class, params = {
-			@Parameter(name = "prefixLength", value = "3")
+			@Parameter(name = "prefixLength", value = "4")
 		}),
 		@TokenFilterDef(factory = PhoneticFilterFactory.class, params = {
-				@Parameter(name = "encoder", value = "DoubleMetaphone"), @Parameter(name = "inject", value = "false"),
+				@Parameter(name = "encoder", value = "DoubleMetaphone"), 
+				@Parameter(name = "inject", value = "false"),
 				@Parameter(name = "maxCodeLength", value = "4")
 		})
 })
@@ -90,7 +90,6 @@ public class Barter extends DomainEntity {
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	@Analyzer(definition = "customanalyzer")
 	@Field
-	@Boost(value = 2.0f)
 	public String getTitle() {
 		return title;
 	}
