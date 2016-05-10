@@ -28,6 +28,7 @@
 	type="java.lang.Boolean"%>
 <%@ attribute name="i18n" required="false"%>
 <%@ attribute name="source" required="false"%>
+<%@ attribute name="searcheable" required="false" type="java.lang.Boolean"%>
 
 <%@ variable name-given="cursor"%>
 
@@ -61,6 +62,10 @@
 
 <jstl:if test="${exportable == null}">
 	<jstl:set var="exportable" value="true" />
+</jstl:if>
+
+<jstl:if test="${searcheable == null}">
+	<jstl:set var="sercheable" value="true" />
 </jstl:if>
 
 
@@ -172,6 +177,14 @@
 	</jstl:otherwise>
 </jstl:choose>
 
+<jstl:choose>
+	<jstl:when test="${searcheable == true }">
+		<jstl:set var="sDom" value='T<"clear">lfrtip'/>
+	</jstl:when>
+	<jstl:otherwise>
+		<jstl:set var="sDom" value='T<"clear">lrtip'/>
+	</jstl:otherwise>
+</jstl:choose>
 
 
 <script type="text/javascript">
@@ -188,7 +201,7 @@
 			bStateSave: true,		
 			iDisplayLength: 5, 
 			aLengthMenu: [5, 10, 25, 50],
-			sDom: 'T<"clear">lfrtip',
+			sDom: '${sDom}',
 			
 			bServerSide : true,
 			sAjaxSource : '<jstl:out value="${source}" />' + '?_viewName=<jstl:out value="${_viewName}" />&_tableIndex=' + tableIndex,

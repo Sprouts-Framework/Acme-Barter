@@ -57,18 +57,21 @@
 			<legend>
 				<spring:message code="user.socialIdentity-info" />
 			</legend>
-			<acme:data-table i18n="datatables.language" source="home/user/socialIdentity/${modelObject.id}/list/data.do">
+			<acme:data-table searcheable="false" i18n="datatables.language" source="home/user/socialIdentity/${modelObject.id}/list/data.do">
 				<acme:data-column code="socialIdentity.nick" path="nick" sortable="true"/>
 				<acme:data-column code="socialIdentity.network" path="socialNetwork" sortable="true"/>
 				<acme:data-column code="socialIdentity.home" path="homePage" format="url"/>
 				<acme:data-column code="socialIdentity.picture" path="picture" format="image" imgSize="100x100"/>	
 				
 				<acme:action-button url="socialIdentity/user/{0}/show.do" code="show.button"/>
-				<acme:action-button url="socialIdentity/user/create.do" code="create.button"/>
 				<acme:action-button url="socialIdentity/user/{0}/update.do" code="update.button"/>
 				<acme:action-button url="socialIdentity/user/{0}/delete.do" code="delete.button"/>
 				
 			</acme:data-table>
+			
+			<br/>
+			<br/>
+			<acme:button url="socialIdentity/user/create.do" code="create.button"></acme:button>
 			
 		</fieldset>
 	</div>
