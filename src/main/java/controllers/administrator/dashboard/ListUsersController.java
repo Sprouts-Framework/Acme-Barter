@@ -41,12 +41,16 @@ public class ListUsersController extends AbstractListController<User, UserServic
 			break;
 		case 7:
 			result = service.findNonActiveUsersLastMonth(page);
+			break;
 		case 9:
 			result = service.theUsersWhoHaveRegisteredMoreBarters(page);
+			break;
 		case 10:
 			result = service.theUsersWhoHaveCancelledMoreBarters(page);
+			break;
 		case 11:
 			result = service.theUsersWhoHaveMoreMatches(page);
+			break;
 		default:
 			break;
 		}
@@ -70,15 +74,19 @@ public class ListUsersController extends AbstractListController<User, UserServic
 			if(!service.ninetyPercentileMaxCreatedBarters().isEmpty())
 				quantity6 = service.ninetyPercentileMaxCreatedBarters().get(0);
 			objects.put("quantity", quantity6);
+			break;
 		case 9:
 			quantity = barterService.maxNumberOfBartersPerUser();
 			objects.put("quantity", quantity);
+			break;
 		case 10:
 			quantity = service.quantityBartersCancelled();
-			objects.put("quantity", quantity);	
+			objects.put("quantity", quantity);
+			break;
 		case 11:
 			quantity = service.quantityMatches();
 			objects.put("quantity", quantity);
+			break;
 		default:
 			break;
 		}

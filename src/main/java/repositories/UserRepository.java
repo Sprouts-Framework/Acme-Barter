@@ -47,7 +47,7 @@ public interface UserRepository extends PagingAndSortingRepository<User, Integer
 	
 	@Query("select b.user from Barter b group by b.user having count(b.user) >= ALL(select count(b2.user) from Barter b2 group by b2.user)")
 	Page<User> theUsersWhoHaveRegisteredMoreBarters(Pageable page);
-	
+
 	@Query("select b.user from Barter b where b.cancelled = true group by b.user having count(b.user) >= ALL(select count(b2.user) from Barter b2 where b2.cancelled = true group by b2.user)")
 	Page<User> theUsersWhoHaveCancelledMoreBarters(Pageable page);
 	
