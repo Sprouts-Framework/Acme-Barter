@@ -51,6 +51,10 @@
 		<put-attribute name="body" value="base-sign-up" />
 	</definition>
 
+	<definition name="home/sign-up-auditor" extends="template/master">
+		<put-attribute name="title" type="string" value="sign-up.auditor.title" />
+		<put-attribute name="body" value="base-sign-up" />
+	</definition>
 
 	<definition name="home/contact-us" extends="template/master">
 		<put-attribute name="title" type="string" value="home.contact-us" />

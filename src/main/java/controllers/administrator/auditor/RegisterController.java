@@ -19,7 +19,7 @@ public class RegisterController extends AbstractCreateController<AuditorRegistra
 
 	@Override
 	protected String view() {
-		return "home/sign-up-user";
+		return "home/sign-up-auditor";
 	}
 
 	@Override

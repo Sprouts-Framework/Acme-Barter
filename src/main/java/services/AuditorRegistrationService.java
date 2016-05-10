@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import repositories.AuditorRepository;
+import validation.validators.SamePasswordsValidator;
 import domain.Actor;
 import domain.Auditor;
 import es.us.lsi.dp.domain.DomainObject;
@@ -18,7 +19,6 @@ import es.us.lsi.dp.services.AbstractFormService;
 import es.us.lsi.dp.services.UserAccountService;
 import es.us.lsi.dp.services.contracts.forms.CreateFormService;
 import es.us.lsi.dp.validation.contracts.BusinessRule;
-import es.us.lsi.dp.validation.validators.PasswordValidator;
 import forms.AuditorRegistrationForm;
 
 @Service
@@ -29,7 +29,7 @@ public class AuditorRegistrationService extends AbstractFormService<Auditor, Aud
 	@Autowired
 	private UserAccountService userAccountService;
 	@Autowired
-	private PasswordValidator passwordValidator;
+	private SamePasswordsValidator samePasswordsValidator;
 	@Autowired
 	private FolderService folderService;
 	@Autowired
@@ -52,7 +52,7 @@ public class AuditorRegistrationService extends AbstractFormService<Auditor, Aud
 
 	@Override
 	public void createBusinessRules(List<BusinessRule<AuditorRegistrationForm>> rules, List<Validator> validators) {
-		validators.add(passwordValidator);
+		validators.add(samePasswordsValidator);
 	}
 
 	@Override

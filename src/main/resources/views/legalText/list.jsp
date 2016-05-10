@@ -11,10 +11,13 @@
 <%@ include file="../template/libraries.jsp"%>
 
 
-<acme:data-table i18n="datatables.language" >
+<acme:data-table searcheable="false" i18n="datatables.language" >
 	<acme:data-column code="legalText.text" path="text" />
 	
-	<acme:action-button url="legalText/administrator/create.do" code="create.button"/>
 	<acme:action-button url="legalText/administrator/{0}/update.do" code="update.button"/>
 	<acme:action-button url="legalText/administrator/{0}/delete.do" code="delete.button"/>
 </acme:data-table>
+<br/>
+<br/>
+
+<acme:button url="legalText/administrator/create.do" code="create.button"/>

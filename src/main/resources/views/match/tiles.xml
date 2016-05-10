@@ -77,7 +77,7 @@
 
 	<definition name="match/cancel/body" template="../match/cancel-sign.jsp">
 		<put-attribute name="readOnly" type="string" value="false" />
-		<put-attribute name="action" type="string" value="update.button" />
+		<put-attribute name="action" type="string" value="cancel.button" />
 	</definition>
 
 	<definition name="match/sign" extends="template/master">
@@ -88,7 +88,7 @@
 
 	<definition name="match/sign/body" template="../match/cancel-sign.jsp">
 		<put-attribute name="readOnly" type="string" value="false" />
-		<put-attribute name="action" type="string" value="update.button" />
+		<put-attribute name="action" type="string" value="sign.button" />
 	</definition>
 	
 </tiles-definitions>
