@@ -65,7 +65,7 @@
 </jstl:if>
 
 <jstl:if test="${searcheable == null}">
-	<jstl:set var="sercheable" value="true" />
+	<jstl:set var="searcheable" value="true" />
 </jstl:if>
 
 

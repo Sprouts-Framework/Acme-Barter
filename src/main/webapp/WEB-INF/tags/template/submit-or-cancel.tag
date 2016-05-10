@@ -19,6 +19,4 @@
 	<spring:message code="${submitCode}" />
 </button>
 
-
-<a style="margin-left: 15px;" href="${backUrl}"><spring:message
-		code="sign-in.cancel" /></a>
+<acme:button url="${backUrl}" code="sign-in.cancel"/>

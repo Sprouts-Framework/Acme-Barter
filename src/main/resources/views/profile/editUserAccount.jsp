@@ -23,7 +23,7 @@
 		
 		<acme:password-input code="user.userAccount.password" path="password" />
 		
-		<acme:password-input code="user.userAccount.password" path="password2" />
+		<acme:password-input code="user.userAccount.password2" path="password2" />
 			
 	</div>
 

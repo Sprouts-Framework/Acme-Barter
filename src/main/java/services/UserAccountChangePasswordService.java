@@ -9,6 +9,7 @@ import org.springframework.util.Assert;
 import org.springframework.validation.Validator;
 
 import validation.validators.OldPasswordValidator;
+import validation.validators.SamePasswordsValidator;
 import es.us.lsi.dp.domain.UserAccount;
 import es.us.lsi.dp.repositories.UserAccountRepository;
 import es.us.lsi.dp.services.AbstractFormService;
@@ -16,7 +17,6 @@ import es.us.lsi.dp.services.SignInService;
 import es.us.lsi.dp.services.contracts.forms.UpdateFormService;
 import es.us.lsi.dp.utilities.PasswordEncoder;
 import es.us.lsi.dp.validation.contracts.BusinessRule;
-import es.us.lsi.dp.validation.validators.PasswordValidator;
 import forms.UserAccountForm;
 
 @Service
@@ -25,7 +25,7 @@ public class UserAccountChangePasswordService extends AbstractFormService<UserAc
 		UpdateFormService<UserAccountForm, UserAccount> {
 
 	@Autowired
-	private PasswordValidator passwordValidator;
+	private SamePasswordsValidator samePasswordsValidator;
 	@Autowired
 	private OldPasswordValidator oldPasswordValidator;
 
@@ -41,7 +41,7 @@ public class UserAccountChangePasswordService extends AbstractFormService<UserAc
 
 	@Override
 	public void updateBusinessRules(List<BusinessRule<UserAccountForm>> rules, List<Validator> validators) {
-		validators.add(passwordValidator);
+		validators.add(samePasswordsValidator);
 		validators.add(oldPasswordValidator);
 	}
 

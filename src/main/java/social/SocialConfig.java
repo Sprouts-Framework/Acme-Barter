@@ -33,6 +33,9 @@ public class SocialConfig implements SocialConfigurer {
 
 	private static String GOOGLE_CLIENT_ID = "805582426400-muc30kf84k2ffjsv53cd4oogj3kvqkm0.apps.googleusercontent.com";
 	private static String GOOGLE_CLIENT_SECRET = "Nn2N7Wel_GF-94p4v4btDW1J";
+	
+	public static String signInUrl = "/profile/user/";
+	public static String signInUrlAction = "/show.do";
 
 	@Autowired
 	DataSource dataSource;
