@@ -56,4 +56,7 @@
 		<security:http pattern="/dashboard/**" use-expressions="true" auto-config="true" >
 			<security:intercept-url pattern="/administrator/**" access="hasRole('Administrator')" requires-channel="https"/>
 		</security:http>
+			<security:http pattern="/auditor/**" use-expressions="true" auto-config="true" >
+			<security:intercept-url pattern="/administrator/**" access="hasRole('Administrator')" requires-channel="https"/>
+		</security:http>
 </beans>

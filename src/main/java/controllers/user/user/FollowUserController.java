@@ -49,5 +49,6 @@ public class FollowUserController extends AbstractPostController<UserService> im
 	protected String successCode() {
 		return "user.follow-unfollow.success";
 	}
+	
 
 }

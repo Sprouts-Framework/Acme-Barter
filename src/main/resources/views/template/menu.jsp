@@ -38,7 +38,7 @@
 <ul class="nav navbar-nav">
 	<security:authorize access="hasRole('Administrator')">
 		<li class="dropdown"><a href="#" class="dropdown-toggle"
-			data-toggle="dropdown"> <spring:message code="master.user" />
+			data-toggle="dropdown"> <spring:message code="master.administrator" />
 				<span class="caret"></span>
 		</a>
 			<ul class="dropdown-menu">

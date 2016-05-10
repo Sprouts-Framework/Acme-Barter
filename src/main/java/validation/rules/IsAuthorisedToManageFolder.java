@@ -28,7 +28,7 @@ public class IsAuthorisedToManageFolder implements BusinessRule<Folder> {
 
 	@Override
 	public String warning() {
-		return "box.isAuthorised.error";
+		return "folder.isAuthorised.error";
 	}
 
 }

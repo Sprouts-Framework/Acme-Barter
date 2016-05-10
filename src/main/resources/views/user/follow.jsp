@@ -34,12 +34,12 @@
 			<jstl:when test="${isFollowing==false }">
 				<acme:submit-or-cancel
 					submitCode="user.follow.button"
-					backUrl="user/user/following/list.do" />
+					backUrl="home/user/list.do" />
 			</jstl:when>
 			<jstl:otherwise>
 				<acme:submit-or-cancel
 					submitCode="user.unfollow.button"
-					backUrl="user/user/following/list.do" />
+					backUrl="home/user/list.do" />
 			</jstl:otherwise>
 		</jstl:choose>
 		</div>
