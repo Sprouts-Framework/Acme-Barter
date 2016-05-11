@@ -1055,7 +1055,7 @@
     <bean id="match3" class="domain.Match">
         <property name="moment" value="04/26/2016 18:00"/>
         <property name="requestSignedDate" value="04/27/2016 15:00" />
-        <property name="cancelled" value="false" />
+        <property name="cancelled" value="true" />
         
         <property name="auditor" ref="auditor2"/>
         <property name="legalText" ref="legalText2"/>
@@ -1064,7 +1064,7 @@
     </bean>     
     
     <bean id="match4" class="domain.Match">
-        <property name="moment" value="04/26/2016 18:00"/>
+        <property name="moment" value="04/10/2016 18:00"/>
         <property name="cancelled" value="false" />
         <property name="requestSignedDate" value="04/17/2016 15:00" />
         <property name="offerSignedDate" value="04/23/2016 17:00" />

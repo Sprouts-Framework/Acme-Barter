@@ -12,6 +12,7 @@ import org.springframework.validation.Validator;
 import repositories.MatchRepository;
 import validation.rules.IsAuthorisedToUpdateMatch;
 import validation.rules.IsNotCancelledMatch;
+import validation.rules.SignedMatch;
 import domain.Match;
 import es.us.lsi.dp.services.AbstractService;
 import es.us.lsi.dp.services.contracts.UpdateService;
@@ -25,11 +26,14 @@ public class MatchCancelService extends AbstractService<Match, MatchRepository> 
 	private IsAuthorisedToUpdateMatch isAuthorisedToUpdateMatch;
 	@Autowired
 	private IsNotCancelledMatch isNotCancelledMatch;
-
+	@Autowired
+	private SignedMatch signedMatch;
+	
 	@Override
 	public void updateBusinessRules(List<BusinessRule<Match>> rules, List<Validator> validators) {
 		rules.add(isAuthorisedToUpdateMatch);
 		rules.add(isNotCancelledMatch);
+		rules.add(signedMatch);
 	}
 
 	@Override

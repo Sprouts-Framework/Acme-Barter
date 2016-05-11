@@ -125,7 +125,6 @@ public class MatchService extends AbstractService<Match, MatchRepository> implem
 	public void updateBusinessRules(List<BusinessRule<Match>> rules, List<Validator> validators) {
 	}
 
-	//TODO quitar esto, previa comprobación de que no pasa nada si en la vista pongo ambos campos protegidos.
 	@Override
 	public void beforeUpdating(Match validable, List<String> context) {
 		Match persistedMatch;

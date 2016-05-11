@@ -17,6 +17,9 @@
 	<acme:data-column code="barter.title" path="title" />
 	<acme:data-column code="barter.requested.name" path="requested.name" />
 	<acme:data-column code="barter.offered.name" path="offered.name" />
+	<security:authorize access="hasRole('Administrator')">
+		<acme:data-column code="barter.cancelled.column" path="cancelled" falseCode="barter.cancelled.false" trueCode="barter.cancelled.true"/>
+	</security:authorize>
 	
 	<acme:action-button url="home/user/profile/{0}/show.do" code="user.profile.viewDetails"/>
 	<acme:action-button url="home/barter/{0}/show.do" code="show.button"/>

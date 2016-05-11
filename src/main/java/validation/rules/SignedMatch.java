@@ -1,5 +1,6 @@
 package validation.rules;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -11,7 +12,7 @@ import es.us.lsi.dp.services.SignInService;
 import es.us.lsi.dp.validation.contracts.BusinessRule;
 
 @Component
-public class IsAuthorisedToUpdateMatch implements BusinessRule<Match> {
+public class SignedMatch implements BusinessRule<Match> {
 
 	@Autowired
 	private MatchService matchService;
@@ -26,11 +27,11 @@ public class IsAuthorisedToUpdateMatch implements BusinessRule<Match> {
 		Assert.notNull(match);
 		Assert.notNull(principal);
 
-		return (match.getOffered().getUser().getUserAccount().equals(principal) || match.getRequested().getUser().getUserAccount().equals(principal));
+		return (match.getOfferSignedDate() == null || match.getRequestSignedDate() == null);
 	}
 
 	@Override
 	public String warning() {
-		return "match.isAuthorised.error";
+		return "match.isSignedForBoth.error";
 	}
 }
