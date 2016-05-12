@@ -14,7 +14,7 @@
 
 <div class="jumbotron">
 	<p><spring:message code="welcome.message" /></p>
-	<p><a href="home/gym/list.do" class="btn btn-primary"><spring:message code="welcome.gyms" /> &raquo;</a></p>
+	<p><a href="home/barter/list.do" class="btn btn-primary"><spring:message code="welcome.barters" /> &raquo;</a></p>
 </div>
 
 
