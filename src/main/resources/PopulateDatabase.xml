@@ -831,6 +831,43 @@
             </list>
         </property>
     </bean>
+     
+    <bean id="item11_1" class="domain.Item">
+        <property name="name" value="Item barter para autoasignarse 1" />
+        <property name="description" value="Item barter para autoasignarse 1" />
+        <property name="pictures">
+            <list>
+            </list>
+        </property>
+    </bean>
+        
+    <bean id="item11_2" class="domain.Item">
+        <property name="name" value="Item barter para autoasignarse 2" />
+        <property name="description" value="Item barter para autoasignarse 2" />
+        <property name="pictures">
+            <list>
+            </list>
+        </property>
+    </bean>
+        
+    <bean id="item12_1" class="domain.Item">
+        <property name="name" value="Item barter para autoasignarse 3" />
+        <property name="description" value="Item barter para autoasignarse 3" />
+        <property name="pictures">
+            <list>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="item12_2" class="domain.Item">
+        <property name="name" value="Item barter para autoasignarse 3" />
+        <property name="description" value="Item barter para autoasignarse 3" />
+        <property name="pictures">
+            <list>
+            </list>
+        </property>
+    </bean>
+        
         
 		<!-- Barters -->
 
@@ -1016,6 +1053,42 @@
         </property>
     </bean>
     
+    <bean id="barter11" class="domain.Barter">
+        <property name="moment" value="04/30/2016 15:00"/>
+        <property name="title" value="Barter a autoasignarse 1" />
+        <property name="cancelled" value="false" />
+        <!-- Referencias a otras entidades -->
+        <property name="user" ref="user1"/>
+        <property name="offered" ref="item11_1"/>
+        <property name="requested" ref="item11_2"/>
+        <property name="requesteds">
+            <list>
+            </list>
+        </property>
+        <property name="offereds">
+            <list>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="barter12" class="domain.Barter">
+        <property name="moment" value="05/05/2016 15:00"/>
+        <property name="title" value="Barter a autoasignarse 2" />
+        <property name="cancelled" value="false" />
+        <!-- Referencias a otras entidades -->
+        <property name="user" ref="user2"/>
+        <property name="offered" ref="item12_1"/>
+        <property name="requested" ref="item12_2"/>
+        <property name="requesteds">
+            <list>
+            </list>
+        </property>
+        <property name="offereds">
+            <list>
+            </list>
+        </property>
+    </bean>
+    
     <!-- LegalText -->
     
     <bean id="legalText1" class="domain.LegalText">
@@ -1072,5 +1145,13 @@
         <property name="offered" ref="barter9"/>
         <property name="requested" ref="barter10"/>
     </bean>    
+    
+    <bean id="match5" class="domain.Match">
+        <property name="moment" value="05/06/2016 18:00"/>
+        <property name="cancelled" value="false" />
+        <property name="legalText" ref="legalText1"/>
+        <property name="offered" ref="barter11"/>
+        <property name="requested" ref="barter12"/>
+    </bean>  
 	
 </beans>

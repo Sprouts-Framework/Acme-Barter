@@ -19,7 +19,7 @@ public class ListController extends AbstractListController<Barter, BarterService
 
 	@Override
 	protected String view() {
-		return "barter/list-admin";
+		return "barter/list";
 	}
 	
 	@Override

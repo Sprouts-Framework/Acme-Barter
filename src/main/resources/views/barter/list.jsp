@@ -17,12 +17,21 @@
 	<acme:data-column code="barter.title" path="title" />
 	<acme:data-column code="barter.requested.name" path="requested.name" />
 	<acme:data-column code="barter.offered.name" path="offered.name" />
+	<security:authorize access="hasRole('Administrator')">
+		<acme:data-column code="barter.cancelled.column" path="cancelled" falseCode="barter.cancelled.false" trueCode="barter.cancelled.true"/>
+	</security:authorize>
 	
 	<acme:action-button url="home/barter/{0}/show.do" code="show.button"/>
 	<security:authorize access="hasRole('User')">
 		<acme:action-button url="match/user/{0}/create.do" code="match.create.title"/>
 	</security:authorize>
+	<security:authorize access="hasRole('User')">
+		<acme:action-button url="match/user/{0}/create.do" code="match.create.title"/>
+	</security:authorize>
 	<security:authorize access="hasRole('Administrator')">
 		<acme:action-button url="barter/administrator/relate/{0}/update.do" code="relate.button"/>
+	</security:authorize>
+	<security:authorize access="hasRole('Administrator')">
+		<acme:action-button url="barter/administrator/{0}/update.do" code="cancel.button"/>
 	</security:authorize>
 </acme:data-table>
