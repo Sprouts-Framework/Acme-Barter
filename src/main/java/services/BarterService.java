@@ -20,6 +20,7 @@ import repositories.BarterRepository;
 import validation.rules.DoesNotHaveFinishedMatch;
 import validation.rules.IsNotCancelled;
 import domain.Barter;
+import domain.Match;
 import domain.User;
 import es.us.lsi.dp.fulltext.FullTextConstraint;
 import es.us.lsi.dp.fulltext.FullTextCustomQuery;
@@ -34,6 +35,9 @@ import es.us.lsi.dp.validation.contracts.BusinessRule;
 public class BarterService extends AbstractService<Barter, BarterRepository> implements ListService<Barter>, ShowService<Barter>, UpdateService<Barter> {
 
 	@Autowired
+	private MatchService matchService;
+	
+	@Autowired
 	private EntityManagerFactory entityManagerFactory;
 
 	@Autowired
@@ -44,7 +48,8 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 
 	@Autowired
 	private DoesNotHaveFinishedMatch doesNotHaveFinishedMatch;
-
+	
+	
 	public void cancelBarters() {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		Query storedProcedure = entityManager.createNativeQuery("CALL `acme-barter`.cancelBarters()");
@@ -141,6 +146,11 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 	@Override
 	public void beforeCommitingUpdate(Barter validable, List<String> context) {
 		validable.setCancelled(true);
+		Match match;
+		match = matchService.findMatchByBarterId(validable.getId());
+		if(match != null)
+			match.setCancelled(true);
+			matchService.update(match);
 	}
 
 	@Override

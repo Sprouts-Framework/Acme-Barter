@@ -232,4 +232,10 @@ public class MatchService extends AbstractService<Match, MatchRepository> implem
 		
 		return result;
 	}
+	
+	public Match findMatchByBarterId(int barterId){
+		Match result;
+		result = repository.findMatchByBarterId(barterId);
+		return result;
+	}
 }

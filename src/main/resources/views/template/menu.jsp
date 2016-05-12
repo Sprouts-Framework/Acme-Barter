@@ -27,6 +27,7 @@
 				<li><a href="match/user/bulletin/list.do"><spring:message code="master.match.bulletin" /></a></li>
 				<li><a href="match/user/create.do"><spring:message code="master.match.create" /></a></li>
 				<li><a href="match/user/list.do"><spring:message code="master.match.user.list" /></a></li>
+				<li><a href="barter/user/list.do"><spring:message code="master.barter.user.list" /></a></li>
 				<li><a href="user/user/followers/list.do"><spring:message code="master.user.followers" /></a></li>
 				<li><a href="user/user/following/list.do"><spring:message code="master.user.following" /></a></li>
 			</ul></li>
@@ -43,6 +44,7 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li><a href="barter/administrator/list.do"><spring:message code="master.barter.list" /></a></li>
+				<li><a href="match/administrator/list.do"><spring:message code="master.match.list" /></a></li>
 				<li><a href="barter/administrator/cancel-procedure.do"><spring:message code="master.barter.cancel-procedure" /></a></li>
 				<li><a href="legalText/administrator/list.do"><spring:message code="master.legalText.list" /></a></li>
 				<li><a href="auditor/administrator/create.do"><spring:message code="master.registerAuditor.list" /></a></li>

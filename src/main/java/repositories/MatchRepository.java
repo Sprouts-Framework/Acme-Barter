@@ -10,7 +10,10 @@ import domain.Match;
 
 @Repository("MatchRepository")
 public interface MatchRepository extends PagingAndSortingRepository<Match, Integer>{
-
+	
+	@Query("select m from Match m where m.offered.id = ?1 or m.requested.id = ?1")
+	Match findMatchByBarterId(int barterId);
+	
 	@Query("select m from Match m where (m.offered.user.id = ?1 or m.requested.user.id = ?1) and m.cancelled=false")
 	Page<Match> findMatchesByUserId(int userId, Pageable page);
 
