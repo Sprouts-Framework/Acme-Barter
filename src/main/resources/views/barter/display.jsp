@@ -25,13 +25,13 @@
 	<spring:message var="relatedOfferedBarters" code="barter.offered.related"/>
 	
 	<div class="text-center">
-		<acme:display-column title="${title}" data="${modelObject.title}"/>
-		<acme:display-column title="${moment}" path="modelObject.moment"/>
+		<sprouts:display-column title="${title}" data="${modelObject.title}"/>
+		<sprouts:display-column title="${moment}" path="modelObject.moment"/>
 		<br/>
-		<acme:display-column title="${barterUsername}" 
+		<sprouts:display-column title="${barterUsername}" 
 		data="${modelObject.user.name } ${modelObject.user.surname } (${modelObject.user.userAccount.username })"/>
 		
-		<acme:button url="home/user/profile/${modelObject.user.id }/show.do" code="user.profile"/>
+		<sprouts:button url="home/user/profile/${modelObject.user.id }/show.do" code="user.profile"/>
 	</div>
 
 <br />
@@ -46,10 +46,10 @@
 	</h3>
 	
 	<div class="text-center">
-		<acme:display-column title="${modelObject.requested.name}"/>
-		<acme:display-column data="${modelObject.requested.description}"/>
-		<h4><acme:display-column title="${itemPictures}"/>	</h4>
-		<acme:pictures-list pictures="${modelObject.requested.pictures } " size="${modelObject.requested.pictures.size() }"/>
+		<sprouts:display-column title="${modelObject.requested.name}"/>
+		<sprouts:display-column data="${modelObject.requested.description}"/>
+		<h4><sprouts:display-column title="${itemPictures}"/>	</h4>
+		<sprouts:pictures-list pictures="${modelObject.requested.pictures } " size="${modelObject.requested.pictures.size() }"/>
 	</div>
 	
 <br />
@@ -65,10 +65,10 @@
 	</h3>
 	
 	<div class="text-center">
-		<acme:display-column title="${modelObject.offered.name}"/>
-		<acme:display-column data="${modelObject.offered.description}"/>
-		<h4><acme:display-column title="${itemPictures}"/>	</h4>
-		<acme:pictures-list pictures="${modelObject.offered.pictures } " size="${modelObject.offered.pictures.size() }"/>
+		<sprouts:display-column title="${modelObject.offered.name}"/>
+		<sprouts:display-column data="${modelObject.offered.description}"/>
+		<h4><sprouts:display-column title="${itemPictures}"/>	</h4>
+		<sprouts:pictures-list pictures="${modelObject.offered.pictures } " size="${modelObject.offered.pictures.size() }"/>
 	</div>
 	
 	<br />
@@ -77,21 +77,21 @@
 		<jstl:out value="${relatedRequestedBarters }"/>
 	</h3>
 	
-	<acme:data-table i18n="datatables.language"  source="home/barter/related/${modelObject.id},requesteds/list/data.do" searcheable="false" >
-		<acme:data-column code="barter.username" path="user.userAccount.username" />
-		<acme:data-column code="barter.moment" path="moment" sortable="true" format="date"/>
-		<acme:data-column code="barter.title" path="title" />
-		<acme:data-column code="barter.requested.name" path="requested.name" />
-		<acme:data-column code="barter.offered.name" path="offered.name" />
+	<sprouts:data-table i18n="datatables.language"  source="home/barter/related/${modelObject.id},requesteds/list/data.do" searcheable="false" >
+		<sprouts:data-column code="barter.username" path="user.userAccount.username" />
+		<sprouts:data-column code="barter.moment" path="moment" sortable="true" format="date"/>
+		<sprouts:data-column code="barter.title" path="title" />
+		<sprouts:data-column code="barter.requested.name" path="requested.name" />
+		<sprouts:data-column code="barter.offered.name" path="offered.name" />
 		
-		<acme:action-button url="home/barter/{0}/show.do" code="show.button"/>
+		<sprouts:action-button url="home/barter/{0}/show.do" code="show.button"/>
 		<security:authorize access="hasRole('User')">
-			<acme:action-button url="match/user/{0}/create.do" code="match.create.title"/>
+			<sprouts:action-button url="match/user/{0}/create.do" code="match.create.title"/>
 		</security:authorize>
 		<security:authorize access="hasRole('Administrator')">
-			<acme:action-button url="barter/administrator/relate/{0}/update.do" code="relate.button"/>
+			<sprouts:action-button url="barter/administrator/relate/{0}/update.do" code="relate.button"/>
 		</security:authorize>
-	</acme:data-table>
+	</sprouts:data-table>
 	
 	
 	<br />
@@ -100,18 +100,18 @@
 		<jstl:out value="${relatedOfferedBarters }"/>
 	</h3>
 	
-	<acme:data-table i18n="datatables.language"  source="home/barter/related/${modelObject.id},offereds/list/data.do" searcheable="false">
-		<acme:data-column code="barter.username" path="user.userAccount.username" />
-		<acme:data-column code="barter.moment" path="moment" sortable="true" format="date"/>
-		<acme:data-column code="barter.title" path="title" />
-		<acme:data-column code="barter.requested.name" path="requested.name" />
-		<acme:data-column code="barter.offered.name" path="offered.name" />
+	<sprouts:data-table i18n="datatables.language"  source="home/barter/related/${modelObject.id},offereds/list/data.do" searcheable="false">
+		<sprouts:data-column code="barter.username" path="user.userAccount.username" />
+		<sprouts:data-column code="barter.moment" path="moment" sortable="true" format="date"/>
+		<sprouts:data-column code="barter.title" path="title" />
+		<sprouts:data-column code="barter.requested.name" path="requested.name" />
+		<sprouts:data-column code="barter.offered.name" path="offered.name" />
 		
-		<acme:action-button url="home/barter/{0}/show.do" code="show.button"/>
+		<sprouts:action-button url="home/barter/{0}/show.do" code="show.button"/>
 		<security:authorize access="hasRole('User')">
-			<acme:action-button url="match/user/{0}/create.do" code="match.create.title"/>
+			<sprouts:action-button url="match/user/{0}/create.do" code="match.create.title"/>
 		</security:authorize>
 		<security:authorize access="hasRole('Administrator')">
-			<acme:action-button url="barter/administrator/relate/{0}/update.do" code="relate.button"/>
+			<sprouts:action-button url="barter/administrator/relate/{0}/update.do" code="relate.button"/>
 		</security:authorize>
-	</acme:data-table>
+	</sprouts:data-table>

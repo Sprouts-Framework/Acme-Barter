@@ -10,22 +10,22 @@
 <%@ include file="../template/libraries.jsp" %>
 
 
-<acme:button code="create.button" url="message/${actor}/create.do"/>
+<sprouts:button code="create.button" url="message/${actor}/create.do"/>
 <br />
 
-<acme:data-table i18n="datatables.language">
-		<acme:action-button code="move.button" url="message/${actor}/{0}/update.do" />
-		<acme:action-button code="delete.button" url="message/${actor}/{0}/delete.do" />
-		<acme:action-button code="details.button" url="message/${actor}/{0}/show.do" />
+<sprouts:data-table i18n="datatables.language">
+		<sprouts:action-button code="move.button" url="message/${actor}/{0}/update.do" />
+		<sprouts:action-button code="delete.button" url="message/${actor}/{0}/delete.do" />
+		<sprouts:action-button code="details.button" url="message/${actor}/{0}/show.do" />
 
-	<acme:data-column code="message.sender" path="sender.userAccount.username" sortable="true" width="10%"/>
-	<acme:data-column code="message.recipient" path="recipient.userAccount.username" sortable="true" width="10%"/>
-	<acme:data-column code="message.priority" path="priority" sortable="true" width="10%"/>
-	<acme:data-column code="message.moment" path="moment" sortable="true" width="20%"/>
-	<acme:data-column code="message.subject" path="subject" sortable="true" width="50%"/>
+	<sprouts:data-column code="message.sender" path="sender.userAccount.username" sortable="true" width="10%"/>
+	<sprouts:data-column code="message.recipient" path="recipient.userAccount.username" sortable="true" width="10%"/>
+	<sprouts:data-column code="message.priority" path="priority" sortable="true" width="10%"/>
+	<sprouts:data-column code="message.moment" path="moment" sortable="true" width="20%"/>
+	<sprouts:data-column code="message.subject" path="subject" sortable="true" width="50%"/>
 	
-</acme:data-table>
+</sprouts:data-table>
 <br/>
 
-		<acme:cancel-button url="folder/${actor}/list.do" code="return.button"/>
+		<sprouts:cancel-button url="folder/${actor}/list.do" code="return.button"/>
 	

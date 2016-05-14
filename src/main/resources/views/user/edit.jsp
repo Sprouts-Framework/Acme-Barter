@@ -13,32 +13,32 @@
 <tiles:importAttribute name="readOnly" toName="readOnly" />
 <tiles:importAttribute name="action" toName="action" />
 
-<acme:form modelAttribute="modelObject" readOnly="${readOnly}">
+<sprouts:form modelAttribute="modelObject" readOnly="${readOnly}">
 	
-	<acme:hidden-field path="id"/>
-	<acme:hidden-field path="version"/>
-	<acme:hidden-field path="followers"/>
-	<acme:hidden-field path="followees"/>
-	<acme:hidden-field path="userAccount"/>
+	<sprouts:hidden-field path="id"/>
+	<sprouts:hidden-field path="version"/>
+	<sprouts:hidden-field path="followers"/>
+	<sprouts:hidden-field path="followees"/>
+	<sprouts:hidden-field path="userAccount"/>
 	
-	<acme:protected path="id"/>
-	<acme:protected path="version"/>
-	<acme:protected path="followers"/>
-	<acme:protected path="followees"/>
-	<acme:protected path="userAccount"/>
+	<sprouts:protected path="id"/>
+	<sprouts:protected path="version"/>
+	<sprouts:protected path="followers"/>
+	<sprouts:protected path="followees"/>
+	<sprouts:protected path="userAccount"/>
 	
 	<div class="fieldset-btm-margin">
 		
-		<acme:textbox-input code="user.name" path="name" />
-		<acme:textbox-input code="user.surname" path="surname" />
-		<acme:textbox-input code="user.phone" path="phone" />
+		<sprouts:textbox-input code="user.name" path="name" />
+		<sprouts:textbox-input code="user.surname" path="surname" />
+		<sprouts:textbox-input code="user.phone" path="phone" />
 		
 	</div>
 
 	<jstl:if test="${crudAction != 'showing'}">
-		<acme:submit-button code="${action}" name="${action}" />
+		<sprouts:submit-button code="${action}" name="${action}" />
 	</jstl:if>
-	<acme:cancel-button code="return.button" url="profile/user/show.do" />
+	<sprouts:cancel-button code="return.button" url="profile/user/show.do" />
 
-</acme:form>
+</sprouts:form>
 

@@ -25,23 +25,23 @@
 	</div>
 </jstl:if>
 
-<acme:form modelAttribute="modelObject" readOnly="${readOnly}">
+<sprouts:form modelAttribute="modelObject" readOnly="${readOnly}">
 
-	<acme:hidden-field path="id" />
-	<acme:hidden-field path="version" />
+	<sprouts:hidden-field path="id" />
+	<sprouts:hidden-field path="version" />
 	
-	<acme:protected path="id" />
-	<acme:protected path="version" />
+	<sprouts:protected path="id" />
+	<sprouts:protected path="version" />
 	
 	<div class="fieldset-btm-margin">
 		<fieldset>
 			<legend>
 				<spring:message code="user.account-info" />
 			</legend>
-			<acme:textbox-input code="user.name" path="name" />
-			<acme:textbox-input code="user.surname" path="surname" />
-			<acme:textbox-input code="user.contactPhone" path="phone" />
-			<acme:textbox-input code="user.userAccount.username" path="userAccount.username" />
+			<sprouts:textbox-input code="user.name" path="name" />
+			<sprouts:textbox-input code="user.surname" path="surname" />
+			<sprouts:textbox-input code="user.contactPhone" path="phone" />
+			<sprouts:textbox-input code="user.userAccount.username" path="userAccount.username" />
 			
 			<jstl:if test="${empty modelObject.userAccount.socialAccounts}">
 				<a class="btn btn-default" href="profile/userAccount/user/update.do"><spring:message code="user.userAccount-update" /></a>
@@ -57,32 +57,32 @@
 			<legend>
 				<spring:message code="user.socialIdentity-info" />
 			</legend>
-			<acme:data-table searcheable="false" i18n="datatables.language" source="home/user/socialIdentity/${modelObject.id}/list/data.do">
-				<acme:data-column code="socialIdentity.nick" path="nick" sortable="true"/>
-				<acme:data-column code="socialIdentity.network" path="socialNetwork" sortable="true"/>
-				<acme:data-column code="socialIdentity.home" path="homePage" format="url"/>
-				<acme:data-column code="socialIdentity.picture" path="picture" format="image" imgSize="100x100"/>	
+			<sprouts:data-table searcheable="false" i18n="datatables.language" source="home/user/socialIdentity/${modelObject.id}/list/data.do">
+				<sprouts:data-column code="socialIdentity.nick" path="nick" sortable="true"/>
+				<sprouts:data-column code="socialIdentity.network" path="socialNetwork" sortable="true"/>
+				<sprouts:data-column code="socialIdentity.home" path="homePage" format="url"/>
+				<sprouts:data-column code="socialIdentity.picture" path="picture" format="image" imgSize="100x100"/>	
 				
-				<acme:action-button url="socialIdentity/user/{0}/show.do" code="show.button"/>
-				<acme:action-button url="socialIdentity/user/{0}/update.do" code="update.button"/>
-				<acme:action-button url="socialIdentity/user/{0}/delete.do" code="delete.button"/>
+				<sprouts:action-button url="socialIdentity/user/{0}/show.do" code="show.button"/>
+				<sprouts:action-button url="socialIdentity/user/{0}/update.do" code="update.button"/>
+				<sprouts:action-button url="socialIdentity/user/{0}/delete.do" code="delete.button"/>
 				
-			</acme:data-table>
+			</sprouts:data-table>
 			
 			<br/>
 			<br/>
-			<acme:button url="socialIdentity/user/create.do" code="create.button"></acme:button>
+			<sprouts:button url="socialIdentity/user/create.do" code="create.button"></sprouts:button>
 			
 		</fieldset>
 	</div>
 
 	<jstl:if test="${crudAction != 'showing'}">
-		<acme:submit-button code="${action}" name="${action}" />
+		<sprouts:submit-button code="${action}" name="${action}" />
 	</jstl:if>
-	<acme:cancel-button code="return.button" url="" />
+	<sprouts:cancel-button code="return.button" url="" />
 
-</acme:form>
+</sprouts:form>
 <br/>
 
-<acme:social-account-sign-in/>
+<sprouts:social-account-sign-in isSignIn="false"/>
 

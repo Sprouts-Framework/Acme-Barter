@@ -11,11 +11,11 @@
 <%@ include file="../template/libraries.jsp"%>
 
 
-<acme:data-table i18n="datatables.language">
-	<acme:data-column code="user.name" path="name" sortable="true"/>
-	<acme:data-column code="user.surname" path="surname"/>
-	<acme:data-column code="user.username" path="userAccount.username"/>
-</acme:data-table>
+<sprouts:data-table i18n="datatables.language">
+	<sprouts:data-column code="user.name" path="name" sortable="true"/>
+	<sprouts:data-column code="user.surname" path="surname"/>
+	<sprouts:data-column code="user.username" path="userAccount.username"/>
+</sprouts:data-table>
 
 <%-- Para dashboard --%>
 <br/>

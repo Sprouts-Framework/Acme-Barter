@@ -11,11 +11,11 @@
 <%@ include file="../template/libraries.jsp"%>
 
 
-<acme:data-table i18n="datatables.language" >
-	<acme:data-column code="socialIdentity.nick" path="nick" sortable="true"/>
-	<acme:data-column code="socialIdentity.network" path="socialNetwork" sortable="true"/>
-	<acme:data-column code="socialIdentity.home" path="homePage" format="url"/>
-	<acme:data-column code="socialIdentity.picture" path="picture" format="image" imgSize="100x100"/>	
+<sprouts:data-table i18n="datatables.language" >
+	<sprouts:data-column code="socialIdentity.nick" path="nick" sortable="true"/>
+	<sprouts:data-column code="socialIdentity.network" path="socialNetwork" sortable="true"/>
+	<sprouts:data-column code="socialIdentity.home" path="homePage" format="url"/>
+	<sprouts:data-column code="socialIdentity.picture" path="picture" format="image" imgSize="100x100"/>	
 	
-	<acme:action-button url="home/user/socialIdentity/{0}/show.do" code="user.socialIdentity.show"/>
-</acme:data-table>
+	<sprouts:action-button url="home/user/socialIdentity/{0}/show.do" code="user.socialIdentity.show"/>
+</sprouts:data-table>

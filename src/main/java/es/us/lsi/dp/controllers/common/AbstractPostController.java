@@ -71,8 +71,7 @@ public abstract class AbstractPostController<S extends Service<? extends DomainO
 	}
 
 	// Template methods --------------------------------------------------------
-	
-	//TODO: He tenido que hacer que reciba un contexto, verificar que funciona bien
+
 	protected abstract void action(List<String> context);
 
 	@Override

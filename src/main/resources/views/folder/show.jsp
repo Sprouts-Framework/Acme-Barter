@@ -3,24 +3,24 @@
 <tiles:importAttribute name="readOnly" toName="readOnly" />
 <tiles:importAttribute name="action" toName="action" />
 
-<acme:form modelAttribute="modelObject" readOnly="${readOnly}">
+<sprouts:form modelAttribute="modelObject" readOnly="${readOnly}">
 
-	<acme:hidden-field path="id" />
-	<acme:hidden-field path="version" />
-	<acme:hidden-field path="actor"/>
-	<acme:hidden-field path="createdAt"/>
-	<acme:hidden-field path="updatedAt"/>
-	<acme:hidden-field path="system"/>
+	<sprouts:hidden-field path="id" />
+	<sprouts:hidden-field path="version" />
+	<sprouts:hidden-field path="actor"/>
+	<sprouts:hidden-field path="createdAt"/>
+	<sprouts:hidden-field path="updatedAt"/>
+	<sprouts:hidden-field path="system"/>
 
-	<acme:protected path="id"/>
-	<acme:protected path="version"/>
-	<acme:protected path="actor"/>
-	<acme:protected path="createdAt"/>
-	<acme:protected path="updatedAt"/>
-	<acme:protected path="system"/>
+	<sprouts:protected path="id"/>
+	<sprouts:protected path="version"/>
+	<sprouts:protected path="actor"/>
+	<sprouts:protected path="createdAt"/>
+	<sprouts:protected path="updatedAt"/>
+	<sprouts:protected path="system"/>
 	
-	<acme:textbox-input code="folder.name" path="name"/>
+	<sprouts:textbox-input code="folder.name" path="name"/>
 	
-	<acme:submit-button code="${action}" name="${action}" />
-	<acme:cancel-button code="return.button" url="folder/${actor}/list.do" />
-</acme:form>
+	<sprouts:submit-button code="${action}" name="${action}" />
+	<sprouts:cancel-button code="return.button" url="folder/${actor}/list.do" />
+</sprouts:form>

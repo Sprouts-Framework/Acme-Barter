@@ -13,43 +13,43 @@
 <tiles:importAttribute name="readOnly" toName="readOnly" />
 <tiles:importAttribute name="action" toName="action" />
 
-<acme:form modelAttribute="modelObject" readOnly="${readOnly}">
+<sprouts:form modelAttribute="modelObject" readOnly="${readOnly}">
 	
-	<acme:hidden-field path="id"/>
-	<acme:hidden-field path="version"/>
-	<acme:hidden-field path="user"/>
+	<sprouts:hidden-field path="id"/>
+	<sprouts:hidden-field path="version"/>
+	<sprouts:hidden-field path="user"/>
 	
-	<acme:protected path="id"/>
-	<acme:protected path="version"/>
-	<acme:protected path="user"/>
+	<sprouts:protected path="id"/>
+	<sprouts:protected path="version"/>
+	<sprouts:protected path="user"/>
 	
 	<div class="fieldset-btm-margin">
 	
 		<jstl:if test="${crudAction == 'showing' }">
-			<acme:display-image-column src="${modelObject.picture}"/>
+			<sprouts:display-image-column src="${modelObject.picture}"/>
 		</jstl:if>
 		
 		<jstl:if test="${crudAction == 'showing' }">
-			<acme:display-column url="${modelObject.homePage}" title="${homePage}" message="${modelObject.homePage}"/>
+			<sprouts:display-column url="${modelObject.homePage}" title="${homePage}" message="${modelObject.homePage}"/>
 		</jstl:if>
 		
 		
-		<acme:textbox-input code="socialIdentity.nick" path="nick" />
-		<acme:textbox-input code="socialIdentity.network" path="socialNetwork" />
+		<sprouts:textbox-input code="socialIdentity.nick" path="nick" />
+		<sprouts:textbox-input code="socialIdentity.network" path="socialNetwork" />
 		
 		<jstl:if test="${crudAction != 'showing' }">
-			<acme:textbox-input code="socialIdentity.home" path="homePage" />
+			<sprouts:textbox-input code="socialIdentity.home" path="homePage" />
 		</jstl:if>
 		
 		
 		<jstl:if test="${crudAction != 'showing' }">
-			<acme:textbox-input code="socialIdentity.picture" path="picture" />
+			<sprouts:textbox-input code="socialIdentity.picture" path="picture" />
 		</jstl:if>
 	</div>
 
 	<jstl:if test="${crudAction != 'showing'}">
-		<acme:submit-button code="${action}" name="${action}" />
+		<sprouts:submit-button code="${action}" name="${action}" />
 	</jstl:if>
-	<acme:cancel-button code="return.button" url="profile/user/show.do" />
+	<sprouts:cancel-button code="return.button" url="profile/user/show.do" />
 
-</acme:form>
+</sprouts:form>

@@ -3,16 +3,16 @@
 <tiles:importAttribute name="readOnly" toName="readOnly" />
 <tiles:importAttribute name="action" toName="action" />
 
-<acme:form modelAttribute="modelObject" readOnly="${readOnly}">
+<sprouts:form modelAttribute="modelObject" readOnly="${readOnly}">
 	
-	<acme:hidden-field path="id"/>
-	<acme:hidden-field path="version"/>
-	<acme:protected path="id"/>
-	<acme:protected path="version"/>
+	<sprouts:hidden-field path="id"/>
+	<sprouts:hidden-field path="version"/>
+	<sprouts:protected path="id"/>
+	<sprouts:protected path="version"/>
 	
-	<acme:textarea-input code="legalText.text" path="text"/>
+	<sprouts:textarea-input code="legalText.text" path="text"/>
 
-	<acme:submit-button code="${action}" name="${action}" />
-	<acme:cancel-button code="return.button" url="legalText/administrator/list.do" />
+	<sprouts:submit-button code="${action}" name="${action}" />
+	<sprouts:cancel-button code="return.button" url="legalText/administrator/list.do" />
 
-</acme:form>
+</sprouts:form>

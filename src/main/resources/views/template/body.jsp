@@ -14,7 +14,7 @@
 <jstl:set var="successArgument" value="${paramValues['successArgument'][0]}" />
 
 <jstl:if test="${successCode != null}">
-	<acme:alert code="${successCode}" arguments="${successArgument}" type="alert-success" />		
+	<sprouts:alert code="${successCode}" arguments="${successArgument}" type="alert-success" />		
 </jstl:if>
 
 <div class="panel">

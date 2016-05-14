@@ -16,8 +16,8 @@
 		<legend>
 			<spring:message code="sign-up.legend.companyInfo" />
 		</legend>
-		<acme:textbox-input code="sign-up.companyName.field"
+		<sprouts:textbox-input code="sign-up.companyName.field"
 			path="companyName" />
-		<acme:textbox-input code="sign-up.ticker.field" path="ticker" />
+		<sprouts:textbox-input code="sign-up.ticker.field" path="ticker" />
 	</fieldset>
 </div>

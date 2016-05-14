@@ -32,10 +32,6 @@
 	<jstl:set var="message" value=""/>
 </jstl:if>
 
-<jstl:if test="${formatted == null}">
-	<jstl:set var="formatted" value="false" />
-</jstl:if>
-
 <%-- Definition --%>
 
 <jstl:if test="${title != null}">

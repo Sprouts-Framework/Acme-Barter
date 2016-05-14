@@ -13,24 +13,24 @@
 <tiles:importAttribute name="readOnly" toName="readOnly" />
 <tiles:importAttribute name="action" toName="action" />
 
-<acme:form modelAttribute="modelObject" readOnly="${readOnly}">
+<sprouts:form modelAttribute="modelObject" readOnly="${readOnly}">
 
 	<div class="fieldset-btm-margin">
 		
-		<acme:textbox-input code="user.userAccount.username" path="username" />
+		<sprouts:textbox-input code="user.userAccount.username" path="username" />
 		
-		<acme:password-input code="user.userAccount.password.old" path="oldPassword" />
+		<sprouts:password-input code="user.userAccount.password.old" path="oldPassword" />
 		
-		<acme:password-input code="user.userAccount.password" path="password" />
+		<sprouts:password-input code="user.userAccount.password" path="password" />
 		
-		<acme:password-input code="user.userAccount.password2" path="password2" />
+		<sprouts:password-input code="user.userAccount.password2" path="password2" />
 			
 	</div>
 
 	<jstl:if test="${crudAction != 'showing'}">
-		<acme:submit-button code="${action}" name="${action}" />
+		<sprouts:submit-button code="${action}" name="${action}" />
 	</jstl:if>
-	<acme:cancel-button code="return.button" url="profile/user/show.do" />
+	<sprouts:cancel-button code="return.button" url="profile/user/show.do" />
 
-</acme:form>
+</sprouts:form>
 

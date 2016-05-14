@@ -27,19 +27,19 @@
 		<spring:message var="requestUserDidNotSign" code="match.request-user-did-not-sign" />
 		<spring:message var="offerUserDidNotSign" code="match.offer-user-did-not-sign" />
 		
-		<acme:display-column title="${moment}" path="modelObject.moment"/>
+		<sprouts:display-column title="${moment}" path="modelObject.moment"/>
 		<jstl:if test="${modelObject.requestSignedDate != null }">
-			<acme:display-column title="${requestSignedDate}" path="modelObject.requestSignedDate"/>
+			<sprouts:display-column title="${requestSignedDate}" path="modelObject.requestSignedDate"/>
 		</jstl:if>
 		<jstl:if test="${modelObject.requestSignedDate == null }">
-			<acme:display-column title="${requestSignedDate}" data="${requestUserDidNotSign}"/>
+			<sprouts:display-column title="${requestSignedDate}" data="${requestUserDidNotSign}"/>
 		</jstl:if>
 		
 		<jstl:if test="${modelObject.offerSignedDate != null }">
-			<acme:display-column title="${offerSignedDate}" path="modelObject.offerSignedDate"/>
+			<sprouts:display-column title="${offerSignedDate}" path="modelObject.offerSignedDate"/>
 		</jstl:if>
 		<jstl:if test="${modelObject.offerSignedDate == null }">
-			<acme:display-column title="${offerSignedDate}" data="${offerUserDidNotSign}"/>
+			<sprouts:display-column title="${offerSignedDate}" data="${offerUserDidNotSign}"/>
 		</jstl:if>
 		
 		<jstl:choose>
@@ -50,17 +50,17 @@
 				<spring:message var="cancellation" code="match.cancelled.false"/>
 			</jstl:otherwise>
 		</jstl:choose>
-		<acme:display-column title="${cancelled}" data="${cancellation}"/>
+		<sprouts:display-column title="${cancelled}" data="${cancellation}"/>
 
 
 		
 		<jstl:choose>
 			<jstl:when test="${modelObject.report != null }">
-				<acme:display-column title="${report}" data="${modelObject.report}"/>
+				<sprouts:display-column title="${report}" data="${modelObject.report}"/>
 			</jstl:when>
 			<jstl:otherwise>
 				<spring:message var="pending" code="match.nullCode"/>
-				<acme:display-column title="${report}" data="${pending}"/>
+				<sprouts:display-column title="${report}" data="${pending}"/>
 			</jstl:otherwise>
 		</jstl:choose>
 		
@@ -80,10 +80,10 @@
 	<spring:message	var="creator" code ="barter.username" />
 	
 	<div class="text-center">
-		<acme:display-column title="${title}" data="${modelObject.offered.title}"/>
-		<acme:display-column title="${creator}" 
+		<sprouts:display-column title="${title}" data="${modelObject.offered.title}"/>
+		<sprouts:display-column title="${creator}" 
 		data="${modelObject.offered.user.name } ${modelObject.offered.user.surname } (${modelObject.offered.user.userAccount.username })"/>
-		<acme:button url="home/barter/${modelObject.offered.id}/show.do" code="match.barter.offer.button"/>
+		<sprouts:button url="home/barter/${modelObject.offered.id}/show.do" code="match.barter.offer.button"/>
 	</div>
 </jstl:when>
 <jstl:otherwise>
@@ -108,10 +108,10 @@
 	<spring:message	var="creator" code ="barter.username" />
 	
 	<div class="text-center">
-		<acme:display-column title="${title}" data="${modelObject.requested.title}"/>
-		<acme:display-column title="${creator}" 
+		<sprouts:display-column title="${title}" data="${modelObject.requested.title}"/>
+		<sprouts:display-column title="${creator}" 
 		data="${modelObject.requested.user.name } ${modelObject.requested.user.surname } (${modelObject.requested.user.userAccount.username })"/>
-		<acme:button url="home/barter/${modelObject.requested.id}/show.do" code="match.barter.request.button"/>
+		<sprouts:button url="home/barter/${modelObject.requested.id}/show.do" code="match.barter.request.button"/>
 	</div>
 
 </jstl:when>
@@ -137,14 +137,14 @@
 	<div class="text-center">
 		<spring:message var="name" code="match.auditor.name"/>
 		<spring:message var="surname" code="match.auditor.surname"/>
-		<acme:display-column title="${name}" data="${modelObject.auditor.name}"/>
-		<acme:display-column title="${surname}" data="${modelObject.auditor.surname}"/>
+		<sprouts:display-column title="${name}" data="${modelObject.auditor.name}"/>
+		<sprouts:display-column title="${surname}" data="${modelObject.auditor.surname}"/>
 	</div>
 </jstl:if>
 <jstl:if test="${modelObject.auditor == null }">
 	<div class="text-center">
 		<spring:message var="auditorNotAssinged" code="match.auditor.not.assigned"/>
-		<acme:display-column  data="${auditorNotAssinged}"/>
+		<sprouts:display-column  data="${auditorNotAssinged}"/>
 	</div>
 </jstl:if>
 	
@@ -158,7 +158,7 @@
 	</h3>
 
 	<div class="text-center">
-		<acme:display-column data="${modelObject.legalText.text}"/>
+		<sprouts:display-column data="${modelObject.legalText.text}"/>
 	</div>
 	
 	

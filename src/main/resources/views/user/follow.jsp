@@ -17,12 +17,12 @@
 <div class="row fieldset-btm-margin">
 	<div class="col-md-12">
 	<jstl:if test="${isFollowing == false }">
-		<acme:display-column title="${userToFollowMsg }" data="${toFollow.name } ${toFollow.surname }"/>
+		<sprouts:display-column title="${userToFollowMsg }" data="${toFollow.name } ${toFollow.surname }"/>
 	</jstl:if>
 	<jstl:if test="${isFollowing == true }">
-		<acme:display-column title="${userToUnfollowMsg }" data="${toFollow.name } ${toFollow.surname }"/>
+		<sprouts:display-column title="${userToUnfollowMsg }" data="${toFollow.name } ${toFollow.surname }"/>
 	</jstl:if>
-		<acme:display-column title="${usernameMsg }" data="${toFollow.userAccount.username}"/>
+		<sprouts:display-column title="${usernameMsg }" data="${toFollow.userAccount.username}"/>
 	</div>
 </div>
 
@@ -32,12 +32,12 @@
 		<div class="col-md-12">
 		<jstl:choose>
 			<jstl:when test="${isFollowing==false }">
-				<acme:submit-or-cancel
+				<sprouts:submit-or-cancel
 					submitCode="user.follow.button"
 					backUrl="home/user/list.do" />
 			</jstl:when>
 			<jstl:otherwise>
-				<acme:submit-or-cancel
+				<sprouts:submit-or-cancel
 					submitCode="user.unfollow.button"
 					backUrl="home/user/list.do" />
 			</jstl:otherwise>

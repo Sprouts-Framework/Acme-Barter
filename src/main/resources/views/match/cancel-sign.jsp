@@ -3,7 +3,7 @@
 <tiles:importAttribute name="readOnly" toName="readOnly" />
 <tiles:importAttribute name="action" toName="action" />
 
-<acme:form modelAttribute="modelObject" readOnly="${readOnly}">
+<sprouts:form modelAttribute="modelObject" readOnly="${readOnly}">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -33,11 +33,11 @@
 		</jstl:when>
 	</jstl:choose>
 	
-	<acme:protected path="moment"/>
-	<acme:protected path="id"/>
-	<acme:protected path="version"/>
+	<sprouts:protected path="moment"/>
+	<sprouts:protected path="id"/>
+	<sprouts:protected path="version"/>
 
-	<acme:submit-button code="${action}" name="${action}"/>
-	<acme:cancel-button code="return.button" url="match/user/list.do" />
+	<sprouts:submit-button code="${action}" name="${action}"/>
+	<sprouts:cancel-button code="return.button" url="match/user/list.do" />
 
-</acme:form>
+</sprouts:form>

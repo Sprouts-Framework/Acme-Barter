@@ -3,25 +3,25 @@
 <tiles:importAttribute name="readOnly" toName="readOnly" />
 <tiles:importAttribute name="action" toName="action" />
 
-<acme:form modelAttribute="modelObject" readOnly="${readOnly}">
+<sprouts:form modelAttribute="modelObject" readOnly="${readOnly}">
 
-	<acme:hidden-field path="id" />
-	<acme:hidden-field path="version" />
+	<sprouts:hidden-field path="id" />
+	<sprouts:hidden-field path="version" />
 
 	<jstl:if test="${crudAction != 'showing' }">
-		<acme:hidden-field path="moment" />
-		<acme:hidden-field path="createdAt" />
-		<acme:hidden-field path="updatedAt" />
-		<acme:protected path="moment"/>
-		<acme:protected path="createdAt" />
-		<acme:protected path="updatedAt" />
+		<sprouts:hidden-field path="moment" />
+		<sprouts:hidden-field path="createdAt" />
+		<sprouts:hidden-field path="updatedAt" />
+		<sprouts:protected path="moment"/>
+		<sprouts:protected path="createdAt" />
+		<sprouts:protected path="updatedAt" />
 	</jstl:if>
 
 	
 	<jstl:if test="${crudAction == 'showing' }">
-		<acme:textbox-input code="message.recipient" path="recipient.userAccount.username"/>
-		<acme:textbox-input code="message.sender" path="sender.userAccount.username"/>
-		<acme:textbox-input code="message.moment" path="moment"/>
+		<sprouts:textbox-input code="message.recipient" path="recipient.userAccount.username"/>
+		<sprouts:textbox-input code="message.sender" path="sender.userAccount.username"/>
+		<sprouts:textbox-input code="message.moment" path="moment"/>
 	</jstl:if>
 	<div class="form-group">
 			<div class="row">
@@ -48,16 +48,16 @@
 			<form:errors class="alert alert-danger col-sm-3" path="priority"/>
 			<br/>
 	</div>
-	<acme:textbox-input code="message.subject" path="subject"/>
-	<acme:textarea-input code="message.body" path="body"/>
+	<sprouts:textbox-input code="message.subject" path="subject"/>
+	<sprouts:textarea-input code="message.body" path="body"/>
 	<jstl:if test="${crudAction == 'creating'}">
-		<acme:select items="${actors}" itemLabel="userAccount.username" code="message.recipient" path="recipient"/>
+		<sprouts:select items="${actors}" itemLabel="userAccount.username" code="message.recipient" path="recipient"/>
 	</jstl:if>
 	<jstl:if test="${crudAction != 'showing' }">
-		<acme:submit-button code="${action}" name="${action}" />
+		<sprouts:submit-button code="${action}" name="${action}" />
 	</jstl:if>
 	
-	<acme:cancel-button code="return.button" url="folder/${actor}/list.do" />
+	<sprouts:cancel-button code="return.button" url="folder/${actor}/list.do" />
 	
 
-</acme:form>
+</sprouts:form>

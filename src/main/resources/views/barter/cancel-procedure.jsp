@@ -11,7 +11,7 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<acme:submit-or-cancel
+			<sprouts:submit-or-cancel
 				submitCode="administrator.cancel-barters-procedure"
 				backUrl="home/welcome.do" />
 		</div>
