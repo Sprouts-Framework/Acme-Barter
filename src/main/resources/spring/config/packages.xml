@@ -21,7 +21,6 @@
 	<context:component-scan base-package="services" />
 	<context:component-scan base-package="utilities" />
 	<context:component-scan base-package="validation" />
-	<context:component-scan base-package="useCases"/>
 	<context:component-scan base-package="social"/>
 	
 	<context:component-scan base-package="es.us.lsi.dp.controllers" />
