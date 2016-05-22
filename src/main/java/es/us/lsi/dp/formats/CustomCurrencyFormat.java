@@ -25,11 +25,11 @@ public class CustomCurrencyFormat extends CustomFormat {
 		String suffix;
 		Locale locale;
 
-		String codeCurrencyDecimalMark = getCodePrefix() + "currency.decimal-mark";
-		String codeCurrencyGroupingSeparator = getCodePrefix() + "currency.grouping-separator";
-		String codeNumberFormat = getCodePrefix() + "currency.number-format";
-		String codePrefix = getCodePrefix() + "currency.prefix";
-		String codeSuffix = getCodePrefix() + "currency.suffix";
+		String codeCurrencyDecimalMark = (getCodePrefix() != "" ? getCodePrefix()+".":"")+ "currency.decimal-mark";
+		String codeCurrencyGroupingSeparator = (getCodePrefix() != "" ? getCodePrefix()+".":"") + "currency.grouping-separator";
+		String codeNumberFormat = (getCodePrefix() != "" ? getCodePrefix()+".":"") + "currency.number-format";
+		String codePrefix = (getCodePrefix() != "" ? getCodePrefix()+".":"") + "currency.prefix";
+		String codeSuffix = (getCodePrefix() != "" ? getCodePrefix()+".":"") + "currency.suffix";
 
 		locale = LocaleContextHolder.getLocale();
 

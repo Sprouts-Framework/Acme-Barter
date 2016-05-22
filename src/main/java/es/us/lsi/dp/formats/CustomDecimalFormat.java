@@ -23,9 +23,9 @@ public class CustomDecimalFormat extends CustomFormat {
 		String numberFormat;
 		Locale locale;
 
-		String codeCurrencyDecimalMark = getCodePrefix() + "decimal-mark";
-		String codeCurrencyGroupingSeparator = getCodePrefix() + "grouping-separator";
-		String codeNumberFormat = getCodePrefix() + "number-format";
+		String codeCurrencyDecimalMark = (getCodePrefix() != "" ? getCodePrefix()+".":"") + "decimal-mark";
+		String codeCurrencyGroupingSeparator = (getCodePrefix() != "" ? getCodePrefix()+".":"") + "grouping-separator";
+		String codeNumberFormat = (getCodePrefix() != "" ? getCodePrefix()+".":"") + "number-format";
 
 		locale = LocaleContextHolder.getLocale();
 

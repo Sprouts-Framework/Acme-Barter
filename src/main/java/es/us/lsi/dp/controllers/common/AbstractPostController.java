@@ -36,7 +36,7 @@ public abstract class AbstractPostController<S extends Service<? extends DomainO
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView get(final HttpServletRequest request) {
 		setRequest(request);
-		return currentView();
+		return get(getPathVariables(request));
 	}
 
 	@RequestMapping(method = RequestMethod.POST)

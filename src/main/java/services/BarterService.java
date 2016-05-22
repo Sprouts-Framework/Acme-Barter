@@ -36,7 +36,7 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 
 	@Autowired
 	private MatchService matchService;
-	
+
 	@Autowired
 	private EntityManagerFactory entityManagerFactory;
 
@@ -48,8 +48,7 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 
 	@Autowired
 	private DoesNotHaveFinishedMatch doesNotHaveFinishedMatch;
-	
-	
+
 	public void cancelBarters() {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		Query storedProcedure = entityManager.createNativeQuery("CALL `acme-barter`.cancelBarters()");
@@ -146,15 +145,16 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 	@Override
 	public void beforeCommitingUpdate(Barter validable, List<String> context) {
 		validable.setCancelled(true);
-		Match match;
-		match = matchService.findMatchByBarterId(validable.getId());
-		if(match != null)
-			match.setCancelled(true);
-			matchService.update(match);
 	}
 
 	@Override
 	public void afterCommitingUpdate(int id) {
+		Match match;
+		match = matchService.findMatchByBarterId(id);
+		if (match != null) {
+			match.setCancelled(true);
+			matchService.update(match);
+		}
 	}
 
 	public Double ratioOfBartersThatAreNotRelated() {

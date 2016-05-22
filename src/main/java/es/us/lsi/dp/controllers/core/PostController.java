@@ -93,9 +93,12 @@ public abstract class PostController<D extends Validable, E extends Validable> e
 		D safeObject;
 		E newOrReconstructed;
 		E entityToAuthorize;
+		ModelAndView result = null;
+		boolean success = true;
 
+		transaction.begin();
 		beforeAuthorization(entity, ContextParser.parse(pathVariables));
-		
+
 		beforeCommiting(entity, ContextParser.parse(pathVariables));
 		// This method if defined in this class and does nothing. It is needed
 		// to redefine if we are dealing with datatypes
@@ -111,23 +114,29 @@ public abstract class PostController<D extends Validable, E extends Validable> e
 
 		// We can't continue because business rules may need access some fields
 		// the user didn't fill in.
-		if (ValidationHandler.validationFailed(bindingResult))
-			return errors(entityOrDatatype, ContextParser.parse(pathVariables));
-		
+		if (ValidationHandler.validationFailed(bindingResult)) {
+			success = false;
+			transaction.rollback();
+			result = errors(entityOrDatatype, ContextParser.parse(pathVariables));
+		}
+
 		try {
 			newOrReconstructed = getNewOrReconstructed(safeObject, entity);
 			validate.businessRules(newOrReconstructed);
 		} catch (final Throwable oops) {
+			transaction.rollback();
 			return failure(safeObject, oops, ContextParser.parse(pathVariables));
 		}
 
-		return attempt(safeObject, entity, pathVariables);
+		if (success)
+			result = attempt(safeObject, entity, pathVariables);
+
+		return result;
+
 	}
 
 	protected ModelAndView attempt(final D entityOrDatatype, final E entity, final Map<String, String> pathVariables) {
 		ModelAndView result;
-
-		transaction.begin();
 
 		try {
 			postAction(entityOrDatatype, entity, pathVariables);
@@ -172,6 +181,7 @@ public abstract class PostController<D extends Validable, E extends Validable> e
 	}
 
 	protected ModelAndView attempt(final Map<String, String> pathVariables) {
+		transaction.begin();
 		return attempt(null, null, pathVariables);
 	}
 
@@ -186,10 +196,10 @@ public abstract class PostController<D extends Validable, E extends Validable> e
 	public void beforeCommiting(D datatype, E entity, List<String> context) {
 
 	}
-	
-	//TODO: Ver si esto afecta al comportamiento normal
+
 	@Override
-	public void beforeCommiting(E object, List<String> context) {}{
-		
+	public void beforeCommiting(E entity, List<String> context) {
+
 	}
+
 }

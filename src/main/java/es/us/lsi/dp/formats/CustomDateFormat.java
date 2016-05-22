@@ -18,7 +18,7 @@ public class CustomDateFormat extends CustomFormat {
 	@Override
 	public SimpleDateFormat getFormat() {
 		String dateFormatStr;
-		String codeDateFormatStr = getCodePrefix() + "date.format";
+		String codeDateFormatStr = (getCodePrefix() != "" ? getCodePrefix()+".":"") + "date.format";
 		Locale locale;
 
 		locale = LocaleContextHolder.getLocale();
