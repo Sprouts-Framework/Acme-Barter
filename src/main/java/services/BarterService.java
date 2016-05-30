@@ -1,6 +1,5 @@
 package services;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -22,8 +21,6 @@ import validation.rules.IsNotCancelled;
 import domain.Barter;
 import domain.Match;
 import domain.User;
-import es.us.lsi.dp.fulltext.FullTextConstraint;
-import es.us.lsi.dp.fulltext.FullTextCustomQuery;
 import es.us.lsi.dp.services.AbstractService;
 import es.us.lsi.dp.services.contracts.ListService;
 import es.us.lsi.dp.services.contracts.ShowService;
@@ -59,9 +56,9 @@ public class BarterService extends AbstractService<Barter, BarterRepository> imp
 	@Override
 	public Page<Barter> findPage(Pageable page, String searchCriteria) {
 		Page<Barter> result;
-		List<FullTextCustomQuery> queries = new ArrayList<>();
-		queries.add(new FullTextCustomQuery("cancelled", FullTextConstraint.EQUALS, false));
-		result = fullTextSearch(Barter.class, page, searchCriteria, queries, "title", "offered.name", "offered.description", "requested.name",
+		//List<FullTextCustomQuery> queries = new ArrayList<>();
+		//queries.add(new FullTextCustomQuery("cancelled", FullTextConstraint.EQUALS, false));
+		result = fullTextSearch(page, searchCriteria, "cancelled:false", Barter.class, "title", "offered.name", "offered.description", "requested.name",
 				"requested.description");
 		return result;
 	}

@@ -450,7 +450,15 @@
 			<artifactId>kie-ci</artifactId>
 			<version>6.3.0.Final</version>
 		</dependency> -->
+	
+<!-- http://mvnrepository.com/artifact/org.apache.lucene/lucene-queryparser -->
+<dependency>
+    <groupId>org.apache.lucene</groupId>
+    <artifactId>lucene-queryparser</artifactId>
+    <version>4.10.4</version>
+</dependency>
 
+	
 	</dependencies>
 
 
