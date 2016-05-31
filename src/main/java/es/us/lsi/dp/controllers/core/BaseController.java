@@ -103,7 +103,7 @@ public abstract class BaseController {
 	protected ModelAndView currentView(final Object domainObject, final List<String> context, final Object... arguments) {
 		ModelAndView result;
 
-		result = view(currentViewName, Codes.MODEL_OBJECT_NAME, domainObject, context, arguments);
+		result = view(currentViewName, Codes.MODEL_OBJECT_NAME, domainObject, context);
 
 		return result;
 	}
@@ -116,6 +116,7 @@ public abstract class BaseController {
 		result = Response.create(viewName, arguments);
 
 		result.addObject(Codes.MODEL_OBJECT_NAME, modelObject);
+		result.addObject(Codes.VIEW_NAME, currentViewName);
 
 		usesEntities = this instanceof AddsToModel;
 
@@ -135,7 +136,6 @@ public abstract class BaseController {
 		usesEntities.addToModel(objects, context);
 
 		modelAndView.addAllObjects(objects);
-		objects.put("_viewName", view());
 	}
 
 	// Template methods ------------------------------------------------------
