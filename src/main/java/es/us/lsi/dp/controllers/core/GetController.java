@@ -16,7 +16,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.servlet.ModelAndView;
 
-import es.us.lsi.dp.controllers.Codes;
 import es.us.lsi.dp.controllers.core.contracts.AddCustomFormat;
 import es.us.lsi.dp.controllers.core.contracts.Authorizable;
 import es.us.lsi.dp.formats.CustomCurrencyFormat;
