@@ -6,11 +6,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.apache.lucene.queryparser.classic.MultiFieldQueryParser;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.hibernate.Session;
 import org.hibernate.search.FullTextQuery;
 import org.hibernate.search.FullTextSession;
 import org.hibernate.search.SearchFactory;
+import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.query.dsl.QueryBuilder;
 import org.hibernate.search.query.dsl.TermMatchingContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -154,8 +156,13 @@ public abstract class AbstractService<E extends DomainEntity, R extends PagingAn
 				session = em.unwrap(Session.class);
 				FullTextSession fullTextSession = org.hibernate.search.Search.getFullTextSession(session);
 				SearchFactory searchFactory = fullTextSession.getSearchFactory();
-				org.apache.lucene.queryparser.classic.QueryParser parser = new QueryParser(fields[0], searchFactory.getAnalyzer(clazz));
+				org.apache.lucene.queryparser.classic.QueryParser parser2 = new QueryParser(fields[0], searchFactory.getAnalyzer(clazz));
+				MultiFieldQueryParser parser = new MultiFieldQueryParser(fields,searchFactory.getAnalyzer(clazz));
 
+				//Regenerar los índices
+				FullTextEntityManager fullTextEntityManager = org.hibernate.search.jpa.Search.getFullTextEntityManager(em);
+				fullTextEntityManager.createIndexer().startAndWait();
+				
 				QueryBuilder qb = fullTextSession.getSearchFactory().buildQueryBuilder().forEntity(clazz).get();
 				TermMatchingContext luceneQueryAux = qb.keyword().onFields(fields);
 
@@ -170,12 +177,14 @@ public abstract class AbstractService<E extends DomainEntity, R extends PagingAn
 
 				FullTextQuery fullTextQuery = fullTextSession.createFullTextQuery(luceneQuery, clazz);
 
+
 				int totalNumber = fullTextQuery.list().size();
 				// fullTextQuery.setFirstResult(pageable.getOffset());
 				// fullTextQuery.setMaxResults(pageable.getPageSize());
 
 				List<E> resultList = fullTextQuery.list();
 
+				
 				// @SuppressWarnings("unchecked")
 				// List<E> resultList = fullTextQuery.getResultList();
 				result = new PageImpl<E>(resultList, pageable, totalNumber);
