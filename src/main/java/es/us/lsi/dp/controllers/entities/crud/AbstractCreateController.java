@@ -55,7 +55,6 @@ public abstract class AbstractCreateController<D extends DomainObject, S extends
 
 	@Override
 	public D getObject(final Map<String, String> pathVariables, final D entity, List<String> context) {
-		service.create();
 		return service.create();
 	}
 

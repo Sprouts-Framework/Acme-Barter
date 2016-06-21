@@ -26,7 +26,7 @@
 <%@ attribute name="idProperty" required="false"%>
 <%@ attribute name="exportable" required="false"
 	type="java.lang.Boolean"%>
-<%@ attribute name="i18n" required="false"%>
+<%@ attribute name="i18n" required="true"%>
 <%@ attribute name="source" required="false"%>
 <%@ attribute name="searcheable" required="false" type="java.lang.Boolean"%>
 
@@ -78,7 +78,7 @@
 			<jstl:set var="actionButtons" value="" />
 			<jstl:forEach var="column" items="${__data_table_columns}">
 				<jstl:if
-					test="${column.type == 'data-column' || column.type == 'custom-column' || column.type == 'image-column'}">
+					test="${column.type == 'data-column'}">
 					<th style="width: ${column.width}"><jstl:if
 							test="${column.code != null}">
 							<spring:message code="${column.code}" />

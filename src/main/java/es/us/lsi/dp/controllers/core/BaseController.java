@@ -103,7 +103,7 @@ public abstract class BaseController {
 	protected ModelAndView currentView(final Object domainObject, final List<String> context, final Object... arguments) {
 		ModelAndView result;
 
-		result = view(currentViewName, Codes.MODEL_OBJECT_NAME, domainObject, context);
+		result = view(currentViewName, Codes.MODEL_OBJECT_NAME, domainObject, context, arguments);
 
 		return result;
 	}

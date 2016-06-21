@@ -61,7 +61,11 @@ public class ValidationHandler<V extends Validable, D extends Validable> impleme
 			v.validate(domainObject, bindingResult);
 		}
 	}
-
+	
+	public void validateFromForm(final V domainObject, final BindingResult bindingResult){
+		constraintsValidator.validate(domainObject, bindingResult);
+	}
+	
 	public static boolean validationFailed(final BindingResult bindingResult) {
 		return bindingResult.hasErrors();
 	}
@@ -73,10 +77,11 @@ public class ValidationHandler<V extends Validable, D extends Validable> impleme
 	}
 
 	private void addDefaultRules(final V domainObject, final List<Validator> validators) {
-		if (domainObject instanceof RegistersUsers)
-			if(!validators.contains((Validator) appContext.getBean(Rules.UNIQUE_USERNAME)))
-					validators.add((Validator) appContext.getBean(Rules.UNIQUE_USERNAME));
-		
-			
-	}
+        if (domainObject instanceof RegistersUsers)
+            if(!validators.contains((Validator) appContext.getBean(Rules.UNIQUE_USERNAME)))
+                    validators.add((Validator) appContext.getBean(Rules.UNIQUE_USERNAME));
+        
+            
+    }
+
 }

@@ -147,7 +147,7 @@ public class DefaultTilesViewTableBuilder implements TableBuilder {
 						result[i][j] = "<a href='" + result[i][j] + "'>" + st + "</a>";
 					} else
 						result[i][j] = "<a href='" + result[i][j] + "'>" + result[i][j] + "</a>";
-				} else if (column.getFormat() != null && column.getFormat().equals("date")) {
+				} else if (column.getFormat() != null && column.getFormat().equals("date") && !result[i][j].equals(getNullMessage(column))) {
 
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 					Date dateAux = null;

@@ -37,6 +37,5 @@ public class ShowController extends AbstractShowController<User, UserService> im
 			String error = context.get(0);
 			objects.put("error", error);
 		}
-		objects.put("_viewName", "profile/show");
 	}
 }

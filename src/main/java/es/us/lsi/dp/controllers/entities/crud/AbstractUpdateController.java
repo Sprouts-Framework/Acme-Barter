@@ -53,18 +53,8 @@ public abstract class AbstractUpdateController<D extends DomainObject, S extends
 
 	// Gettable ----------------------------------------------------------------
 
-	// @SuppressWarnings("rawtypes")
 	@Override
 	public D getObject(final Map<String, String> pathVariables, final D entity, List<String> context) {
-		// if(service instanceof AbstractFormService){
-		// AbstractFormService abstractFormService = (AbstractFormService)
-		// service;
-		// D form;
-		// form =
-		// abstractFormService.findByIdAndConvertToForm(entityId(pathVariables));
-		//
-		// return null;
-		// }else
 		return service.findById(entityId(pathVariables));
 	}
 
