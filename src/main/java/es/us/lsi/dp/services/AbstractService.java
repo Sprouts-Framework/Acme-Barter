@@ -3,17 +3,15 @@ package es.us.lsi.dp.services;
 import java.util.Collection;
 import java.util.List;
 
-import javax.management.RuntimeErrorException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.apache.lucene.queryparser.classic.MultiFieldQueryParser;
-import org.apache.lucene.queryparser.classic.QueryParser;
 import org.hibernate.Session;
-import org.hibernate.search.FullTextQuery;
 import org.hibernate.search.FullTextSession;
 import org.hibernate.search.SearchFactory;
 import org.hibernate.search.jpa.FullTextEntityManager;
+import org.hibernate.search.jpa.FullTextQuery;
 import org.hibernate.search.query.dsl.QueryBuilder;
 import org.hibernate.search.query.dsl.TermMatchingContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,33 +120,6 @@ public abstract class AbstractService<E extends DomainEntity, R extends PagingAn
 		try {
 			if (!trim.equals("")) {
 
-				// -----
-				// FullTextEntityManager fullTextEntityManager =
-				// org.hibernate.search.jpa.Search.getFullTextEntityManager(em);
-				//
-				// fullTextEntityManager.createIndexer().startAndWait();
-				//
-				// QueryBuilder qb =
-				// fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(clazz).get();
-				//
-				// org.apache.lucene.search.Query luceneQuery =
-				// qb.keyword().onFields(fields).matching(searchCriteria).createQuery();
-				//
-				// for (FullTextCustomQuery customQuery : customQueries) {
-				// luceneQuery = fullTextCustomQueryBuilder(customQuery,
-				// luceneQuery, qb);
-				// }
-				//
-				// FullTextQuery fullTextQuery =
-				// fullTextEntityManager.createFullTextQuery(luceneQuery,
-				// clazz);
-				//
-				// int totalNumber = fullTextQuery.getResultSize();
-				// fullTextQuery.setFirstResult(pageable.getOffset());
-				// fullTextQuery.setMaxResults(pageable.getPageSize());
-
-				// -----
-
 				org.apache.lucene.search.Query luceneQuery = null;
 				org.apache.lucene.search.Query luceneQueryToSearch = null;
 				org.apache.lucene.search.Query luceneQueryFilter = null;
@@ -159,7 +130,7 @@ public abstract class AbstractService<E extends DomainEntity, R extends PagingAn
 				SearchFactory searchFactory = fullTextSession.getSearchFactory();
 				MultiFieldQueryParser parser = new MultiFieldQueryParser(fields,searchFactory.getAnalyzer(clazz));
 
-				//Regenerar los índices
+				
 				FullTextEntityManager fullTextEntityManager = org.hibernate.search.jpa.Search.getFullTextEntityManager(em);
 				fullTextEntityManager.createIndexer().startAndWait();
 				
@@ -178,19 +149,14 @@ public abstract class AbstractService<E extends DomainEntity, R extends PagingAn
 				}else{
 					luceneQuery = luceneQueryAux.matching(searchCriteria).createQuery();
 				}
-				FullTextQuery fullTextQuery = fullTextSession.createFullTextQuery(luceneQuery, clazz);
+				FullTextQuery fullTextQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, clazz);
 
+				int totalNumber = fullTextQuery.getResultSize();
+				fullTextQuery.setFirstResult(pageable.getOffset());
+				fullTextQuery.setMaxResults(pageable.getPageSize());
 
-				int totalNumber = fullTextQuery.list().size();
-				// fullTextQuery.setFirstResult(pageable.getOffset());
-				// fullTextQuery.setMaxResults(pageable.getPageSize());
-
-				List<E> resultList = fullTextQuery.list();
-
-				
-				// @SuppressWarnings("unchecked")
-				// List<E> resultList = fullTextQuery.getResultList();
-				result = new PageImpl<E>(resultList, pageable, totalNumber);
+				List<E> resultList = fullTextQuery.getResultList();
+				result = new PageImpl<E>(resultList, pageable, new Long(totalNumber));
 				Assert.notNull(result);
 			} else {
 				result = this.findAllDefaultFullText(pageable);
