@@ -156,7 +156,6 @@ public abstract class AbstractService<E extends DomainEntity, R extends PagingAn
 				session = em.unwrap(Session.class);
 				FullTextSession fullTextSession = org.hibernate.search.Search.getFullTextSession(session);
 				SearchFactory searchFactory = fullTextSession.getSearchFactory();
-				org.apache.lucene.queryparser.classic.QueryParser parser2 = new QueryParser(fields[0], searchFactory.getAnalyzer(clazz));
 				MultiFieldQueryParser parser = new MultiFieldQueryParser(fields,searchFactory.getAnalyzer(clazz));
 
 				//Regenerar los índices
