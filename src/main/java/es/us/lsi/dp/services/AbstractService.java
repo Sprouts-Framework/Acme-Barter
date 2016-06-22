@@ -3,6 +3,7 @@ package es.us.lsi.dp.services;
 import java.util.Collection;
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -165,15 +166,18 @@ public abstract class AbstractService<E extends DomainEntity, R extends PagingAn
 				QueryBuilder qb = fullTextSession.getSearchFactory().buildQueryBuilder().forEntity(clazz).get();
 				TermMatchingContext luceneQueryAux = qb.keyword().onFields(fields);
 
-				try {
-					luceneQueryFilter = parser.parse(luceneQueryStr);
-				} catch (Throwable e) {
-					// handle parsing failure
+				if(!luceneQueryStr.equals("")){
+					try {
+						luceneQueryFilter = parser.parse(luceneQueryStr);
+					} catch (Throwable e) {
+						throw new RuntimeException(e);
+					}
+	
+					luceneQueryToSearch = luceneQueryAux.matching(searchCriteria).createQuery();
+					luceneQuery = qb.bool().must(luceneQueryFilter).must(luceneQueryToSearch).createQuery();
+				}else{
+					luceneQuery = luceneQueryAux.matching(searchCriteria).createQuery();
 				}
-
-				luceneQueryToSearch = luceneQueryAux.matching(searchCriteria).createQuery();
-				luceneQuery = qb.bool().must(luceneQueryFilter).must(luceneQueryToSearch).createQuery();
-
 				FullTextQuery fullTextQuery = fullTextSession.createFullTextQuery(luceneQuery, clazz);
 
 
