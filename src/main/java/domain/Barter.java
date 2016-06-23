@@ -49,13 +49,13 @@ import es.us.lsi.dp.domain.DomainEntity;
 			@Parameter(name = "language", value = "Spanish")
 		}),
 		@TokenFilterDef(factory = TruncateTokenFilterFactory.class, params = {
-			@Parameter(name = "prefixLength", value = "4")
-		}),
+			@Parameter(name = "prefixLength", value = "5")
+		})/*,
 		@TokenFilterDef(factory = PhoneticFilterFactory.class, params = {
 				@Parameter(name = "encoder", value = "DoubleMetaphone"), 
 				@Parameter(name = "inject", value = "false"),
-				@Parameter(name = "maxCodeLength", value = "4")
-		})
+				@Parameter(name = "maxCodeLength", value = "5")
+		})*/
 })
 public class Barter extends DomainEntity {
 
