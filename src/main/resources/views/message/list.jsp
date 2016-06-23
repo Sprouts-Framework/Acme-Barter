@@ -13,7 +13,7 @@
 <sprouts:button code="create.button" url="message/${actor}/create.do"/>
 <br />
 
-<sprouts:data-table i18n="datatables.language">
+<sprouts:data-table i18n="datatables.language" searcheable="false">
 		<sprouts:action-button code="move.button" url="message/${actor}/{0}/update.do" />
 		<sprouts:action-button code="delete.button" url="message/${actor}/{0}/delete.do" />
 		<sprouts:action-button code="details.button" url="message/${actor}/{0}/show.do" />

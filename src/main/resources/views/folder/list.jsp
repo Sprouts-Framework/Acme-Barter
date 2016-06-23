@@ -16,7 +16,7 @@
 <br />
 <br />
 
-<sprouts:data-table i18n="datatables.language">
+<sprouts:data-table i18n="datatables.language" searcheable="false">
 		<sprouts:action-button code="update.button" url="folder/${actor}/{0}/update.do" />
 		<sprouts:action-button code="delete.button" url="folder/${actor}/{0}/delete.do" />
 		<sprouts:action-button code="details.button" url="message/${actor}/{0}/list.do" />

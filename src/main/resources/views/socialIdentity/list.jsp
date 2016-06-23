@@ -11,7 +11,7 @@
 <%@ include file="../template/libraries.jsp"%>
 
 
-<sprouts:data-table i18n="datatables.language" >
+<sprouts:data-table i18n="datatables.language" searcheable="false">
 	<sprouts:data-column code="socialIdentity.nick" path="nick" sortable="true"/>
 	<sprouts:data-column code="socialIdentity.network" path="socialNetwork" sortable="true"/>
 	<sprouts:data-column code="socialIdentity.home" path="homePage" format="url"/>

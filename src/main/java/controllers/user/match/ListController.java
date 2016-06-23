@@ -15,7 +15,7 @@ import es.us.lsi.dp.controllers.entities.crud.AbstractListController;
 
 @Controller("userMatchListController")
 @RequestMapping("match/user")
-public class ListController extends AbstractListController<Match, MatchService> {
+public class ListController extends AbstractListController<Match, MatchService>{
 
 	@Autowired
 	private UserService userService;

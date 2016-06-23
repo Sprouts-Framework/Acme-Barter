@@ -11,7 +11,7 @@
 <%@ include file="../template/libraries.jsp"%>
 
 
-<sprouts:data-table i18n="datatables.language" >
+<sprouts:data-table i18n="datatables.language" searcheable="${searcheable}">
 	<sprouts:data-column code="barter.username" path="user.userAccount.username" />
 	<sprouts:data-column code="barter.moment" path="moment" sortable="true" format="date"/>
 	<sprouts:data-column code="barter.title" path="title" />

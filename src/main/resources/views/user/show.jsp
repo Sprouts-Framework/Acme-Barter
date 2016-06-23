@@ -31,7 +31,7 @@
 			<legend>
 				<spring:message code="user.socialIdentity-info" />
 			</legend>
-			<sprouts:data-table i18n="datatables.language" source="home/user/socialIdentity/${modelObject.id}/list/data.do">
+			<sprouts:data-table i18n="datatables.language" searcheable="false" source="home/user/socialIdentity/${modelObject.id}/list/data.do">
 				<sprouts:data-column code="socialIdentity.nick" path="nick" sortable="true"/>
 				<sprouts:data-column code="socialIdentity.network" path="socialNetwork" sortable="true"/>
 				<sprouts:data-column code="socialIdentity.home" path="homePage" format="url"/>
@@ -49,7 +49,7 @@
 			<legend>
 				<spring:message code="user.barter.list" />
 			</legend>
-			<sprouts:data-table i18n="datatables.language" source="home/user/barter/${modelObject.id}/list/data.do">
+			<sprouts:data-table i18n="datatables.language" searcheable="false" source="home/user/barter/${modelObject.id}/list/data.do">
 				<sprouts:data-column code="barter.moment" path="moment" sortable="true" format="date"/>
 				<sprouts:data-column code="barter.title" path="title" />
 				<sprouts:data-column code="barter.requested.name" path="requested.name" />
@@ -67,7 +67,7 @@
 			<legend>
 				<spring:message code="user.matches.list" />
 			</legend>
-			<sprouts:data-table i18n="datatables.language" source="home/user/match/${modelObject.id}/list/data.do">
+			<sprouts:data-table i18n="datatables.language" searcheable="false" source="home/user/match/${modelObject.id}/list/data.do">
 				<sprouts:data-column code="match.moment" path="moment" sortable="true" format="date"/>
 				<sprouts:data-column code="match.requestSignedDate" path="requestSignedDate" format="date" nullCode="match.nullCode"/>
 				<sprouts:data-column code="match.offerSignedDate" path="offerSignedDate" format="date" nullCode="match.nullCode"/>

@@ -11,7 +11,7 @@
 <%@ include file="../template/libraries.jsp"%>
 
 
-<sprouts:data-table i18n="datatables.language" >
+<sprouts:data-table i18n="datatables.language" searcheable="false">
 	<sprouts:data-column code="match.moment" path="moment" sortable="true" format="date"/>
 	<sprouts:data-column code="match.requestSignedDate" path="requestSignedDate" format="date" nullCode="match.nullCode"/>
 	<sprouts:data-column code="match.offerSignedDate" path="offerSignedDate" format="date" nullCode="match.nullCode"/>

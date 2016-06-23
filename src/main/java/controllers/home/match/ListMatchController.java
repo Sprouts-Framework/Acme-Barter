@@ -13,7 +13,7 @@ import es.us.lsi.dp.controllers.entities.crud.AbstractListController;
 
 @Controller("ListMatchController")
 @RequestMapping("home/match")
-public class ListMatchController extends AbstractListController<Match, MatchService> {
+public class ListMatchController extends AbstractListController<Match, MatchService>{
 
 	@Override
 	protected String view() {

@@ -15,7 +15,7 @@ import es.us.lsi.dp.controllers.entities.crud.AbstractListController;
 
 @Controller("listRelatedBartersController")
 @RequestMapping("home/barter/related")
-public class ListRelatedBartersController extends AbstractListController<Barter, BarterService> {
+public class ListRelatedBartersController extends AbstractListController<Barter, BarterService> implements AddsToModel{
 
 	@Override
 	protected String view() {
@@ -33,5 +33,11 @@ public class ListRelatedBartersController extends AbstractListController<Barter,
 		result = service.findRelatedBarters(barterId, type, page);
 
 		return result;
+	}
+	
+	@Override
+	public void addToModel(Map<String, Object> objects, List<String> context) {
+		objects.put("searcheable",false);
+		
 	}
 }

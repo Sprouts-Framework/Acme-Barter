@@ -11,7 +11,7 @@
 <%@ include file="../template/libraries.jsp"%>
 
 
-<sprouts:data-table i18n="datatables.language">
+<sprouts:data-table i18n="datatables.language" searcheable="false">
 	<sprouts:data-column code="user.name" path="name" sortable="true"/>
 	<sprouts:data-column code="user.surname" path="surname"/>
 	<sprouts:data-column code="user.username" path="userAccount.username"/>
