@@ -99,7 +99,6 @@ public abstract class PostController<D extends Validable, E extends Validable> e
 		transaction.begin();
 		beforeAuthorization(entity, ContextParser.parse(pathVariables));
 
-
 		safeObject = getSafeObject(entityOrDatatype, entity);
 
 		entityToAuthorize = isEntity(entityOrDatatype) ? (E) safeObject : entity;

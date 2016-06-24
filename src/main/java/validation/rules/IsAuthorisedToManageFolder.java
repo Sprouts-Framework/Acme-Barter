@@ -30,5 +30,4 @@ public class IsAuthorisedToManageFolder implements BusinessRule<Folder> {
 	public String warning() {
 		return "folder.isAuthorised.error";
 	}
-
 }
